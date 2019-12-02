@@ -3,7 +3,7 @@
 #include<cmath>
 
 std::string g_mass;
-int g_fuel;
+int g_fuel1, g_fuel2;
 
 int massToFuel(int mass) {
     int fuel = floor(mass / 3.0) - 2;
@@ -25,13 +25,15 @@ int smartMassToFuel(int mass) {
 
 int main() {
     freopen("1-input", "r", stdin);
-    freopen("1b-output", "w", stdout);
+    freopen("1-output", "w", stdout);
 
     while (std::cin >> g_mass) {
-        g_fuel += smartMassToFuel(std::stoi(g_mass));
+        g_fuel1 += massToFuel(std::stoi(g_mass));
+        g_fuel2 += smartMassToFuel(std::stoi(g_mass));
     }
 
-    std::cout << g_fuel;
+    std::cout << "Part 1: " << g_fuel1 << "\n";
+    std::cout << "Part 2: " << g_fuel2;
 
     return 0;
 }
