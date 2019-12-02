@@ -20,32 +20,36 @@ std::vector<int> readInput() {
     return code;
 }
 
+int func(std::vector<int> code, int noun, int verb) {
+    code[1] = noun;
+    code[2] = verb;
+
+    for (int i = 0; i < code.size(); i+=4) {
+        if (code[i] == 1) {
+            code[code[i+3]] = code[code[i+1]] + code[code[i+2]];
+        } else if (code[i] == 2) {
+            code[code[i+3]] = code[code[i+1]] * code[code[i+2]];
+        } else {
+            break;
+        }
+    }
+
+    return code[0];
+} 
+
 int main() {
     freopen("2-input", "r", stdin);
-    freopen("2b-output", "w", stdout);
+    freopen("2-output", "w", stdout);
 
     int result = 19690720;
     std::vector<int> code = readInput();
 
+    std::cout << "Part 1: " << func(code, 12, 2) << "\n";
+
     for (int noun = 0; noun < 100; noun++) {
-        std::vector<int> intCode = code;
-
-        intCode[1] = noun;
-        intCode[2] = 1;
-
-        for (int i = 0; i < intCode.size(); i+=4) {
-            if (intCode[i] == 1) {
-                intCode[intCode[i+3]] = intCode[intCode[i+1]] + intCode[intCode[i+2]];
-            } else if (intCode[i] == 2) {
-                intCode[intCode[i+3]] = intCode[intCode[i+1]] * intCode[intCode[i+2]];
-            } else {
-                break;
-            }
-        }
-
-        int verb = result - intCode[0];
+        int verb = result - func(code, noun, 0);
         if (verb >= 0 && verb < 100) {
-            std::cout << 100*noun + verb + 1;
+            std::cout << "Part 2: " << 100 * noun + verb;
             break;
         } 
     }
