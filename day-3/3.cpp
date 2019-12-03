@@ -112,7 +112,7 @@ int main() {
     int solB = leastSteps(intersects, points1, points2);
 
     std::cout << "Part 1: " << solA << "\n";
-    std::cout << "Part 2: " << solB << "\n";
+    std::cout << "Part 2: " << solB;
 
     return 0;
 }
