@@ -6,6 +6,7 @@
 
 typedef std::pair<int, int> point2D;
 typedef std::vector<point2D> pointVec;
+typedef std::vector<std::vector<int> > vector2D;
 
 std::vector<std::string> getPath(std::string line) {
     std::vector<std::string> path;
@@ -45,12 +46,23 @@ pointVec getPoints(std::string line) {
     return points;
 }
 
+vector2D mapPoints(pointVec points) {
+    vector2D map(20000, std::vector<int> (20000, 0));
+
+    for (point2D point : points) {
+        map[point.first+10000][point.second+10000]++;
+    }
+
+    return map;
+}
+
 pointVec getIntersects(pointVec pointsA, pointVec pointsB) {
     pointVec intersects;
 
-    for (int i = 0; i < pointsA.size(); i++) {
-        if (FIND(pointsB, pointsA[i]) != pointsB.end()) {
-            intersects.push_back(point2D(pointsA[i].first, pointsA[i].second));
+    vector2D map = mapPoints(pointsA);
+    for (point2D point : pointsB) {
+        if (map[point.first+10000][point.second+10000] != 0) {
+            intersects.push_back(point);
         }
     }
 
@@ -64,8 +76,8 @@ int getSteps(pointVec points, point2D point) {
 int closestToCenter(pointVec points) {
     int minDist = abs(points[0].first) + abs(points[0].second);
 
-    for (int i = 1; i < points.size(); i++) {
-        int dist = abs(points[i].first) + abs(points[i].second);
+    for (point2D point : points) {
+        int dist = abs(point.first) + abs(point.second);
         if (minDist > dist) minDist = dist;
     }
 
@@ -75,9 +87,9 @@ int closestToCenter(pointVec points) {
 int leastSteps(pointVec intersects, pointVec pointsA, pointVec pointsB) {
     int minSteps = pointsA.size() + pointsB.size();
 
-    for (int i = 0; i < intersects.size(); i++) {
-        int steps = getSteps(pointsA, intersects[i]);
-        steps += getSteps(pointsB, intersects[i]);
+    for (point2D intersect : intersects) {
+        int steps = getSteps(pointsA, intersect);
+        steps += getSteps(pointsB, intersect);
         if (minSteps > steps) minSteps = steps;
     }
 
@@ -98,7 +110,7 @@ int main() {
 
     int solA = closestToCenter(intersects);
     int solB = leastSteps(intersects, points1, points2);
-    
+
     std::cout << "Part 1: " << solA << "\n";
     std::cout << "Part 2: " << solB << "\n";
 
