@@ -25,60 +25,45 @@ void writeFile(int a, int b) {
     std::cout << "Part 2: " << b;
 }
 
+std::vector<int> getModes(std::string ins) {
+    std::vector<int> modes;
+
+    if (ins.size() >= 5) 
+        modes.push_back(std::stoi(ins.substr(2,1)));
+    if (ins.size() >= 4)
+        modes.push_back(std::stoi(ins.substr(1,1)));
+    if (ins.size() >= 3)
+        modes.push_back(std::stoi(ins.substr(0,1)));
+    while (modes.size() < 3)
+        modes.push_back(0);
+
+    return modes;
+}
+
+std::vector<int> getParameters(std::vector<int> code, int counter) {
+    std::vector<int> parameters;
+    std::vector<int> modes = getModes(std::to_string(code[counter]));
+
+    parameters.push_back(code[((modes[0] == 0)? code[counter+1] : counter+1)]);
+    parameters.push_back(code[((modes[1] == 0)? code[counter+2] : counter+2)]);
+    parameters.push_back(code[counter+3]);
+
+    return parameters;
+}
+
 std::vector<int> intCodeComputer(std::vector<int> code, int input) {
     std::vector<int> output;
     int counter = 0;
     while (code[counter] != 99) {
-        int A = 0;
-        int B = 0;
-        int C = 0;
-        int opCode = 0;
         std::string ins = std::to_string(code[counter]);
-
-        if (ins.size() > 1) {
-            opCode = std::stoi(ins.substr(ins.size() - 2, 2));
-        } else {
-            opCode = std::stoi(ins);
-        }
-        
-        if (ins.length() == 3) {
-            C = std::stoi(ins.substr(0,1));
-        } else if (ins.length() == 4) {
-            B = std::stoi(ins.substr(0,1));
-            C = std::stoi(ins.substr(1,1));
-        } else if (ins.length() == 5) {
-            A = std::stoi(ins.substr(0,1));
-            B = std::stoi(ins.substr(1,1));
-            C = std::stoi(ins.substr(2,1));
-        }
+        std::vector<int> params = getParameters(code, counter);
+        int opCode = std::stoi(((ins.size() > 1) ? ins.substr(ins.size() - 2, 2) : ins));
 
         if (opCode == 1) { // ADD
-            int c, b;
-            if (C == 0) {
-                c = code[code[counter+1]];
-            } else {
-                c = code[counter+1];
-            }
-            if (B == 0) {
-                b = code[code[counter+2]];
-            } else {
-                b = code[counter+2];
-            }
-            code[code[counter+3]] = c + b;
+            code[params[2]] = params[0] + params[1];
             counter += 4;
         } else if (opCode == 2) { // MUL
-            int c, b;
-            if (C == 0) {
-                c = code[code[counter+1]];
-            } else {
-                c = code[counter+1];
-            }
-            if (B == 0) {
-                b = code[code[counter+2]];
-            } else {
-                b = code[counter+2];
-            }
-            code[code[counter+3]] = c * b;
+            code[params[2]] = params[0] * params[1];
             counter += 4;
         } else if (opCode == 3) { // INPUT
             code[code[counter+1]] = input;
@@ -87,53 +72,16 @@ std::vector<int> intCodeComputer(std::vector<int> code, int input) {
             output.push_back(code[code[counter+1]]);
             counter += 2;
         } else if (opCode == 5) { // JUMP IF TRUE (NOT ZERO)
-            int c = code[counter+1];
-            int b = code[counter+2];
-            if (C == 0)
-                c = code[c];
-            if (B == 0)
-                b = code[b];
-            if (c != 0)
-                counter = b;
-            else
-                counter += 3;
+            counter = ((params[0] != 0)? params[1] : counter + 3);
         } else if (opCode == 6) { // JUMP IF FALSE (ZERO)
-            int c = code[counter+1];
-            int b = code[counter+2];
-            if (C == 0)
-                c = code[c];
-            if (B == 0)
-                b = code[b];
-            if (c == 0)
-                counter = b;
-            else
-                counter += 3;
+            counter = ((params[0] == 0)? params[1] : counter + 3);
         } else if (opCode == 7) { // IF LESS THAN
-            int c = code[counter+1];
-            int b = code[counter+2];
-            int a = code[counter+3];
-            if (C == 0) {
-                c = code[c];
-            }
-            if (B == 0) {
-                b = code[b];
-            }
-            code[a] = (c < b)? 1 : 0;
+            code[params[2]] = (params[0] < params[1])? 1 : 0;
             counter += 4;
         } else if (opCode == 8) { // IF EQUAL TO
-            int c = code[counter+1];
-            int b = code[counter+2];
-            int a = code[counter+3];
-            if (C == 0) {
-                c = code[c];
-            }
-            if (B == 0) {
-                b = code[b];
-            }
-            code[a] = (c == b)? 1 : 0;
+            code[params[2]] = (params[0] == params[1])? 1 : 0;
             counter += 4;
-        } else {
-            std::cout << "Error\n";
+        } else { // ERROR
             break;
         }
     }
@@ -154,4 +102,6 @@ int main() {
     int solB = test5.back();
 
     writeFile(solA, solB);
+
+    return 0;
 }
