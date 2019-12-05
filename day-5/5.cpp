@@ -44,8 +44,8 @@ std::vector<int> getParameters(std::vector<int> code, int counter) {
     std::vector<int> parameters;
     std::vector<int> modes = getModes(std::to_string(code[counter]));
 
-    parameters.push_back(code[((modes[0] == 0)? code[counter+1] : counter+1)]);
-    parameters.push_back(code[((modes[1] == 0)? code[counter+2] : counter+2)]);
+    parameters.push_back(code[(modes[0] == 0)? code[counter+1] : counter+1]);
+    parameters.push_back(code[(modes[1] == 0)? code[counter+2] : counter+2]);
     parameters.push_back(code[counter+3]);
 
     return parameters;
@@ -57,7 +57,7 @@ std::vector<int> intCodeComputer(std::vector<int> code, int input) {
     while (code[counter] != 99) {
         std::string ins = std::to_string(code[counter]);
         std::vector<int> params = getParameters(code, counter);
-        int opCode = std::stoi(((ins.size() > 1) ? ins.substr(ins.size() - 2, 2) : ins));
+        int opCode = std::stoi((ins.size() > 1) ? ins.substr(ins.size() - 2, 2) : ins);
 
         if (opCode == 1) { // ADD
             code[params[2]] = params[0] + params[1];
@@ -72,9 +72,9 @@ std::vector<int> intCodeComputer(std::vector<int> code, int input) {
             output.push_back(code[code[counter+1]]);
             counter += 2;
         } else if (opCode == 5) { // JUMP IF TRUE (NOT ZERO)
-            counter = ((params[0] != 0)? params[1] : counter + 3);
+            counter = (params[0] != 0)? params[1] : counter+3;
         } else if (opCode == 6) { // JUMP IF FALSE (ZERO)
-            counter = ((params[0] == 0)? params[1] : counter + 3);
+            counter = (params[0] == 0)? params[1] : counter+3;
         } else if (opCode == 7) { // IF LESS THAN
             code[params[2]] = (params[0] < params[1])? 1 : 0;
             counter += 4;
