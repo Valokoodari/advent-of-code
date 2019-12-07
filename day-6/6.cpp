@@ -1,12 +1,15 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<thread>
+#include<future>
 #include<map>
 
 #define FIND(PL, P) std::find(PL.begin(), PL.end(), P)
 
 typedef std::pair<std::map<std::string,std::string>,std::vector<std::string> > mapAndKeys;
 typedef std::map<std::string, std::string> stringMap;
+typedef std::map<std::string, int> strIntMap;
 typedef std::vector<std::string> stringVec;
 typedef std::string string;
 
@@ -34,14 +37,23 @@ int countAllOrbits(mapAndKeys mapKeys) {
     stringMap orbits = mapKeys.first;
     stringVec keys = mapKeys.second;
 
+    strIntMap test;
     int allOrbits = 0;
+
     for (int i = 0; i < keys.size(); i++) {
         string key = keys[i];
+        int curOrbits = 0;
 
         while(orbits.find(key) != orbits.end()) {
             key = orbits[key];
-            allOrbits++;
+            if (test.find(key) != test.end()) {
+                curOrbits += test[key] + 1;
+                break;
+            }
+            curOrbits++;
         }
+        test[keys[i]] = curOrbits;
+        allOrbits += curOrbits;
     }
 
     return allOrbits;
@@ -71,10 +83,10 @@ int main() {
 
     mapAndKeys mapKeys = readFile();
 
-    int solA = countAllOrbits(mapKeys);;
+    auto solA = std::async(countAllOrbits, mapKeys);
     int solB = distanceBetween(mapKeys, "YOU", "SAN");
 
-    writeFile(solA, solB);
+    writeFile(solA.get(), solB);
 
     return 0;
 }
