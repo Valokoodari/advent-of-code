@@ -1,4 +1,4 @@
-#include "intCodeComputer.h"
+#include "../ICC/intCodeComputer.h"
 #include <fstream>
 #include <vector>
 #include <string>
