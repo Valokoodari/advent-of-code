@@ -4,11 +4,12 @@
 #include <string>
 
 typedef std::string string;
+typedef long long int ll;
 
-std::vector<int> readFile() {
+std::vector<ll> readFile() {
     std::ifstream file("7-input");
 
-    std::vector<int> code;
+    std::vector<ll> code;
     std::string line;
     std::getline(file, line);
     file.close();
@@ -16,10 +17,10 @@ std::vector<int> readFile() {
     while (line.length() > 0) {
         int c = line.find(",");
         if (c == -1) { // There is no comma at the end of the input
-            code.push_back(std::stoi(line.substr(0, line.length())));
+            code.push_back(std::stoll(line.substr(0, line.length())));
             break;
         }
-        code.push_back(std::stoi(line.substr(0, c)));
+        code.push_back(std::stoll(line.substr(0, c)));
         line.erase(0, c+1);
     }
 
@@ -33,7 +34,7 @@ void writeFile(int a, int b) {
     file.close();
 }
 
-int solve(std::vector<int> ampCode, int settings[]) {
+int solve(std::vector<ll> ampCode, int settings[]) {
     int max = 0;
 
     do {
@@ -67,7 +68,7 @@ int solve(std::vector<int> ampCode, int settings[]) {
 }
 
 int main() {
-    std::vector<int> ampCode = readFile();
+    std::vector<ll> ampCode = readFile();
 
     int settingsA[] = {0,1,2,3,4};
     int settingsB[] = {5,6,7,8,9};
