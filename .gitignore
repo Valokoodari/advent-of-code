@@ -1,4 +1,6 @@
 .vscode
+ICC/iccTester*
+*.sh
 *.o
 day-1/1
 day-2/2

@@ -7,13 +7,13 @@ typedef long long int ll;
 class intCodeComputer {
     private:
         int PC;
-        int relBase;
+        int RB;
 
         std::vector<int> getModes(std::string ins);
         std::vector<ll> getParameters();
 
     public:
-        std::vector<ll> code;
+        std::vector<ll> MEM;
         std::list<ll> input;
         std::list<ll> output;
 
