@@ -1,12 +1,12 @@
 #include "intCodeComputer.h"
 
-intCodeComputer::intCodeComputer(std::vector<ll> startCode) {
-    PC = 0;                             // Initialize program counter as 0
-    RB = 0;                             // Initialize relative base as 0
+intCodeComputer::intCodeComputer(std::vector<ll> initialMemory) {
+    programCounter = 0;                 // Initialize program counter as 0
+    relativeBase = 0;                   // Initialize relative base as 0
 
-    MEM = startCode;                    // Initialize memory as program code
+    memory = initialMemory;             // Initialize memory
     for (int i = 0; i < 1000; i++) {    // Expand memory by 1000 words.
-        MEM.push_back(0);
+        memory.push_back(0);
     }
 }
 
@@ -25,62 +25,68 @@ std::vector<int> intCodeComputer::getModes(std::string ins) {
     return modes;
 }
 
-std::vector<ll> intCodeComputer::getParameters() {
+std::vector<ll> intCodeComputer::getParameters(int opCode) {
     std::vector<ll> parameters;
-    std::vector<int> modes = getModes(std::to_string(MEM[PC]));
+    std::vector<int> modes = getModes(std::to_string(memory[programCounter]));
 
-    parameters.push_back(MEM[(modes[0] == 0)? MEM[PC+1] : (modes[0] == 1)? PC+1 : RB + MEM[PC+1]]);
-    parameters.push_back(MEM[(modes[1] == 0)? MEM[PC+2] : (modes[1] == 1)? PC+2 : RB + MEM[PC+2]]);
-    parameters.push_back((modes[2] == 0)? MEM[PC+3] : MEM[PC+3]+RB);
+    if (opCode == 3) {
+        parameters.push_back(memory[programCounter+1] + ((modes[0] == 2)? relativeBase : 0));
+    } else {
+        parameters.push_back(memory[(modes[0] == 0)? memory[programCounter+1] : (modes[0] == 1)? programCounter+1 : relativeBase + memory[programCounter+1]]);
+    }
+    parameters.push_back(memory[(modes[1] == 0)? memory[programCounter+2] : (modes[1] == 1)? programCounter+2 : relativeBase + memory[programCounter+2]]);
+    parameters.push_back((modes[2] == 0)? memory[programCounter+3] : memory[programCounter+3]+relativeBase);
 
     return parameters;
 }
 
 int intCodeComputer::step() {
-    if (MEM[PC] == 99)
-        return 99;
+    if (memory[programCounter] == 99) return 99;
 
-    std::string ins = std::to_string(MEM[PC]);
-    std::vector<int> modes = getModes(ins);
-    std::vector<ll> params = getParameters();
+    std::string ins = std::to_string(memory[programCounter]);
     int opCode = std::stoi((ins.size() > 1) ? ins.substr(ins.size() - 2, 2) : ins);
 
-    if (opCode == 1) { // ADD
-        MEM[params[2]] = params[0] + params[1];
-        PC += 4;
-    } else if (opCode == 2) { // MUL
-        MEM[params[2]] = params[0] * params[1];
-        PC += 4;
-    } else if (opCode == 3) { // INPUT
-        if (!input.empty()) {
-            if (modes[0] == 2) {
-                MEM[RB + MEM[PC+1]] = input.front();
-            } else {
-                MEM[MEM[PC+1]] = input.front();
-            }
+    std::vector<int> modes = getModes(ins);
+    std::vector<ll> params = getParameters(opCode);
+
+    switch(opCode) {
+        case 1:                         // Addition
+            memory[params[2]] = params[0] + params[1];
+            programCounter += 4;
+            break;
+        case 2:                         // Multiplication
+            memory[params[2]] = params[0] * params[1];
+            programCounter += 4;
+            break;
+        case 3:                         // Read input
+            memory[params[0]] = input.front();
             input.pop_front();
-            PC += 2;
-        } else {
-            return -3; // Error: input not found
-        }
-    } else if (opCode == 4) { // OUTPUT
-        output.push_back(params[0]);
-        PC += 2;
-    } else if (opCode == 5) { // JUMP IF TRUE (NOT ZERO)
-        PC = (params[0] != 0)? params[1] : PC+3;
-    } else if (opCode == 6) { // JUMP IF FALSE (ZERO)
-        PC = (params[0] == 0)? params[1] : PC+3;
-    } else if (opCode == 7) { // IF LESS THAN
-        MEM[params[2]] = (params[0] < params[1])? 1 : 0;
-        PC += 4;
-    } else if (opCode == 8) { // IF EQUAL TO
-        MEM[params[2]] = (params[0] == params[1])? 1 : 0;
-        PC += 4;
-    } else if (opCode == 9) { // Change Relative Base
-        RB += params[0];
-        PC += 2;
-    } else {
-        return -99; // Error: opCode not recognized
+            programCounter += 2;
+            break;
+        case 4:                         // Write output
+            output.push_back(params[0]);
+            programCounter += 2;
+            break;
+        case 5:                         // Jump if true (not zero)
+            programCounter = (params[0] != 0)? params[1] : programCounter+3;
+            break;
+        case 6:                         // Jump if false (zero)
+            programCounter = (params[0] == 0)? params[1] : programCounter+3;
+            break;
+        case 7:                         // If less than 
+            memory[params[2]] = (params[0] < params[1])? 1 : 0;
+            programCounter += 4;
+            break;
+        case 8:                         // If equal to
+            memory[params[2]] = (params[0] == params[1])? 1 : 0;
+            programCounter += 4;
+            break;
+        case 9:                         // Increase relative base
+            relativeBase += params[0];
+            programCounter += 2;
+            break;
+        default:
+            return -99;                 // Error: unrecognized operation code
     }
 
     return opCode;
