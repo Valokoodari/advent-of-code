@@ -6,14 +6,14 @@ typedef long long int ll;
 
 class intCodeComputer {
     private:
-        int PC;
-        int RB;
+        int programCounter;
+        int relativeBase;
 
         std::vector<int> getModes(std::string ins);
-        std::vector<ll> getParameters();
+        std::vector<ll> getParameters(int opCode);
 
     public:
-        std::vector<ll> MEM;
+        std::vector<ll> memory;
         std::list<ll> input;
         std::list<ll> output;
 
