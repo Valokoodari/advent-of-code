@@ -59,8 +59,12 @@ int intCodeComputer::step() {
             programCounter += 4;
             break;
         case 3:                         // Read input
-            memory[params[0]] = input.front();
-            input.pop_front();
+            if (input.size() > 0) {
+                memory[params[0]] = input.front();
+                input.pop_front();
+            } else {
+                return -3;
+            }
             programCounter += 2;
             break;
         case 4:                         // Write output
