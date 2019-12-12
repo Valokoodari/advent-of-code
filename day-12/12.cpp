@@ -1,92 +1,13 @@
-#include <iostream>
 #include <fstream>
 #include <numeric>
 #include <string>
 #include <vector>
+#include <array>
 #include <map>
 
+#include "moon.h"
+
 typedef long long int ll;
-
-class point3D {
-    public:
-        int x;
-        int y;
-        int z;
-
-        point3D(int sx, int sy, int sz) {
-            x = sx;
-            y = sy;
-            z = sz;
-        }
-
-        bool equals(point3D other) {
-            return (x == other.x && y == other.y && z == other.z);
-        }
-};
-
-class point4D {
-    public:
-        int a;
-        int b;
-        int c;
-        int d;
-
-        point4D(int sa, int sb, int sc, int sd) {
-            a = sa;
-            b = sb;
-            c = sc;
-            d = sd;
-        }
-
-        bool operator < (const point4D &other) const {
-            return (a < other.a || b < other.b || c < other.c || d < other.d);
-        }
-};
-
-class moon {
-    public:
-        int pos[3];
-        int vel[3] = {0,0,0};
-
-        moon(int startX, int startY, int startZ) {
-            pos[0] = startX;
-            pos[1] = startY;
-            pos[2] = startZ;
-        }
-
-        void calcVel(moon other) {
-            if (other.pos[0] < pos[0])
-                vel[0]--;
-            if (other.pos[0] > pos[0])
-                vel[0]++;
-            if (other.pos[1] < pos[1])
-                vel[1]--;
-            if (other.pos[1] > pos[1])
-                vel[1]++;
-            if (other.pos[2] < pos[2])
-                vel[2]--;
-            if (other.pos[2] > pos[2])
-                vel[2]++;
-        }
-
-        void calcPos() {
-            pos[0] += vel[0];
-            pos[1] += vel[1];
-            pos[2] += vel[2];
-        }
-
-        point3D getPos() {
-            return point3D(pos[0], pos[1], pos[2]);
-        }
-
-        int getEnergy() {
-            int potE = abs(pos[0]) + abs(pos[1]) + abs(pos[2]);
-            int kinE = abs(vel[0]) + abs(vel[1]) + abs(vel[2]);
-
-            return potE * kinE;
-        }
-};
-
 
 std::vector<moon> readFile() {
     std::vector<moon> moons;
@@ -123,55 +44,53 @@ void writeFile(int a, ll b) {
     file.close();
 }
 
+std::array<int,8> getState(std::vector<moon> moons, int axis) {
+    std::array<int,8> state;
+
+    for (int i = 0; i < moons.size(); i++) {
+        state[i] = moons[i].pos[axis];
+        state[i+moons.size()] = moons[i].vel[axis];
+    }
+
+    return state;
+}
+
 int main() {
     std::vector<moon> moons = readFile();
-    std::map<point4D, int> prevPosX;
-    std::map<point4D, int> prevPosY;
-    std::map<point4D, int> prevPosZ;
-    std::map<point4D, int> prevVelX;
-    std::map<point4D, int> prevVelY;
-    std::map<point4D, int> prevVelZ;
 
     int solA = 0;
-
     int step = 0;
     int steps[3] = {0,0,0};
+    std::map<std::array<int,8>, int> history[3];
+
     while (steps[0] == 0 || steps[1] == 0 || steps[2] == 0) {
-        point4D posX(moons[0].pos[0],moons[1].pos[0],moons[2].pos[0],moons[3].pos[0]);
-        point4D posY(moons[0].pos[1],moons[1].pos[1],moons[2].pos[1],moons[3].pos[1]);
-        point4D posZ(moons[0].pos[2],moons[1].pos[2],moons[2].pos[2],moons[3].pos[2]);
+        // Check if an axis repeats a previous state
+        for (int i = 0; i < 3; i++) {
+            std::array<int,8> currentState = getState(moons, i);
 
-        point4D velX(moons[0].vel[0],moons[1].vel[0],moons[2].vel[0],moons[3].vel[0]);
-        point4D velY(moons[0].vel[1],moons[1].vel[1],moons[2].vel[1],moons[3].vel[1]);
-        point4D velZ(moons[0].vel[2],moons[1].vel[2],moons[2].vel[2],moons[3].vel[2]);
+            if (history[i].find(currentState) != history[i].end() && steps[i] == 0)
+                steps[i] = step;
 
-        if (prevPosX.find(posX) != prevPosX.end() && prevVelX.find(velX) != prevVelX.end() && steps[0] == 0)
-            steps[0] = step;
-        if (prevPosY.find(posY) != prevPosY.end() && prevVelY.find(velY) != prevVelY.end() && steps[1] == 0)
-            steps[1] = step;
-        if (prevPosZ.find(posZ) != prevPosZ.end() && prevVelZ.find(velZ) != prevVelZ.end() && steps[2] == 0)
-            steps[2] = step;
+            history[i][currentState] = step;
+        }
 
-        prevPosX[posX] = step;
-        prevPosY[posY] = step;
-        prevPosZ[posZ] = step;
-        prevVelX[velX] = step;
-        prevVelY[velY] = step;
-        prevVelZ[velZ] = step;
-
+        // Update velocities of the moons
         for (int i = 0; i < moons.size(); i++) {
             for (int j = 0; j < moons.size(); j++) {
                 if (i == j)
                     continue;
-                moons[i].calcVel(moons[j]);
+                moons[i].calcVelocity(moons[j]);
             }
         }
+
+        // Update positions of the moons
         for (int i = 0; i < moons.size(); i++) {
-            moons[i].calcPos();
+            moons[i].calcPosition();
         }
 
         step++;
 
+        // Record total energy of the system on time step 1000
         if (step == 1000) {
             for (int i = 0; i < moons.size(); i++) {
                 solA += moons[i].getEnergy();
@@ -179,6 +98,7 @@ int main() {
         }
     }
 
+    // Calculate the point in time where every axis repeats a previous state at the same time
     ll solB = std::lcm((ll)steps[0], std::lcm((ll)steps[1], (ll)steps[2]));
 
     writeFile(solA, solB);
