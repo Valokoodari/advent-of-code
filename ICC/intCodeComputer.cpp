@@ -5,7 +5,7 @@ intCodeComputer::intCodeComputer(std::vector<ll> initialMemory) {
     relativeBase = 0;                   // Initialize relative base as 0
 
     memory = initialMemory;             // Initialize memory
-    for (int i = 0; i < 1000; i++) {    // Expand memory by 1000 words.
+    for (int i = 0; i < 20000; i++) {   // Expand memory by 20000 words.
         memory.push_back(0);
     }
 }
@@ -104,4 +104,8 @@ ll intCodeComputer::getOutput() {
     ll out = output.front();
     output.pop_front();
     return out;
+}
+
+void intCodeComputer::setWord(int address, ll word) {
+    memory[address] = word;
 }

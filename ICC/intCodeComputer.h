@@ -2,6 +2,8 @@
 #include <string>
 #include <list>
 
+#include <iostream>
+
 typedef long long int ll;
 
 class intCodeComputer {
@@ -22,4 +24,6 @@ class intCodeComputer {
         int step();
         void addInput(ll number);
         ll getOutput();
+
+        void setWord(int address, ll word);
 };
