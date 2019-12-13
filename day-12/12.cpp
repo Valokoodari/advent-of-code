@@ -44,12 +44,11 @@ void writeFile(int a, ll b) {
     file.close();
 }
 
-std::array<int,8> getState(std::vector<moon> moons, int axis) {
-    std::array<int,8> state;
+std::array<int,4> getState(std::vector<moon> moons, int axis) {
+    std::array<int,4> state;
 
-    for (int i = 0; i < moons.size(); i++) {
-        state[i] = moons[i].pos[axis];
-        state[i+moons.size()] = moons[i].vel[axis];
+    for (int i = 0; i < 4; i++) {
+        state[i] = moons[i].vel[axis];
     }
 
     return state;
@@ -61,17 +60,14 @@ int main() {
     int solA = 0;
     int step = 0;
     int steps[3] = {0,0,0};
-    std::map<std::array<int,8>, int> history[3];
 
     while (steps[0] == 0 || steps[1] == 0 || steps[2] == 0) {
         // Check if an axis repeats a previous state
         for (int i = 0; i < 3; i++) {
-            std::array<int,8> currentState = getState(moons, i);
-
-            if (history[i].find(currentState) != history[i].end() && steps[i] == 0)
-                steps[i] = step;
-
-            history[i][currentState] = step;
+            std::array<int,4> currentState = getState(moons, i);
+            
+            if (currentState == std::array<int,4>{0,0,0,0} && steps[i] == 0 && step != 0)
+                steps[i] = step*2;
         }
 
         // Update velocities of the moons
