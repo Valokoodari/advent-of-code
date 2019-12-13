@@ -10,7 +10,7 @@ Day 1
 - C++ 0.003 s
 - Python 0.030 s
 Day 2
-- C++ 0.003 s
+- C++ 0.009 s
 - Python 0.029 s
 Day 3:
 - C++ 0.961 s

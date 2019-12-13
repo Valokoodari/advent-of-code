@@ -109,3 +109,7 @@ ll intCodeComputer::getOutput() {
 void intCodeComputer::setWord(int address, ll word) {
     memory[address] = word;
 }
+
+ll intCodeComputer::getWord(int address) {
+    return memory[address];
+}

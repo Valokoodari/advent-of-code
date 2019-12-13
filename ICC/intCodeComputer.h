@@ -26,4 +26,5 @@ class intCodeComputer {
         ll getOutput();
 
         void setWord(int address, ll word);
+        ll getWord(int address);
 };
