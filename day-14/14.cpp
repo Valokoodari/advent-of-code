@@ -1,4 +1,3 @@
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -41,6 +40,13 @@ void readFile() {
     }
 }
 
+void writeFile(int a, int b) {
+    std::fstream file("14-output", std::fstream::out);
+    file << "Part 1: " << a << "\n";
+    file << "Part 2: " << b;
+    file.close();
+}
+
 ll calcOre(std::string product, ll amount) {
     amount = ceil((double)amount / g_recipes[product][0].second);
 
@@ -70,16 +76,16 @@ int main() {
     g_storage.clear();
 
     int low = 0;
-    int solB = 200000000;
-    while (low < solB) {
-        int middle = (low + solB) / 2;
+    int high = 20000000;
+    while (low < high) {
+        int middle = (low + high) / 2;
         if (calcOre("FUEL", middle) < 1000000000000)
             low = middle;
         else
-            solB = middle-1;
+            high = middle-1;
     }
 
-    std::cout << solA << " " << solB << "\n";
+    writeFile(solA, high);
 
     return 0;
 }
