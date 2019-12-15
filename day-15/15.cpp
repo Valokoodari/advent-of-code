@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../ICC/intCodeComputer.h"
 #include <fstream>
 #include <string>
@@ -6,9 +5,8 @@
 #include <map>
 
 typedef long long int ll;
+typedef std::pair<int,int> point;
 typedef std::vector<long long int> intCode;
-typedef std::vector<std::vector<int> > intVec2D;
-typedef std::vector<std::pair<int,int> > pointVec;
 typedef std::map<std::pair<int,int>, int> pointMap;
 
 intCode readFile() {
@@ -38,11 +36,11 @@ void writeFile(int a, int b) {
     file.close();
 }
 
-int nextDirection(std::map<std::pair<int,int>, int> map, std::pair<int,int> pos, int prevDir) {
-    int north = map[std::pair<int,int>(pos.first+1,pos.second)];
-    int south = map[std::pair<int,int>(pos.first-1,pos.second)];
-    int west = map[std::pair<int,int>(pos.first,pos.second-1)];
-    int east = map[std::pair<int,int>(pos.first,pos.second+1)];
+int nextDirection(pointMap map, point pos, int prevDir) {
+    int north = map[point(pos.first+1,pos.second)];
+    int south = map[point(pos.first-1,pos.second)];
+    int west = map[point(pos.first,pos.second-1)];
+    int east = map[point(pos.first,pos.second+1)];
 
     if (prevDir == 1) {
         if (west != 3)
@@ -81,110 +79,81 @@ int nextDirection(std::map<std::pair<int,int>, int> map, std::pair<int,int> pos,
     return -1;
 }
 
-intVec2D mapTiles(pointMap tiles) {
-    int minMaxPos[] = {100, -100, 100, -100}; // minY, maxY, minX, maxX
-    pointVec painted;
-    for(pointMap::iterator it = tiles.begin(); it != tiles.end(); ++it) {
-        if (tiles[it->first] == 0)
-            continue;
-        std::pair<int,int> point = it->first;
-        painted.push_back(point);
-        if (point.first < minMaxPos[0])
-            minMaxPos[0] = point.first;
-        if (point.first > minMaxPos[1])
-            minMaxPos[1] = point.first;
-        if (point.second < minMaxPos[2])
-            minMaxPos[2] = point.second;
-        if (point.second > minMaxPos[3])
-            minMaxPos[3] = point.second;
-    }
-
-    intVec2D mapped(abs(minMaxPos[0] - minMaxPos[1])+1, std::vector<int>(abs(minMaxPos[2] - minMaxPos[3])+1, 0));
-    for (int i = 0; i < painted.size(); i++) {
-        std::pair<int,int> point = painted[i];
-        int x = mapped[0].size() - 1 - (point.second + ((minMaxPos[2] < 0)? abs(minMaxPos[2]) : 0));
-        int y = mapped.size() - 1 - (point.first + ((minMaxPos[0] < 0)? abs(minMaxPos[0]) : 0));
-        if (point.first == 0 && point.second == 0)
-            mapped[y][x] = 5;
-        else
-            mapped[y][x] = tiles[point];
-    }
-
-    return mapped;
-}
-
-int main() {
-    intCode code = readFile();
-
-    intCodeComputer droid(code);
+pointMap explore(intCode droidCode) {
+    intCodeComputer droid(droidCode);
+    int prevDirection = 1;
     droid.addInput(1);
 
-    std::pair<int,int> droidPos(0,0);
-    std::map<std::pair<int,int>,int> map;
-    int prevDirection = 1;
-    ll prevOutput = 0;
-    int prevOp = 0;
-    int count = 0;
-    while(count < 10000000 && prevOutput != (ll)2) {
-        prevOp = droid.step();
+    pointMap map;
+    point droidPos(0,0);
+    map[droidPos] = 2;
+
+    for (int i = 0; i < 2000000; i++) {
+        int prevOp = droid.step();
         
         if (prevOp == 4) {
             int prevOutput = droid.getOutput();
 
+            int a = (prevDirection == 1)? 1 : (prevDirection == 2)? -1 : 0;
+            int b = (prevDirection == 3)? -1 : (prevDirection == 4)? 1 : 0;
+
             if (prevOutput == 0) {
-                switch (prevDirection) {
-                    case 1: 
-                        map[std::pair<int,int>(droidPos.first+1,droidPos.second)] = 3;
-                        break;
-                    case 2:
-                        map[std::pair<int,int>(droidPos.first-1,droidPos.second)] = 3;
-                        break;
-                    case 3:
-                        map[std::pair<int,int>(droidPos.first,droidPos.second-1)] = 3;
-                        break;
-                    case 4:
-                        map[std::pair<int,int>(droidPos.first,droidPos.second+1)] = 3;
-                        break;
-                }
+                map[point(droidPos.first+a,droidPos.second+b)] = 3;
             } else {
-                switch (prevDirection) {
-                    case 1:
-                        droidPos.first++;
-                        break;
-                    case 2:
-                        droidPos.first--;
-                        break;
-                    case 3:
-                        droidPos.second--;
-                        break;
-                    case 4:
-                        droidPos.second++;
-                        break;
-                }
-                if (map.find(std::pair<int,int>(droidPos.first,droidPos.second)) == map.end())
-                    map[std::pair<int,int>(droidPos.first,droidPos.second)] = prevOutput;
+                droidPos.first += a;
+                droidPos.second += b;
+
+                if (map.find(point(droidPos.first,droidPos.second)) == map.end())
+                    map[point(droidPos.first,droidPos.second)] = (prevOutput == 2)? -1 : 1;
             }
 
             prevDirection = nextDirection(map, droidPos, prevDirection);
             droid.addInput(prevDirection);
         }
-        count++;
     }
 
-    intVec2D mapped = mapTiles(map);
-    for (int i = 0; i < mapped.size(); i++) {
-        for (int j = 0; j < mapped[i].size(); j++) {
-            std::cout << ((mapped[j][i] == 3)? " # " : (mapped[j][i] == 2)? " o " : (mapped[j][i] == 0)? "   " : (mapped[j][i] == 5)? " x " : " . ");
+    return map;
+}
+
+point fill(pointMap map) {
+    int toStart;
+    int filled = 1;
+    int time = -1;
+
+    while (filled != 0) {
+        filled = 0;
+
+        for (pointMap::iterator it = map.begin(); it != map.end(); ++it) {
+            point curr = it->first;
+            if (map[curr] == time) {
+                for (pointMap::iterator jt = map.begin(); jt != map.end(); ++jt) {
+                    point next = jt->first;
+                    if (map[next] == 2)
+                        toStart = abs(time);
+                    if (map[next] > 0 && map[next] != 3) {
+                        if (curr.first == next.first && abs(curr.second - next.second) == 1) {
+                            map[next] = time - 1;
+                            filled++;
+                        } else if (curr.second == next.second && abs(curr.first - next.first) == 1) {
+                            map[next] = time - 1;
+                            filled++;
+                        }
+                    }
+                }
+            }
         }
-        std::cout << "\n";
+        time--;
     }
-    std::cout << "\n";
 
-    int solA = 0;
-    int solB = 0;
+    return point(toStart, abs(time + 2));
+}
 
-    //std::cout << solA << " " << solB << "\n";
-    //writeFile(solA, solB);
+int main() {
+    intCode code = readFile();
+    pointMap map = explore(code);
+    point solutions = fill(map);
+
+    writeFile(solutions.first, solutions.second);
 
     return 0;
 }
