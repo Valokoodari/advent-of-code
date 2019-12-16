@@ -36,49 +36,6 @@ void writeFile(int a, int b) {
     file.close();
 }
 
-int nextDirection(pointMap map, point pos, int prevDir) {
-    int north = map[point(pos.first+1,pos.second)];
-    int south = map[point(pos.first-1,pos.second)];
-    int west = map[point(pos.first,pos.second-1)];
-    int east = map[point(pos.first,pos.second+1)];
-
-    if (prevDir == 1) {
-        if (west != 3)
-            return 3;
-        if (north != 3)
-            return 1;
-        if (east != 3)
-            return 4;
-        return 2;
-    } else if (prevDir == 2) {
-        if (east != 3)
-            return 4;
-        if (south != 3)
-            return 2;
-        if (west != 3)
-            return 3;
-        return 1;
-    } else if (prevDir == 3) {
-        if (south != 3)
-            return 2;
-        if (west != 3)
-            return 3;
-        if (north != 3)
-            return 1;
-        return 4;
-    } else if (prevDir == 4) {
-        if (north != 3)
-            return 1;
-        if (east != 3)
-            return 4;
-        if (south != 3)
-            return 2;
-        return 3;
-    }
-
-    return -1;
-}
-
 pointMap explore(intCode droidCode) {
     pointMap map;
     map[point(0,0)] = 2;
@@ -114,14 +71,12 @@ pointMap explore(intCode droidCode) {
 
                 map[point(pos.first,pos.second)] = (output == 2)? -1 : 1;
 
-                int dir1 = (dir == 1 || dir == 2)? 3 : 1;
-                int dir2 = (dir == 1 || dir == 2)? 4 : 2;
-                intCodeComputer droid1 = droid;
-                intCodeComputer droid2 = droid;
-                droid1.addInput(dir1);
-                droid2.addInput(dir2);
-                droids.push_back(std::tuple<intCodeComputer,point,int>(droid1,pos,dir1));
-                droids.push_back(std::tuple<intCodeComputer,point,int>(droid2,pos,dir2));
+                int dirs[2] = {(dir == 1 || dir == 2)? 3 : 1, (dir == 1 || dir == 2)? 4 : 2};
+                for (int j = 0; j < 2; j++) {
+                    intCodeComputer nDroid = droid;
+                    nDroid.addInput(dirs[j]);
+                    droids.push_back(std::tuple<intCodeComputer,point,int>(nDroid,pos,dirs[j]));
+                }
                 droid.addInput(dir);
             }
 
