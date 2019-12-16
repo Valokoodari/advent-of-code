@@ -80,35 +80,52 @@ int nextDirection(pointMap map, point pos, int prevDir) {
 }
 
 pointMap explore(intCode droidCode) {
-    intCodeComputer droid(droidCode);
-    int prevDirection = 1;
-    droid.addInput(1);
-
     pointMap map;
-    point droidPos(0,0);
-    map[droidPos] = 2;
+    map[point(0,0)] = 2;
 
-    while (droidPos != point(0,0) || map.size() < 100) {
-        int prevOp = droid.step();
-        
-        if (prevOp == 4) {
-            int prevOutput = droid.getOutput();
+    std::vector<std::tuple<intCodeComputer,point,int> > droids;
+    for (int i = 1; i <= 4; i++) {
+        intCodeComputer droid(droidCode);
+        droid.addInput(i);
+        point pos(0,0);
+        droids.push_back(std::tuple<intCodeComputer,point,int>(droid,pos,i));
+    }
+    
+    while (!droids.empty()) {
+        for (int i = 0; i < droids.size(); i++) {
+            intCodeComputer droid = std::get<0>(droids[i]);
+            point pos = std::get<1>(droids[i]);
+            int dir = std::get<2>(droids[i]);
 
-            int a = (prevDirection == 1)? 1 : (prevDirection == 2)? -1 : 0;
-            int b = (prevDirection == 3)? -1 : (prevDirection == 4)? 1 : 0;
+            int operation = droid.step();
 
-            if (prevOutput == 0) {
-                map[point(droidPos.first+a,droidPos.second+b)] = 3;
-            } else {
-                droidPos.first += a;
-                droidPos.second += b;
+            if (operation == 4) {
+                int output = droid.getOutput();
 
-                if (map.find(point(droidPos.first,droidPos.second)) == map.end())
-                    map[point(droidPos.first,droidPos.second)] = (prevOutput == 2)? -1 : 1;
+                pos.first += (dir == 1)? 1 : (dir == 2)? -1 : 0;
+                pos.second += (dir == 3)? -1 : (dir == 4)? 1 : 0;
+
+                if (output == 0) {
+                    map[point(pos.first,pos.second)] = 3;
+                    droids.erase(droids.begin()+i);
+                    i--;
+                    continue;
+                }
+
+                map[point(pos.first,pos.second)] = (output == 2)? -1 : 1;
+
+                int dir1 = (dir == 1 || dir == 2)? 3 : 1;
+                int dir2 = (dir == 1 || dir == 2)? 4 : 2;
+                intCodeComputer droid1 = droid;
+                intCodeComputer droid2 = droid;
+                droid1.addInput(dir1);
+                droid2.addInput(dir2);
+                droids.push_back(std::tuple<intCodeComputer,point,int>(droid1,pos,dir1));
+                droids.push_back(std::tuple<intCodeComputer,point,int>(droid2,pos,dir2));
+                droid.addInput(dir);
             }
 
-            prevDirection = nextDirection(map, droidPos, prevDirection);
-            droid.addInput(prevDirection);
+            droids[i] = std::tuple<intCodeComputer,point,int>(droid,pos,dir);
         }
     }
 
