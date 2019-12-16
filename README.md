@@ -39,6 +39,8 @@ Day 14:
 - C++ 0.022 s
 Day 15:
 - C++ 11.754 s
+Day 16:
+- C++ 0.801 s
 
 
 (2018 MacBook Pro 13" with Touch Bar)
