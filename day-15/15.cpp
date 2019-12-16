@@ -88,7 +88,7 @@ pointMap explore(intCode droidCode) {
     point droidPos(0,0);
     map[droidPos] = 2;
 
-    for (int i = 0; i < 2000000; i++) {
+    while (droidPos != point(0,0) || map.size() < 100) {
         int prevOp = droid.step();
         
         if (prevOp == 4) {
