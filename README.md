@@ -45,6 +45,8 @@ Day 17:
 - Undefined
 Day 18:
 - Not measured in seconds...
+Day 19:
+- Undefined
 
 
 (2018 MacBook Pro 13" with Touch Bar)
