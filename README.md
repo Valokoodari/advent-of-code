@@ -46,7 +46,7 @@ Day 17:
 Day 18:
 - Not measured in seconds...
 Day 19:
-- Undefined
+- C++ 5.872 s
 
 
 (2018 MacBook Pro 13" with Touch Bar)

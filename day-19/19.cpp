@@ -37,35 +37,61 @@ void writeFile(int a, int b) {
 int main() {
     intCode code = readFile();
 
-   // std::vector<std::vector<int> > map;
-
     int solA = 0;
 
-    std::vector<intCodeComputer> drones;
-    for (int i = 1067; i < 1167; i+=99) {
-        for (int j = 1712; j < 1812; j+=99) {
+    for (int i = 0; i < 50; i++) {
+        for (int j = 0; j < 50; j++) {
             intCodeComputer drone(code);
-            drone.addInput(i);
             drone.addInput(j);
+            drone.addInput(i);
+
             int prevOp = 0;
-            while (prevOp != 99) {
+            while (prevOp != 4) {
                 prevOp = drone.step();
+                if (prevOp == 4)
+                    solA += drone.getOutput();
+            }
+        }
+    }
+
+    int corners = 0;
+    std::pair<int,int> pos(100,100);
+    while (corners < 4) {
+        corners = 0;
+        std::vector<intCodeComputer> drones;
+        for (int i = 0; i < 4; i++) {
+            drones.push_back(intCodeComputer(code));
+        }
+
+        drones[0].addInput(pos.first+99);
+        drones[0].addInput(pos.second);
+        drones[1].addInput(pos.first);
+        drones[1].addInput(pos.second);
+        drones[2].addInput(pos.first);
+        drones[2].addInput(pos.second+99);
+        drones[3].addInput(pos.first+99);
+        drones[3].addInput(pos.second+99);
+
+        for (int i = 0; i < drones.size(); i++) {
+            int prevOp = 0;
+            while (prevOp != 4) {
+                prevOp = drones[i].step();
                 if (prevOp == 4) {
-                    int output = drone.getOutput();
-                    std::cout << ((output == 1)? "#" : ".");
-                    solA += output;
+                    corners += drones[i].getOutput();
+                    if (i == 0) {
+                        if (corners == 0)
+                            pos.second++;
+                        else
+                            pos.first++;
+                    }
                 }
             }
         }
-        std::cout << "\n";
     }
-
-    int solB = 0;
     
-    
-    std::cout << solA << " " << solB << "\n";
+    int solB = 10000 * (pos.first - 1) + pos.second;
 
-    //writeFile(solA, solB);
+    writeFile(solA, solB);
 
     return 0;
 }
