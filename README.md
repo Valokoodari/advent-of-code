@@ -51,6 +51,8 @@ Day 20:
 - Undefined
 Day 21:
 - C++ 0.922
+Day 22:
+- Python 0.035 s
 
 
 (2018 MacBook Pro 13" with Touch Bar)
