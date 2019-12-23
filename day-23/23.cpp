@@ -1,5 +1,4 @@
 #include "../ICC/intCodeComputer.h"
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -39,54 +38,62 @@ int main() {
     intCode code = readFile();
 
     std::vector<intCodeComputer> computers;
-    for (int i = 0; i < 50; i++) {
-        intCodeComputer icc(code);
-        computers.push_back(icc);
-        computers[i].addInput(i);
-    }
+    for (int i = 0; i < 50; i++)
+        computers.push_back(intCodeComputer(code, i));
 
     ll solA = 0;
     ll solB = 0;
 
-    std::map<ll,std::vector<ll> > natData;
     int natPointer = 0;
     int idleCounter = 0;
-    std::map<ll,std::vector<ll> > outputs;
+    std::map<ll,std::vector<ll> > natData;
+
     while (solB == 0) {
         for (int i = 0; i < computers.size(); i++) {
-            int prevOp = computers[i].step();
-            if (prevOp == 4) {
-                ll output = computers[i].getOutput();
-                outputs[i].push_back(output);
-                if (outputs[i].size() == 3) {
-                    idleCounter = 0;
-                    if (outputs[i][0] < 50 && outputs[i][0] >= 0) {
-                        computers[outputs[i][0]].addInput(outputs[i][1]);
-                        computers[outputs[i][0]].addInput(outputs[i][2]);
+            std::vector<ll> outputs;
+            bool ioActivity = false;
+
+            while (!ioActivity) {
+                int prevOp = computers[i].step();
+
+                if (prevOp == 4) {
+                    ll output = computers[i].getOutput();
+                    outputs.push_back(output);
+                    
+                    if (outputs.size() == 3) {
+                        if (outputs[0] < 50 && outputs[0] >= 0)
+                            computers[outputs[0]].addInput({ outputs[1], outputs[2] });
+                        else if (outputs[0] == 255) {
+                            natData[natPointer] = std::vector<ll>{ outputs[1], outputs[2] };
+                            if (solA == 0)
+                                solA = outputs[2];
+                        }
+
+                        ioActivity = true;
+                        idleCounter = 0;
                     }
-                    if (outputs[i][0] == 255) {
-                        natData[natPointer] = std::vector<ll>{ outputs[i][1], outputs[i][2] };
-                        if (solA == 0)
-                            solA = outputs[i][2];
-                    }
-                    outputs[i].clear();
                 }
-            }
-            if (prevOp == -3) {
-                idleCounter++;
-                computers[i].addInput(-1);
+
+                if (prevOp == -3) {
+                    idleCounter++;
+                    ioActivity = true;
+                    computers[i].addInput(-1);
+                }
             }
         }
 
-        if (idleCounter > 10000 && !natData[natPointer].empty()) {
-            idleCounter = 0;
-            computers[0].addInput(natData[natPointer][0]);
-            computers[0].addInput(natData[natPointer][1]);
-            if (natPointer > 0)
+        if (idleCounter > 6000 && !natData[natPointer].empty()) {
+            computers[0].addInput(natData[natPointer]);
+
+            if (natPointer > 0) {
                 if (natData[natPointer][1] == natData[natPointer-1][1])
                     solB = natData[natPointer][1];
+                natData[natPointer-1] = natData[natPointer];
+                natData[natPointer].clear();
+                natPointer--;
+            }
+
             natPointer++;
-            natData[natPointer] = std::vector<ll>(0);
         }
     }
 
