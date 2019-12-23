@@ -10,6 +10,18 @@ intCodeComputer::intCodeComputer(std::vector<ll> initialMemory) {
     }
 }
 
+intCodeComputer::intCodeComputer(std::vector<ll> initialMemory, ll parameter) {
+    programCounter = 0;                 // Initialize program counter as 0
+    relativeBase = 0;                   // Initialize relative base as 0
+
+    memory = initialMemory;             // Initialize memory
+    for (int i = 0; i < 20000; i++) {   // Expand memory by 20000 words.
+        memory.push_back(0);
+    }
+    
+    input.push_back(parameter);
+}
+
 std::vector<int> intCodeComputer::getModes(std::string ins) {
     std::vector<int> modes;
 
@@ -98,6 +110,11 @@ int intCodeComputer::step() {
 
 void intCodeComputer::addInput(ll number) {
     input.push_back(number);
+}
+
+void intCodeComputer::addInput(std::vector<ll> numbers) {
+    for (ll number : numbers)
+        input.push_back(number);
 }
 
 ll intCodeComputer::getOutput() {

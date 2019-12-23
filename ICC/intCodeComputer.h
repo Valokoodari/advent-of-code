@@ -2,8 +2,6 @@
 #include <string>
 #include <list>
 
-#include <iostream>
-
 typedef long long int ll;
 
 class intCodeComputer {
@@ -19,10 +17,12 @@ class intCodeComputer {
         std::list<ll> input;
         std::list<ll> output;
 
-        intCodeComputer(std::vector<ll> startCode);
+        intCodeComputer(std::vector<ll> initialMemory);
+        intCodeComputer(std::vector<ll> initialMemory, ll parameter);
         
         int step();
         void addInput(ll number);
+        void addInput(std::vector<ll> numbers);
         ll getOutput();
 
         void setWord(int address, ll word);
