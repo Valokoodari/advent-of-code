@@ -53,6 +53,8 @@ Day 21:
 - C++ 0.922
 Day 22:
 - Python 0.035 s
+Day 23:
+- C++ 7.745 s
 
 
 (2018 MacBook Pro 13" with Touch Bar)
