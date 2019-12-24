@@ -48,13 +48,15 @@ Day 18:
 Day 19:
 - C++ 5.872 s
 Day 20:
-- Undefined
+- C++ 16.477 s
 Day 21:
 - C++ 0.922
 Day 22:
 - Python 0.035 s
 Day 23:
 - C++ 1.285 s
+Day 24:
+- C++ 0.210 s
 
 
 (2018 MacBook Pro 13" with Touch Bar)
