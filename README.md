@@ -57,7 +57,8 @@ Day 23:
 - C++ 1.285 s
 Day 24:
 - C++ 0.210 s
-
+Day 25:
+- Undefined
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
