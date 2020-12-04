@@ -17,7 +17,7 @@ Day       Time  Rank  Score       Time  Rank  Score
 Day 1: 0.266 s
 Day 2: 0.051 s
 Day 3: 0.050 s
-Day 4: 0.054 s
+Day 4: 0.051 s
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
