@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-import itertools
+import itertools as it, math
 
-numbers = list(map(int, open("inputs/01.in", "r").readlines()))
+ns = list(map(int, open("inputs/01.in", "r").readlines()))
 
-for a,b in itertools.combinations(numbers, 2):
-    if (a + b == 2020):
-        print("Part 1: " + str(a * b))
+def func(n):
+    for a in it.combinations(ns, n):
+        if sum(a) == 2020: return math.prod(a)
 
-for a,b,c in itertools.combinations(numbers, 3):
-    if (a + b + c == 2020):
-        print("Part 2: " + str(a * b * c))
+print("Part 1:", func(2))
+print("Part 2:", func(3))

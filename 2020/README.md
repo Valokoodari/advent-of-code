@@ -15,7 +15,7 @@ Day       Time  Rank  Score       Time  Rank  Score
 
 ## Timings
 ```
-Day 1: 0.266 s
+Day 1: 0.099 s
 Day 2: 0.051 s
 Day 3: 0.050 s
 Day 4: 0.051 s
