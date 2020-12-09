@@ -6,6 +6,7 @@ This year I'm solving the puzzles of [Advent of Code 2020](https://adventofcode.
 ```
       -------Part 1--------   -------Part 2--------
 Day       Time  Rank  Score       Time  Rank  Score
+  9   00:08:00  1396      0   00:24:09  3063      0
   8   00:04:09   220      0   00:18:30  1399      0
   7   00:17:11   773      0   00:25:36   690      0
   6   00:11:49  4419      0   00:18:42  3367      0
@@ -26,6 +27,7 @@ Day 5: 0.041 s
 Day 6: 0.044 s
 Day 7: 0.062 s
 Day 8: 0.064 s
+Day 9: 1.693 s
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
