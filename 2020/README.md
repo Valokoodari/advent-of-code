@@ -15,19 +15,23 @@ Day       Time  Rank  Score       Time  Rank  Score
   3   00:11:04  2706      0   00:15:19  2109      0
   2   00:05:32   872      0   00:11:18  1320      0
   1   00:07:04   216      0   00:07:49   137      0
+ 10   00:06:09   607      0   00:16:40   508      0
 ```
 
 ## Timings
 ```
-Day 1: 0.099 s
-Day 2: 0.051 s
-Day 3: 0.050 s
-Day 4: 0.051 s
-Day 5: 0.041 s
-Day 6: 0.044 s
-Day 7: 0.062 s
-Day 8: 0.064 s
-Day 9: 1.693 s
+Day  1:    99 ms
+Day  2:    51 ms
+Day  3:    50 ms
+Day  4:    51 ms
+Day  5:    41 ms
+Day  6:    44 ms
+Day  7:    62 ms
+Day  8:    64 ms
+Day  9: 1.693 s
+Day 10:    38 ms
+
+Sum:    2.192 s
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
