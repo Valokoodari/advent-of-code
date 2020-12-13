@@ -37,7 +37,7 @@ Day 11: 7.881 s
 Day 12:    40 ms
 Day 13:    33 ms
 
-Total: 10.547 s
+Total: 10.147 s
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
