@@ -35,7 +35,7 @@ Day  9: 1.693 s
 Day 10:    38 ms
 Day 11: 7.881 s
 Day 12:    40 ms
-Day 13:   434 ms
+Day 13:    33 ms
 
 Total: 10.547 s
 

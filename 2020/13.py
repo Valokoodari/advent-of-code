@@ -1,12 +1,18 @@
 #!venv/bin/python3
-from sympy.ntheory.modular import crt
-ls = open("inputs/13.in", "r").readlines()
+import math
 
+ls = open("inputs/13.in", "r").readlines()
 ft,bs = int(ls[0]), { int(r): i for i,r in enumerate(ls[1].split(",")) if r != "x" }
 
-t,a1 = ft,[]
+a1 = []
 for t in range(ft, ft+sum(bs)):
     for n in [b*(t-ft) for b in bs if t % b == 0]: a1.append(n)
 
+match,t = list(bs.keys())[:1],list(bs.keys())[0]
+while True:
+    match = [k for k,v in bs.items() if (t+v) % k == 0]
+    if len(match) == len(bs): break
+    t += math.prod(match)
+
 print("Part 1:", a1[0])
-print("Part 2:", crt(bs, [-i for i in bs.values()])[0])
+print("Part 2:", t)
