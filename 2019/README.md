@@ -37,59 +37,34 @@ Day       Time  Rank  Score       Time  Rank  Score
 
 ## Timings
 ```
-Day 1
-- C++ 0.003 s
-- Python 0.030 s
-Day 2
-- C++ 0.009 s
-- Python 0.029 s
-Day 3:
-- C++ 0.961 s
-- Python 5.560 s
-Day 4: 
-- C++ 0.094 s
-Day 5:
-- C++ 0.005 s
-Day 6:
-- C++ 0.016 s
-Day 7:
-- C++ 0.101 s
-Day 8:
-- C++ 0.004 s
-Day 9:
-- C++ 0.506 s
-Day 10:
-- C++ 0.014 s
-Day 11:
-- C++ 0.165 s
-Day 12:
-- C++ 0.062 s
-Day 13:
-- C++ 1.142 s
-Day 14:
-- C++ 0.022 s
-Day 15:
-- C++ 1.204 s
-Day 16:
-- C++ 0.801 s
-Day 17:
-- Undefined
-Day 18:
-- Not measured in seconds...
-Day 19:
-- C++ 5.872 s
-Day 20:
-- C++ 16.477 s
-Day 21:
-- C++ 0.922
-Day 22:
-- Python 0.035 s
-Day 23:
-- C++ 1.285 s
-Day 24:
-- C++ 0.210 s
-Day 25:
-- Undefined
+         -- C++ --    -Python-
+Day  1:       3 ms       30 ms
+Day  2:       9 ms       29 ms
+Day  3:     961 ms    5.560 s
+Day  4:      94 ms
+Day  5:       5 ms
+Day  6:      16 ms
+Day  7:     101 ms
+Day  8:       4 ms
+Day  9:     506 ms
+Day 10:      14 ms
+Day 11:     165 ms
+Day 12:      62 ms
+Day 13:   1.142 s
+Day 14:      22 ms
+Day 15:   1.204 s
+Day 16:     801 ms
+Day 17:  Undefined
+Day 18:  Not measured in seconds...
+Day 19:   5.872 s
+Day 20:  16.477 s
+Day 21:     922 ms
+Day 22:      35 ms
+Day 23:   1.285 s
+Day 24:     210 ms
+Day 25:  Undefined
+
+Total:   29.910 s     5.619 s
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
