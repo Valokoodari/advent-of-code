@@ -8,7 +8,7 @@ a1 = []
 for t in range(ft, ft+sum(bs)):
     for n in [b*(t-ft) for b in bs if t % b == 0]: a1.append(n)
 
-match,t = list(bs.keys())[:1],list(bs.keys())[0]
+t = list(bs.keys())[0]
 while True:
     match = [k for k,v in bs.items() if (t+v) % k == 0]
     if len(match) == len(bs): break
