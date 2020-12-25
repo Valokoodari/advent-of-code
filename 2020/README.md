@@ -54,7 +54,7 @@ Day 15: 16.485 s       577 ms
 Day 16:  2.094 s             
 Day 17: 11.249 s             
 Day 18:     53 ms            
-Day 19:  4.299 s             
+Day 19:    334 ms             
 Day 20:  1.657 s              (only my input)
 Day 21:     33 ms            
 Day 22:    591 ms            
@@ -62,7 +62,7 @@ Day 23: 12.632 s
 Day 24:  3.499 s             
 Day 25:    193 ms            
 
-Total:  61.344 s       582 ms
+Total:  57.379 s       582 ms
 
 (2018 MacBook Pro 13" with Touch Bar)
 ```
