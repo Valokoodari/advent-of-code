@@ -1,6 +1,6 @@
 # Advent of Code 2021
 
-This year I'm solving the puzzles of [Advent of Code](https://adventofcode.com/2021) with Python.
+This year I'm solving the puzzles of [Advent of Code](https://adventofcode.com/2021) with Python and Rust.
 
 ## Rankings
 ```
@@ -9,10 +9,10 @@ Day       Time  Rank  Score       Time  Rank  Score
   1   00:03:17  1622      0   00:11:24  2875      0
 ```
 
-## Timings
+## Timings (milliseconds)
 ```
-Day  Python
-  1   21 ms
------------
-Sum   21 ms
+Day  Python  Rust
+  1      21     6
+-----------------
+Sum      21     6
 ```
