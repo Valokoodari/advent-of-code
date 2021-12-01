@@ -12,7 +12,7 @@ Day       Time  Rank  Score       Time  Rank  Score
 ## Timings
 ```
 Day  Python
-  1   25 ms
+  1   21 ms
 -----------
-Sum   25 ms
+Sum   21 ms
 ```
