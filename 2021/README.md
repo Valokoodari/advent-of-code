@@ -14,7 +14,7 @@ Day       Time  Rank  Score       Time  Rank  Score
 ```
 Day  Python  Rust
   1      21     6
-  2      23
+  2      23     6
 -----------------
-Sum      21     6
+Sum      44    12
 ```
