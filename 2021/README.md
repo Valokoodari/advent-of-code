@@ -2,10 +2,11 @@
 
 This year I'm solving the puzzles of [Advent of Code](https://adventofcode.com/2021) with Python 3.10 and Rust.
 
-## Rankings
+## Personal Stats
 ```
       -------Part 1--------   -------Part 2--------   -----Delta-----
 Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
+  8   00:14:50  3920      0   00:21:20   107      0   00:06:30  -3813
   7   00:06:39  2535      0   00:08:10  1154      0   00:01:31  -1381
   6   00:05:22   762      0   00:05:39    96      5   00:00:17   -666
   5   00:11:45   932      0   00:14:08   397      0   00:02:23   -535
@@ -28,9 +29,10 @@ Day  Python  Rust
   5     192
   6      23
   7      33
+  8      29
 -----------------
-Sum     389    12
-Avg      56     6
+Sum     418    12
+Avg      52     6
 ```
 
 Execution time is measured with `Measure-Command` in PowerShell 7 on Windows 11
