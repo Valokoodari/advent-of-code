@@ -2,3 +2,4 @@
 venv/
 *.exe
 *.pdb
+*.ps1
