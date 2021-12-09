@@ -1,17 +1,23 @@
 use std::collections::HashMap;
 
-fn fbs(x: usize, y: usize, ps: &Vec<Vec<u8>>) -> (usize, usize) {
-    if x > 0 && ps[x][y] > ps[x - 1][y] {
-        fbs(x - 1, y, ps)
-    } else if x < ps.len() - 1 && ps[x][y] > ps[x + 1][y] {
-        fbs(x + 1, y, ps)
-    } else if y > 0 && ps[x][y] > ps[x][y - 1] {
-        fbs(x, y - 1, ps)
-    } else if y < ps[x].len() - 1 && ps[x][y] > ps[x][y + 1] {
-        fbs(x, y + 1, ps)
-    } else {
-        (x, y)
+fn fbs(x: usize, y: usize, ps: &Vec<Vec<u8>>, ms: &mut Vec<Vec<(usize, usize)>>) -> (usize, usize) {
+    if ms[x][y] != (usize::MAX, usize::MAX) {
+        return ms[x][y];
     }
+
+    let mut lp = (x, y);
+    if x > 0 && ps[x][y] > ps[x - 1][y] {
+        lp = fbs(x - 1, y, ps, ms);
+    } else if x < ps.len() - 1 && ps[x][y] > ps[x + 1][y] {
+        lp = fbs(x + 1, y, ps, ms);
+    } else if y > 0 && ps[x][y] > ps[x][y - 1] {
+        lp = fbs(x, y - 1, ps, ms);
+    } else if y < ps[x].len() - 1 && ps[x][y] > ps[x][y + 1] {
+        lp = fbs(x, y + 1, ps, ms);
+    }
+
+    ms[x][y] = lp;
+    lp
 }
 
 fn main() {
@@ -22,13 +28,15 @@ fn main() {
         .collect();
 
     let mut bs: HashMap<(usize, usize), u32> = HashMap::new();
+    let mut ms: Vec<Vec<(usize, usize)>> =
+        vec![vec![(usize::MAX, usize::MAX); ps[0].len()]; ps.len()];
 
     for x in 0..ps.len() {
         for y in 0..ps[x].len() {
             if ps[x][y] == 9 {
                 continue;
             }
-            *bs.entry(fbs(x, y, &ps)).or_insert(0) += 1;
+            *bs.entry(fbs(x, y, &ps, &mut ms)).or_insert(0) += 1;
         }
     }
 
