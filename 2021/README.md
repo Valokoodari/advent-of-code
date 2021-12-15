@@ -6,6 +6,7 @@ This year I'm solving the puzzles of [Advent of Code](https://adventofcode.com/2
 ```
       -------Part 1--------   -------Part 2--------   -----Delta-----
 Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
+ 14   00:15:27  2144      0   00:22:24   509      0   00:06:57  -1635
  13   00:14:52  1019      0   00:18:13   692      0   00:03:21   -327
  12   00:13:35   660      0   00:17:29   315      0   00:03:54   -345
  11   00:10:14   213      0   00:11:23   175      0   00:01:09    -38
@@ -20,8 +21,8 @@ Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
   2   00:02:27   524      0   00:04:16   517      0   00:01:49     -7
   1   00:03:17  1622      0   00:11:24  2875      0   00:08:07   1253
 ---------------------------------------------------------------------
-Sum   01:48:56     -      0   02:39:20     -      5   00:50:24      -
-Avg   00:09:05  1260      0   00:13:17   648      0   00:04:12   -612
+Sum   02:19:15     -      0   03:19:57     -      5   01:00:42      -
+Avg   00:09:57  1306      0   00:14:17   641      0   00:04:20   -665
 ```
 
 ## Execution time (milliseconds)
@@ -40,9 +41,10 @@ Day  Python  Rust
  11      52
  12     752
  13      27
+ 14      27
 -----------------
-Sum    1303   137
-Avg     100    20
+Sum    1330   137
+Avg      95    20
 ```
 
 Execution time is measured with `Measure-Command` in PowerShell 7 on Windows 11
