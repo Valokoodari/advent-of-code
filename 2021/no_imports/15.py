@@ -1,12 +1,11 @@
-from heapq import heappop,heappush
-
 ls = [l.strip() for l in open("inputs/15.in").read().strip().splitlines()]
 cs = [[int(c) for c in l] for l in ls]
 
 def fds(cs):
     ts, ms = [(0, (0,0))], [[float('inf') for _ in x] for x in cs]
     while ts:
-        r,(x,y) = heappop(ts)
+        ts.sort()
+        r,(x,y) = ts.pop(0)
         if x == len(cs)-1 and y == len(cs[0])-1:
             return r
         for dx,dy in ((0,1),(0,-1),(1,0),(-1,0)):
@@ -14,7 +13,7 @@ def fds(cs):
                 nr = r + cs[x+dx][y+dy]
                 if nr < ms[x+dx][y+dy]:
                     ms[x+dx][y+dy] = nr
-                    heappush(ts, (nr, (x+dx,y+dy)))
+                    ts.append((nr, (x+dx,y+dy)))
 
 print(f"Part 1: {fds(cs)}")
 
