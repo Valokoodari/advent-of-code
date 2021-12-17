@@ -47,10 +47,10 @@ Day  Python  Rust
  14      27
  15     693   413
  16      27
- 17     100
+ 17      77
 -----------------
-Sum    2150   550
-Avg     126    69
+Sum    2127   550
+Avg     125    69
 ```
 
 Execution time is measured with `Measure-Command` in PowerShell 7 on Windows 11
