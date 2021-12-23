@@ -1,5 +1,5 @@
 import pygame
-import sys
+
 
 # TODO: Add a check to see if an amphipod in the hallway can go straight to home
 # TODO: Read the input from a file
@@ -10,7 +10,7 @@ import sys
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
-HELP_TEXT = "Arrow keys to move, Tab to select, Escape to quit,"
+HELP_TEXT = "Arrow keys or WASD to move, Tab to select, Escape to quit,"
 HELP_TEXT_2 = "and 1 or 2 to select the part / reset."
 
 
@@ -40,7 +40,6 @@ class Amphipod:
     def __init__(self, type):
         self.__type = type
         self.isHome = False
-        self.isSelected = False
 
     def move(self) -> int:
         return self.COSTS[self.__type]
@@ -80,73 +79,49 @@ class Space:
 
 
 class Burrow:
-    pods = {
-        (2,1): Amphipod("B"),
-        (4,1): Amphipod("C"),
-        (6,1): Amphipod("B"),
-        (8,1): Amphipod("D"),
-        (2,2): Amphipod("A"),
-        (4,2): Amphipod("D"),
-        (6,2): Amphipod("C"),
-        (8,2): Amphipod("A"),
-    }
-    pods2 = {
-        (2,2): Amphipod("D"),
-        (4,2): Amphipod("C"),
-        (6,2): Amphipod("B"),
-        (8,2): Amphipod("A"),
-        (2,3): Amphipod("D"),
-        (4,3): Amphipod("B"),
-        (6,3): Amphipod("A"),
-        (8,3): Amphipod("C"),
-    }
+    pods_1 = (
+        ((2,1), 'B'), ((4,1), 'C'), ((6,1), 'B'), ((8,1), 'D'),
+        ((2,2), 'A'), ((4,2), 'D'), ((6,2), 'C'), ((8,2), 'A'),
+    )
+    pods_2 = (
+        ((2,2), 'D'), ((4,2), 'C'), ((6,2), 'B'), ((8,2), 'A'),
+        ((2,3), 'D'), ((4,3), 'B'), ((6,3), 'A'), ((8,3), 'C'),
+    )
+
+    spaces_1 = (
+        ((0,0), 'F'), ((1,0), 'F'), ((2,0), 'E'), ((3,0), 'F'),
+        ((4,0), 'E'), ((5,0), 'F'), ((6,0), 'E'), ((7,0), 'F'),
+        ((8,0), 'E'), ((9,0), 'F'), ((10,0), 'F'),
+        ((2,1), 'A'), ((4,1), 'B'), ((6,1), 'C'), ((8,1), 'D'),
+        ((2,2), 'A'), ((4,2), 'B'), ((6,2), 'C'), ((8,2), 'D'),
+    )
+    spaces_2 = (
+        ((2,3), 'A'), ((4,3), 'B'), ((6,3), 'C'), ((8,3), 'D'),
+        ((2,4), 'A'), ((4,4), 'B'), ((6,4), 'C'), ((8,4), 'D'),
+    )
 
     def __init__(self, part):
-        self.__spaces = {
-            (0,0): Space((0,0), None, "Free"),
-            (1,0): Space((1,0), None, "Free"),
-            (2,0): Space((2,0), None, "Door"),
-            (3,0): Space((3,0), None, "Free"),
-            (4,0): Space((4,0), None, "Door"),
-            (5,0): Space((5,0), None, "Free"),
-            (6,0): Space((6,0), None, "Door"),
-            (7,0): Space((7,0), None, "Free"),
-            (8,0): Space((8,0), None, "Door"),
-            (9,0): Space((9,0), None, "Free"),
-            (10,0): Space((10,0), None, "Free"),
-            (2,1): Space((2,1), None, "A"),
-            (4,1): Space((4,1), None, "B"),
-            (6,1): Space((6,1), None, "C"),
-            (8,1): Space((8,1), None, "D"),
-            (2,2): Space((2,2), None, "A"),
-            (4,2): Space((4,2), None, "B"),
-            (6,2): Space((6,2), None, "C"),
-            (8,2): Space((8,2), None, "D"),
-        }
+        self.__moves = []
+
+        self.__spaces = { pos: Space(pos, None, typ) for pos, typ in self.spaces_1 }
         if part == 2:
             self.__spaces = {
                 **self.__spaces,
-                (2,3): Space((2,3), None, "A"),
-                (4,3): Space((4,3), None, "B"),
-                (6,3): Space((6,3), None, "C"),
-                (8,3): Space((8,3), None, "D"),
-                (2,4): Space((2,4), None, "A"),
-                (4,4): Space((4,4), None, "B"),
-                (6,4): Space((6,4), None, "C"),
-                (8,4): Space((8,4), None, "D"),
+                **{ pos: Space(pos, None, typ) for pos, typ in self.spaces_2 }
             }
 
-        for pos in self.pods:
-            self.__spaces[(pos[0], 4) if part == 2 and pos[1] == 2 else pos].setOccupant(self.pods[pos])
+        for pos, typ in self.pods_1:
+            self.__spaces[(pos[0], 4) if part == 2 and pos[1] == 2 else pos].setOccupant(Amphipod(typ))
         if part == 2:
-            for pos in self.pods2:
-                self.__spaces[pos].setOccupant(self.pods2[pos])
+            for pos, typ in self.pods_2:
+                self.__spaces[pos].setOccupant(Amphipod(typ))
 
         self.__spaces[(2,1)].getOccupant().isSelected = True
-        self.__selected = (2,1)
+        self.selected = (2,1)
 
-    def get_spaces(self):
-        return self.__spaces.values()
+    @property 
+    def spaces(self):
+        return self.__spaces
 
     def get_size(self):
         return (max(self.__spaces.keys(), key=lambda x: x[0])[0] + 1, max(self.__spaces.keys(), key=lambda x: x[1])[1] + 1)
@@ -159,40 +134,40 @@ class Burrow:
                 else:
                     space.getOccupant().isHome = False
 
-    def select(self, pos):
-        self.__spaces[self.__selected].getOccupant().isSelected = False
-        self.__selected = pos
-        self.__spaces[self.__selected].getOccupant().isSelected = True
-
-    def select_next(self):
-        if self.__spaces[self.__selected].type == "Door":
+    def select_next(self, backward=False):
+        if self.__spaces[self.selected].type == "E":
             return
-        it = iter(self.__spaces.keys())
-        while next(it) != self.__selected:
-            pass
-        while True:
-            try:
-                pos = next(it)
-                if self.__spaces[pos].isOccupied:
-                    self.select(pos)
-                    return
-            except (StopIteration):
-                break
-        it = iter(self.__spaces.keys())
-        while True:
-            pos = next(it)
-            if self.__spaces[pos].isOccupied:
-                self.select(pos)
-                return
+
+        pods = [pos for pos, space in self.__spaces.items() if space.isOccupied]
+        current = pods.index(self.selected)
+        next_position = pods[(current+(-1 if backward else 1))%len(pods)]
+
+        self.selected = next_position
 
     def move(self, direction):
-        new_position = (self.__selected[0] + direction[0], self.__selected[1] + direction[1])
+        new_position = (self.selected[0] + direction[0], self.selected[1] + direction[1])
         if new_position in self.__spaces and not self.__spaces[new_position].isOccupied:
-            occupant = self.__spaces[self.__selected].popOccupant()
+            occupant = self.__spaces[self.selected].popOccupant()
+            cost = occupant.move()
+            if len(self.__moves) > 0 and self.__moves[-1] == (new_position, self.selected):
+                self.__moves.pop()
+                cost = -cost
+            else:
+                self.__moves.append((self.selected, new_position))
             self.__spaces[new_position].setOccupant(occupant)
-            self.__selected = new_position
-            return occupant.move()
+            self.selected = new_position
+
+            return cost
         return 0
+    
+    def undo_move(self):
+        if len(self.__moves) < 1:
+            return 0
+        prev_pos, curr_pos = self.__moves.pop()
+        occupant = self.__spaces[curr_pos].popOccupant()
+        self.__spaces[prev_pos].setOccupant(occupant)
+        self.selected = prev_pos
+        return -occupant.move()
 
     @property
     def solved(self):
@@ -204,6 +179,7 @@ class Burrow:
 
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+clock = pygame.time.Clock()
 pygame.display.set_caption("Day 23: Amphipod")
 
 burrow = Burrow(1)
@@ -220,24 +196,31 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                score += burrow.move(Direction.UP)
-            elif event.key == pygame.K_DOWN:
-                score += burrow.move(Direction.DOWN)
-            elif event.key == pygame.K_LEFT:
-                score += burrow.move(Direction.LEFT)
-            elif event.key == pygame.K_RIGHT:
-                score += burrow.move(Direction.RIGHT)
-            elif event.key == pygame.K_TAB:
-                burrow.select_next()
-            elif event.key == pygame.K_ESCAPE:
-                running = False
-            elif event.key == pygame.K_1:
-                score = 0
-                burrow = Burrow(1)
-            elif event.key == pygame.K_2:
-                score = 0
-                burrow = Burrow(2)
+            match event.key:
+                case pygame.K_UP | pygame.K_w:
+                    score += burrow.move(Direction.UP)
+                case pygame.K_DOWN | pygame.K_s:
+                    score += burrow.move(Direction.DOWN)
+                case pygame.K_LEFT | pygame.K_a:
+                    score += burrow.move(Direction.LEFT)
+                case pygame.K_RIGHT | pygame.K_d:
+                    score += burrow.move(Direction.RIGHT)
+                case pygame.K_TAB:
+                    if pygame.KMOD_LSHIFT & pygame.key.get_mods():
+                        burrow.select_next(True)
+                    else:
+                        burrow.select_next()
+                case pygame.K_z:
+                    if pygame.KMOD_LCTRL & pygame.key.get_mods():
+                        score += burrow.undo_move()
+                case pygame.K_ESCAPE:
+                    running = False
+                case pygame.K_1:
+                    score = 0
+                    burrow = Burrow(1)
+                case pygame.K_2:
+                    score = 0
+                    burrow = Burrow(2)
 
     screen.fill(Color.BACKGROUND)
 
@@ -246,11 +229,11 @@ while running:
     score_text = score_font.render(f"Score: {score}", True, Color.TEXT_WHITE)
     screen.blit(score_text, score_text.get_rect().move(15, 5))
 
-    for space in burrow.get_spaces():
+    for position, space in burrow.spaces.items():
         pygame.draw.rect(screen, Color.SPACE_OUTLINE, (space.getPosition()[0] * TILE_SIZE + 9, space.getPosition()[1] * TILE_SIZE + 59, TILE_SIZE-8, TILE_SIZE-8))
         pygame.draw.rect(screen, Color.SPACE_FILL, (space.getPosition()[0] * TILE_SIZE + 10, space.getPosition()[1] * TILE_SIZE + 60, TILE_SIZE-10, TILE_SIZE-10))
 
-        if not space.isOccupied and len(space.type) == 1:
+        if not space.isOccupied and space.type in ['A', 'B', 'C', 'D']:
             text = font.render(space.type, True, Color.TEXT_DIM)
             screen.blit(text, (space.getPosition()[0] * TILE_SIZE + 20, space.getPosition()[1] * TILE_SIZE+52))
 
@@ -259,7 +242,7 @@ while running:
             color = Color.TEXT_SILVER
             if occupant.isHome:
                 color = Color.TEXT_GOLD
-            if occupant.isSelected:
+            if position == burrow.selected:
                 color = Color.TEXT_GREEN
             occupant_img = font.render(occupant.type, True, color)
             screen.blit(occupant_img, (space.getPosition()[0] * TILE_SIZE + 20, space.getPosition()[1] * TILE_SIZE+52))
@@ -270,3 +253,4 @@ while running:
     screen.blit(help_text_2, help_text_2.get_rect(center=(SCREEN_WIDTH/2, 0)).move(0, TILE_SIZE*7+10))
 
     pygame.display.flip()
+    clock.tick(30)
