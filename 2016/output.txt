@@ -26,4 +26,14 @@ Day 7: Internet Protocol Version 7 (PASS)
   Part 1: 115
   Part 2: 231
 
-Total time: 67.704s seconds
+Day 8: Two-Factor Authentication (PASS)
+  Part 1: 123
+  Part 2: 
+     ##  #### ###  #  # ###  #### ###    ## ###   ### 
+    #  # #    #  # #  # #  #    # #  #    # #  # #    
+    #  # ###  ###  #  # #  #   #  ###     # #  # #    
+    #### #    #  # #  # ###   #   #  #    # ###   ##  
+    #  # #    #  # #  # #    #    #  # #  # #       # 
+    #  # #    ###   ##  #    #### ###   ##  #    ###  
+
+Total time: 64.867s seconds
