@@ -2,7 +2,7 @@ from termcolor import colored
 from time import time
 import sys
 
-from solutions import day_01, day_02, day_03, day_04, day_05, day_06
+from solutions import day_01, day_02, day_03, day_04, day_05, day_06, day_07
 
 
 NAMES = (
@@ -12,6 +12,7 @@ NAMES = (
     "Security Through Obscurity",
     "How About a Nice Game of Chess?",
     "Signals and Noise",
+    "Internet Protocol Version 7",
 )
 
 

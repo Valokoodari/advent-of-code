@@ -22,4 +22,8 @@ Day 6: Signals and Noise (PASS)
   Part 1: umcvzsmw
   Part 2: rwqoacfz
 
-Total time: 67.321s seconds
+Day 7: Internet Protocol Version 7 (PASS)
+  Part 1: 115
+  Part 2: 231
+
+Total time: 67.704s seconds
