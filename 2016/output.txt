@@ -14,4 +14,8 @@ Day 4: Security Through Obscurity (PASS)
   Part 1: 137896
   Part 2: 501
 
-Total time: 0.023s seconds
+Day 5: How About a Nice Game of Chess? (PASS)
+  Part 1: 4543c154
+  Part 2: 1050cbbd
+
+Total time: 66.888s seconds

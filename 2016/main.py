@@ -1,7 +1,8 @@
 from termcolor import colored
 from time import time
+import sys
 
-from solutions import day_01, day_02, day_03, day_04
+from solutions import day_01, day_02, day_03, day_04, day_05
 
 
 NAMES = (
@@ -9,6 +10,7 @@ NAMES = (
     "Bathroom Security",
     "Squares With Three Sides",
     "Security Through Obscurity",
+    "How About a Nice Game of Chess?",
 )
 
 
@@ -32,8 +34,11 @@ def run(day):
 
 
 start_time = time()
-for day in range(len(NAMES)):
-    run(day+1)
+if len(sys.argv) == 1:
+    for day in range(len(NAMES)):
+        run(day+1)
+else:
+    run(int(sys.argv[1]))
 end_time = time()
 time_str = colored(f"{end_time - start_time:.3f}s", "cyan")
 print(f"Total time: {time_str} seconds")
