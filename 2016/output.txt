@@ -18,4 +18,8 @@ Day 5: How About a Nice Game of Chess? (PASS)
   Part 1: 4543c154
   Part 2: 1050cbbd
 
-Total time: 66.888s seconds
+Day 6: Signals and Noise (PASS)
+  Part 1: umcvzsmw
+  Part 2: rwqoacfz
+
+Total time: 67.321s seconds
