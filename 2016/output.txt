@@ -1,0 +1,17 @@
+Day 1: No Time for a Taxicab (PASS)
+  Part 1: 291
+  Part 2: 159
+
+Day 2: Bathroom Security (PASS)
+  Part 1: 14894
+  Part 2: 26B96
+
+Day 3: Squares With Three Sides (PASS)
+  Part 1: 982
+  Part 2: 1826
+
+Day 4: Security Through Obscurity (PASS)
+  Part 1: 137896
+  Part 2: 501
+
+Total time: 0.023s seconds

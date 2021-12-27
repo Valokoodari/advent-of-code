@@ -1,13 +1,14 @@
 from termcolor import colored
 from time import time
 
-from solutions import day_01, day_02, day_03
+from solutions import day_01, day_02, day_03, day_04
 
 
 NAMES = (
     "No Time for a Taxicab",
     "Bathroom Security",
     "Squares With Three Sides",
+    "Security Through Obscurity",
 )
 
 
