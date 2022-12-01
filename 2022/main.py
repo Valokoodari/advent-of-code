@@ -1,11 +1,14 @@
 from termcolor import colored
-from time import time
+from time import process_time
 import sys
 
-# from solutions import day_01
+from solutions import day_01
 
 
-NAMES = ()
+total_time = 0
+NAMES = (
+    "Calorie Counting",
+)
 
 
 def test(day):
@@ -18,26 +21,38 @@ def test(day):
 
 def solve(day, part):
     data = open(f"inputs/{day:02d}.txt").read().strip()
-    return eval(f"day_{day:02d}.part_{part}")(data)
+
+    start_time = process_time()
+    answer = eval(f"day_{day:02d}.part_{part}")(data)
+    end_time = process_time()
+
+    global total_time
+    total_time += end_time - start_time
+
+    return answer, end_time - start_time
 
 
 def run(day):
     print(f"Day {day}: {NAMES[day-1]} ({test(day)})")
-    print(f"  Part 1: {colored(solve(day, 1), 'cyan')}")
-    print(f"  Part 2: {colored(solve(day, 2), 'cyan')}\n")
+
+    answer, time1 = solve(day, 1)
+    print(f"  Part 1: {colored(answer, 'cyan')}")
+
+    answer, time2 = solve(day, 2)
+    print(f"  Part 2: {colored(answer, 'cyan')}")
+
+    time_str = colored(f"{(time1+time2)*1000:.3f} ms", "cyan")
+    print(f"  ({time_str})\n")
 
 
 def main():
-    start_time = time()
-
     if len(sys.argv) == 1:
         for day in range(len(NAMES)):
             run(day+1)
     else:
         run(int(sys.argv[1]))
 
-    end_time = time()
-    time_str = colored(f"{end_time - start_time:.3f}s", "cyan")
+    time_str = colored(f"{total_time:.3f}", "cyan")
     print(f"Total time: {time_str} seconds")
 
 
