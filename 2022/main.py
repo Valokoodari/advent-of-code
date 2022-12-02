@@ -2,12 +2,13 @@ from termcolor import colored
 from time import process_time
 import sys
 
-from solutions import day_01
+from solutions import day_01, day_02
 
 
 total_time = 0
 NAMES = (
     "Calorie Counting",
+    "Day Two"
 )
 
 
@@ -53,7 +54,11 @@ def main():
         run(int(sys.argv[1]))
 
     time_str = colored(f"{total_time:.3f}", "cyan")
-    print(f"Total time: {time_str} seconds")
+    avg_time_str = colored(f"{total_time/len(NAMES):.3f}", "cyan")
+
+    print(f"Time:")
+    print(f"  sum: {time_str} seconds")
+    print(f"  avg: {avg_time_str} seconds")
 
 
 if __name__ == "__main__":
