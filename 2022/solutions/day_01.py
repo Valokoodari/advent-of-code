@@ -1,3 +1,12 @@
+parse = lambda x: [[int(n) for n in e.split("\n")] for e in x.split("\n\n")]
+
+def part_1(data):
+    return max([sum(l) for l in parse(data)])
+
+def part_2(data):
+    return sum(sorted([sum(l) for l in parse(data)])[-3:])
+
+
 TEST_DATA = """\
 1000
 2000
@@ -13,18 +22,6 @@ TEST_DATA = """\
 9000
 
 10000"""
-
-def parse(data):
-    return [[int(n) for n in e.split("\n")] for e in data.split("\n\n")]
-
-
-def part_1(data):
-    return max([sum(l) for l in parse(data)])
-
-
-def part_2(data):
-    return sum(sorted([sum(l) for l in parse(data)])[-3:])
-
 
 def test():
     assert part_1(TEST_DATA) == 24000

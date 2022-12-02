@@ -8,7 +8,7 @@ from solutions import day_01, day_02
 total_time = 0
 NAMES = (
     "Calorie Counting",
-    "Day Two"
+    "Rock Paper Scissors",
 )
 
 
