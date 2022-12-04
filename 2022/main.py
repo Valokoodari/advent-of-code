@@ -10,7 +10,7 @@ NAMES = (
     "Calorie Counting",
     "Rock Paper Scissors",
     "Rucksack Reorganization",
-    "Day Four",
+    "Camp Cleanup",
 )
 
 
