@@ -1,37 +1,37 @@
 Day 1: No Time for a Taxicab (PASS)
   Part 1: 291
   Part 2: 159
-  (0.263 ms)
+  (0.296 ms)
 
 Day 2: Bathroom Security (PASS)
   Part 1: 14894
   Part 2: 26B96
-  (1.005 ms)
+  (1.089 ms)
 
 Day 3: Squares With Three Sides (PASS)
   Part 1: 982
   Part 2: 1826
-  (4.314 ms)
+  (4.719 ms)
 
 Day 4: Security Through Obscurity (PASS)
   Part 1: 137896
   Part 2: 501
-  (9.779 ms)
+  (10.346 ms)
 
 Day 5: How About a Nice Game of Chess? (PASS)
   Part 1: 4543c154
   Part 2: 1050cbbd
-  (23814.969 ms)
+  (22059.142 ms)
 
 Day 6: Signals and Noise (PASS)
   Part 1: umcvzsmw
   Part 2: rwqoacfz
-  (0.662 ms)
+  (0.680 ms)
 
 Day 7: Internet Protocol Version 7 (PASS)
   Part 1: 115
   Part 2: 231
-  (17.645 ms)
+  (17.464 ms)
 
 Day 8: Two-Factor Authentication (PASS)
   Part 1: 123
@@ -42,13 +42,18 @@ Day 8: Two-Factor Authentication (PASS)
     #### #    #  # #  # ###   #   #  #    # ###   ##  
     #  # #    #  # #  # #    #    #  # #  # #       # 
     #  # #    ###   ##  #    #### ###   ##  #    ###  
-  (2.863 ms)
+  (2.974 ms)
 
 Day 9: Explosives in Cyberspace (PASS)
   Part 1: 183269
   Part 2: 11317278863
-  (1.176 ms)
+  (1.183 ms)
+
+Day 10: Balance Bots (PASS)
+  Part 1: 73
+  Part 2: 3965
+  (0.629 ms)
 
 Time:
-  sum: 23.853 seconds
-  avg: 2.650 seconds
+  sum: 22.099 seconds
+  avg: 2.210 seconds
