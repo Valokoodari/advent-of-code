@@ -1,10 +1,10 @@
-parse = lambda x: [[[*map(int, r.split("-"))] for r in l.split(",")] for l in x.splitlines()]
+parse = lambda x: [[*map(int, l.split(","))] for l in x.replace("-",",").splitlines()]
 
 def part_1(data):
-    return sum(1 for l in parse(data) if (l[0][0] >= l[1][0] and l[0][1] <= l[1][1]) or (l[1][0] >= l[0][0] and l[1][1] <= l[0][1]))
+    return sum(1 for l in parse(data) if (l[0] <= l[2] and l[1] >= l[3]) or (l[2] <= l[0] and l[3] >= l[1]))
 
 def part_2(data):
-    return sum(1 for l in parse(data) if l[0][0] <= l[1][1] and l[0][1] >= l[1][0])
+    return sum(1 for l in parse(data) if l[0] <= l[3] and l[1] >= l[2])
 
 
 EX_1 = """\
