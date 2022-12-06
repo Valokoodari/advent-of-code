@@ -12,7 +12,7 @@ NAMES = (
     "Rucksack Reorganization",
     "Camp Cleanup",
     "Supply Stacks",
-    "Day Six",
+    "Tuning Trouble",
 )
 
 
