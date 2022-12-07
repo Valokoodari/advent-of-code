@@ -15,14 +15,14 @@ def parse(data):
             case [s, _]:
                 for i in range(len(path)+1):
                     dirs["/".join(path[:i])] = dirs.get("/".join(path[:i]), 0) + int(s)
-    return dirs
+    return sorted(dirs.values())
 
 
 def part_1(data):
-    return sum(s for s in parse(data).values() if s <= 100000)
+    return sum(s for s in parse(data) if s <= 100000)
 
 def part_2(data):
-    return [sorted(s for s in ds.values() if 70000000 - ds[""] + s >= 30000000)[0] for ds in [parse(data)]][0]
+    return [[s for s in ds if 70000000 - ds[-1] + s >= 30000000][0] for ds in [parse(data)]][0]
 
 
 EX_0 = """\
