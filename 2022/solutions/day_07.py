@@ -8,7 +8,7 @@ def parse(data):
                 path.pop()
             case ["$", "cd", n]:
                 path.append(n)
-            case ["$", _] | ["dir", _]:
+            case ["$" | "dir", _]:
                 pass
             case [s, _]:
                 for p in ["/".join(path[:i]) for i in range(len(path)+1)]:
