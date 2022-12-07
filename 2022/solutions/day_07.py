@@ -8,13 +8,11 @@ def parse(data):
                 path.pop()
             case ["$", "cd", n]:
                 path.append(n)
-            case ["$", _]:
-                pass
-            case ["dir", _]:
+            case ["$", _] | ["dir", _]:
                 pass
             case [s, _]:
-                for i in range(len(path)+1):
-                    dirs["/".join(path[:i])] = dirs.get("/".join(path[:i]), 0) + int(s)
+                for p in ["/".join(path[:i]) for i in range(len(path)+1)]:
+                    dirs[p] = dirs.get(p, 0) + int(s)
     return sorted(dirs.values())
 
 
