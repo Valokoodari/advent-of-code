@@ -30,7 +30,7 @@ fn main() {
         });
 
     println!(
-        "Part 1: {:?}",
+        "Part 1: {}",
         dirs
             .values()
             .filter(|&&s| s <= 100_000)
@@ -38,7 +38,7 @@ fn main() {
     );
 
     println!(
-        "Part 2: {:?}",
+        "Part 2: {}",
         dirs
             .values()
             .filter(|&&s| 70_000_000 - dirs.values().max().unwrap() + s >= 30_000_000)
