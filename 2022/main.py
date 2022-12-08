@@ -2,7 +2,8 @@ from termcolor import colored
 from time import process_time
 import sys
 
-from solutions import day_01, day_02, day_03, day_04, day_05, day_06, day_07
+from solutions import day_01, day_02, day_03, day_04, day_05, day_06, day_07, \
+    day_08
 
 
 total_time = 0
@@ -14,6 +15,7 @@ NAMES = (
     "Supply Stacks",
     "Tuning Trouble",
     "No Space Left On Device",
+    "Treetop Tree House",
 )
 
 

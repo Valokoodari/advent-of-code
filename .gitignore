@@ -5,3 +5,5 @@ venv/
 *.exe
 *.pdb
 *.ps1
+
+sandbox.*
