@@ -9,7 +9,7 @@ def comp(data):
                 cs += [x]*2
                 x += int(n)
 
-    return cs
+    return cs + [x]
 
 
 def part_1(data):
@@ -50,6 +50,7 @@ addx -21\naddx 22\naddx -6\naddx 1\nnoop\naddx 2\naddx 1\nnoop\naddx -10\nnoop
 noop\naddx 20\naddx 1\naddx 2\naddx 2\naddx -6\naddx -11\nnoop\nnoop\nnoop"""
 
 def test():
+    assert comp(EX_0) == [1, 1, 1, 4, 4, -1]
     assert part_1(EX_1) == 13140
 
     assert part_2(EX_1) == """
