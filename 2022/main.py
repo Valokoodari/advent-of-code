@@ -51,7 +51,7 @@ def run(day):
     answer, time2 = solve(day, 2)
     print(f"  Part 2: {colored(answer, 'cyan')}")
 
-    time_str = colored(f"{(time1+time2)*1000:.3f} ms", "cyan")
+    time_str = colored(f"{(time1+time2)*1000:.3f} ms", "magenta")
     print(f"  ({time_str})\n")
 
 
@@ -62,8 +62,8 @@ def main():
     else:
         run(int(sys.argv[1]))
 
-    time_str = colored(f"{total_time:.3f}", "cyan")
-    avg_time_str = colored(f"{total_time/len(NAMES):.3f}", "cyan")
+    time_str = colored(f"{total_time:.3f}", "magenta")
+    avg_time_str = colored(f"{total_time/len(NAMES):.3f}", "magenta")
 
     print(f"Time:")
     print(f"  sum: {time_str} seconds")
