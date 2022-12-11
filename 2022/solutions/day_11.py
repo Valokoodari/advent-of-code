@@ -1,25 +1,20 @@
-from functools import reduce
+from math import prod
 
 
 def parse(data):
-    ps, ms = data.split("\n\n"), []
-    for p in ps:
-        p = p.split("\n")
-        ms.append({
-            "is": [int(n) for n in p[1][18:].split(", ")],
-            "o": eval(f"lambda old: {p[2][19:]}"),
-            "t": int(p[3][21:]),
-            "tt": int(p[4][29:]),
-            "tf": int(p[5][30:]),
-            "s": 0
-        })
-
-    return ms
+    return [{
+        "is": [int(n) for n in p[1].split(":")[1].split(",")],
+        "o": eval(f"lambda old: {p[2].split('=')[-1]}"),
+        "t": int(p[3].split()[-1]),
+        "tt": int(p[4].split()[-1]),
+        "tf": int(p[5].split()[-1]),
+        "s": 0
+    } for p in [l.splitlines() for l in data.split("\n\n")]]
 
 
 def solve(data, p):
     ms = parse(data)
-    gcd = reduce(lambda a, b: a * b, [m["t"] for m in ms])
+    gcd = prod(m["t"] for m in ms)
 
     for _ in range(20 if p == 1 else 10000):
         for m in ms:
@@ -29,9 +24,7 @@ def solve(data, p):
                 ms[m["tt" if i % m["t"] == 0 else "tf"]]["is"].append(i)
             m["is"] = []
 
-    ms.sort(key=lambda m: m["s"], reverse=True)
-
-    return ms[0]["s"] * ms[1]["s"]
+    return prod(sorted(m["s"] for m in ms)[-2:])
 
 
 def part_1(data):
