@@ -7,13 +7,12 @@ def parse(data):
         p = p.split("\n")
         ms.append({
             "is": [int(n) for n in p[1][18:].split(", ")],
-            "o": p[2][19:],
+            "o": eval(f"lambda old: {p[2][19:]}"),
             "t": int(p[3][21:]),
             "tt": int(p[4][29:]),
             "tf": int(p[5][30:]),
             "s": 0
-        }
-    )
+        })
 
     return ms
 
@@ -24,9 +23,9 @@ def solve(data, p):
 
     for _ in range(20 if p == 1 else 10000):
         for m in ms:
-            for old in m["is"]:
+            for i in m["is"]:
                 m["s"] += 1
-                i = eval(m['o']) % gcd // (3 if p == 1 else 1)
+                i = m['o'](i) % gcd // (3 if p == 1 else 1)
                 ms[m["tt" if i % m["t"] == 0 else "tf"]]["is"].append(i)
             m["is"] = []
 
