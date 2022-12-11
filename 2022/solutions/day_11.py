@@ -14,13 +14,13 @@ def parse(data):
 
 def solve(data, p):
     ms = parse(data)
-    gcd = prod(m["t"] for m in ms)
+    lcm = prod(m["t"] for m in ms)
 
     for _ in range(20 if p == 1 else 10000):
         for m in ms:
             for i in m["is"]:
                 m["s"] += 1
-                i = m['o'](i) % gcd // (3 if p == 1 else 1)
+                i = m['o'](i) % lcm // (3 if p == 1 else 1)
                 ms[m["tt" if i % m["t"] == 0 else "tf"]]["is"].append(i)
             m["is"] = []
 
