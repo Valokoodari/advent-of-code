@@ -20,7 +20,7 @@ def part_1(data):
     return sum(s for s in parse(data) if s <= 100000)
 
 def part_2(data):
-    return [[s for s in ds if 70000000 - ds[-1] + s >= 30000000][0] for ds in [parse(data)]][0]
+    return [ds := parse(data), [s for s in ds if 70000000 - ds[-1] + s >= 30000000][0]][1]
 
 
 EX_0 = """\
