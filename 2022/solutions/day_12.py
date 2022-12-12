@@ -2,7 +2,7 @@ from heapq import heappush, heappop
 
 
 def parse(data):
-    ms, s, e = {}, None, None
+    ms, s, e = {}, (-1, -1), (-1, -1)
 
     for r, l in enumerate(data.splitlines()):
         for c, h in enumerate(l):
