@@ -19,21 +19,17 @@ def solve(data, p2=False):
     ms, s, e = parse(data)
     q, ss = [(0, e if p2 else s)], set()
 
-    while q:
-        c, p = heappop(q)
-
-        if p in ss:
+    while cp := heappop(q):
+        if cp[1] in ss:
             continue
-        ss.add(p)
+        ss.add(cp[1])
 
-        if not p2 and p == e or p2 and ms[p] == 0:
-            return c
+        if not p2 and cp[1] == e or p2 and ms[cp[1]] == 0:
+            return cp[0]
 
-        for n in [(p[0]+d[0], p[1]+d[1]) for d in ((0, 1), (0, -1), (1, 0), (-1, 0))]:
-            if n in ms and ms[p if p2 else n] - ms[n if p2 else p] <= 1:
-                heappush(q, (c + 1, n))
-
-    return -1
+        for n in [(cp[1][0]+d[0], cp[1][1]+d[1]) for d in ((0, 1), (0, -1), (1, 0), (-1, 0))]:
+            if n in ms and ms[cp[1] if p2 else n] - ms[n if p2 else cp[1]] <= 1:
+                heappush(q, (cp[0] + 1, n))
 
 
 def part_1(data):
