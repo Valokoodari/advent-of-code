@@ -1,4 +1,5 @@
 from functools import cmp_to_key as ctk
+from json import loads as parse
 from math import prod
 
 
@@ -16,13 +17,13 @@ def cmp(a, b):
 
 
 def part_1(data):
-    ps = [[eval(x) for x in p.splitlines()] for p in data.split("\n\n")]
+    ps = [[parse(x) for x in p.splitlines()] for p in data.split("\n\n")]
 
     return sum(i + 1 for i, p in enumerate(ps) if cmp(*p) < 0)
 
 
 def part_2(data):
-    ps = sorted([eval(l) for l in data.splitlines() if l] + [[[2]]] + [[[6]]], key=ctk(cmp))
+    ps = sorted([parse(l) for l in data.splitlines() if l] + [[[2]]] + [[[6]]], key=ctk(cmp))
 
     return prod(i + 1 for i, p in enumerate(ps) if p == [[2]] or p == [[6]])
 
