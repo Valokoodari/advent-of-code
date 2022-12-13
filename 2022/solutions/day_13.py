@@ -4,16 +4,16 @@ from math import prod
 
 
 def cmp(a, b):
-    if isinstance(a, int) and isinstance(b, int):
-        return a - b
     if isinstance(a, list) and isinstance(b, list):
         for i in range(min(len(a), len(b))):
             if (r := cmp(a[i], b[i])) != 0:
                 return r
         return len(a) - len(b)
+    if isinstance(a, list) and isinstance(b, int):
+        return cmp(a, [b])
     if isinstance(a, int) and isinstance(b, list):
         return cmp([a], b)
-    return cmp(a, [b])
+    return a - b
 
 
 def part_1(data):
