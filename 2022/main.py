@@ -54,8 +54,10 @@ def run(day):
     answer, time2 = solve(day, 2)
     print(f"  Part 2: {colored(answer, 'cyan')}")
 
+    time_str_1 = colored(f"{time1*1000:.3f}", "magenta")
+    time_str_2 = colored(f"{time2*1000:.3f}", "magenta")
     time_str = colored(f"{(time1+time2)*1000:.3f} ms", "magenta")
-    print(f"  ({time_str})\n")
+    print(f"  ({time_str}) [{time_str_1} / {time_str_2}]\n")
 
 
 def main():
