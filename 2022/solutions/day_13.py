@@ -23,9 +23,10 @@ def part_1(data):
 
 
 def part_2(data):
-    ps = sorted([parse(l) for l in data.splitlines() if l] + [[[2]]] + [[[6]]], key=ctk(cmp))
+    ps = [parse(l) for l in data.splitlines() if l]
+    gi = lambda x: sum(1 for p in ps if cmp(p, x) < 0)
 
-    return prod(i + 1 for i, p in enumerate(ps) if p == [[2]] or p == [[6]])
+    return (1 + gi([[2]])) * (2 + gi([[6]]))
 
 
 EX_0 = """\
