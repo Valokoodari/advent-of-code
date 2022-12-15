@@ -15,20 +15,16 @@ def part_1(data, y=2_000_000):
 
 
 def part_2(data, m=4_000_000):
-    ss, ps = parse(data), set()
+    ss = parse(data)
 
     for s in ss:
         d = abs(s[0]-s[2]) + abs(s[1]-s[3]) + 1
         for c in range(-d, d+1):
-            if 0 <= s[0]+c <= m:
-                if 0 <= s[1]+d-abs(c) <= m:
-                    ps.add((s[0]+c, s[1]+d-abs(c)))
-                if 0 <= s[1]-d+abs(c) <= m:
-                    ps.add((s[0]+c, s[1]-d+abs(c)))
-
-    for p in ps:
-        if all(abs(p[0]-s[0]) + abs(p[1]-s[1]) > abs(s[0]-s[2]) + abs(s[1]-s[3]) for s in ss):
-            return p[0] * 4_000_000 + p[1]
+            if 0 <= (x := s[0]+c) <= m:
+                for y in (s[1]+d-abs(c), s[1]-d+abs(c)):
+                    if 0 <= y <= m:
+                        if all(abs(x-s[0]) + abs(y-s[1]) > abs(s[0]-s[2]) + abs(s[1]-s[3]) for s in ss):
+                            return x * 4_000_000 + y
 
 
 EX_0 = """\
