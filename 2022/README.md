@@ -45,11 +45,11 @@ Day  Python
  11     166
  12       9
  13       2
- 14     724
+ 14      50
  15   98835
 -----------
-Sum   99794
-Avg    6653
+Sum   99120
+Avg    6608
 ```
 
 Execution times measured on an M1 Max Mac Studio.

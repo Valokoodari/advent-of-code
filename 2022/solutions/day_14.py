@@ -1,3 +1,5 @@
+from heapq import heappush, heappop
+
 def parse(data):
     rs = set()
     for line in data.splitlines():
@@ -16,7 +18,7 @@ def parse(data):
     return rs
 
 
-def solve(data, p2=False):
+def part_1(data):
     rs, ss = parse(data), set()
     my = max(y for _, y in rs)
 
@@ -26,21 +28,30 @@ def solve(data, p2=False):
         while m:
             m = False
             for dx, dy in ((0, 1), (-1, 1), (1, 1)):
-                if (s := (sx + dx, sy + dy)) not in rs and s not in ss and not (p2 and s[1] == my + 2):
+                if (s := (sx + dx, sy + dy)) not in rs and s not in ss:
                     (sx, sy), m = s, True
                     break
 
-            if (sx, sy) == (500, 0) or sy >= my and not p2:
+            if sy >= my:
                 return len(ss)
 
         ss.add((sx, sy))
 
 
-def part_1(data):
-    return solve(data)
-
 def part_2(data):
-    return solve(data, True) + 1
+    rs, vs, q = parse(data), set(), [(500, 0)]
+    f = max(y for _, y in rs) + 2
+
+    while q:
+        p = heappop(q)
+        if p in vs:
+            continue
+        vs.add(p)
+        for dx, dy in ((0, 1), (-1, 1), (1, 1)):
+            if (s := (p[0] + dx, p[1] + dy)) not in rs and s[1] < f:
+                heappush(q, s)
+
+    return len(vs)
 
 
 EX_0 = """\
