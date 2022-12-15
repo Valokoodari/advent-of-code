@@ -3,7 +3,7 @@ from time import process_time
 import sys
 
 from solutions import day_01, day_02, day_03, day_04, day_05, day_06, day_07, \
-    day_08, day_09, day_10, day_11, day_12, day_13, day_14
+    day_08, day_09, day_10, day_11, day_12, day_13, day_14, day_15
 
 
 total_time = 0
@@ -22,6 +22,7 @@ NAMES = (
     "Hill Climbing Algorithm",
     "Distress Signal",
     "Regolith Reservoir",
+    "Beacon Exclusion Zone",
 )
 
 
