@@ -1,17 +1,15 @@
-parse = lambda d: [list(map(int, l[12:].split(","))) for l in d.replace(" y=", "").replace(": closest beacon is at x=", ",").splitlines()]
+parse = lambda d: [list(map(int, l[12:].split(","))) for l in d.replace(": closest beacon is at x=", ",").replace(" y=", "").splitlines()]
 
 
 def part_1(data, y=2_000_000):
-    ss, ans = parse(data), 0
-    bs = set((s[2], s[3]) for s in ss)
+    ss, rs = parse(data), set()
 
-    for x in range(-y*3, y*3+1):
-        for s in ss:
-            if abs(x-s[0]) + abs(y-s[1]) <= abs(s[0] - s[2]) + abs(s[1] - s[3]):
-                ans += 1
-                break
+    for s in ss:
+        if abs(y - s[1]) <= (d := abs(s[0]-s[2]) + abs(s[1]-s[3])):
+            for x in range(-(r := d - abs(y - s[1])) + s[0], r + 1 + s[0]):
+                rs.add(x)
 
-    return ans - sum(1 for b in bs if b[1] == y)
+    return len(rs) - sum(1 for b in set((s[2], s[3]) for s in ss) if b[1] == y)
 
 
 def part_2(data, m=4_000_000):
