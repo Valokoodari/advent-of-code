@@ -19,12 +19,11 @@ def part_2(data, m=4_000_000):
 
     for s in ss:
         d = abs(s[0]-s[2]) + abs(s[1]-s[3]) + 1
-        for c in range(-d, d+1):
-            if 0 <= (x := s[0]+c) <= m:
-                for y in (s[1]+d-abs(c), s[1]-d+abs(c)):
-                    if 0 <= y <= m:
-                        if all(abs(x-s[0]) + abs(y-s[1]) > abs(s[0]-s[2]) + abs(s[1]-s[3]) for s in ss):
-                            return x * 4_000_000 + y
+        for x in range(max(0, -d+s[0]), min(m, d+1+s[0])):
+            for y in (s[1]+d-abs(x-s[0]), s[1]-d+abs(x-s[0])):
+                if 0 <= y <= m:
+                    if all(abs(x-s[0]) + abs(y-s[1]) > abs(s[0]-s[2]) + abs(s[1]-s[3]) for s in ss):
+                        return x * 4_000_000 + y
 
 
 EX_0 = """\
