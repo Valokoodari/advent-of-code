@@ -1,4 +1,5 @@
 #include "../ICC/intCodeComputer.h"
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -10,7 +11,7 @@ typedef std::vector<long long int> intCode;
 typedef std::map<std::pair<int,int>, int> pointMap;
 
 intCode readFile() {
-    std::fstream file("15-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/15.txt", std::fstream::in);
     std::string line;
     std::getline(file, line);
     file.close();
@@ -30,10 +31,8 @@ intCode readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::fstream file("15-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 pointMap explore(intCode droidCode) {

@@ -1,5 +1,4 @@
-inputFile = "3-input"
-outputFile = "3-output"
+inputFile = "../../inputs/2019/03.txt"
 
 dir = {'L': [-1,0],'R': [1,0],'U': [0,1],'D': [0,-1]}
 
@@ -11,12 +10,6 @@ def readFile():
 
     file.close()
     return A,B
-
-def writeFile(a, b):
-    file = open(outputFile, "w+")
-    file.write("Part 1: " + a + "\n")
-    file.write("Part 2: " + b)
-    file.close()
 
 def mapCommands(A):
     cx, cy, step = 0, 0, 0
@@ -52,7 +45,7 @@ def main():
 
     solA, solB = findIntersects(A, B)
 
-    print(solA, solB)
-    #writeFile(str(solA), str(solB))
+    print("Part 1: " + str(solA))
+    print("Part 2: " + str(solB))
 
 if __name__ == '__main__': main()

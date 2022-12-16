@@ -145,7 +145,7 @@ int func2(intVec2D map, char currChar, int dist = 0) {
 }
 
 int main() {
-    intVec2D map = readFile("18-input");
+    intVec2D map = readFile("../../inputs/2019/18.txt");
 
     // Fix map for part 2
     point p = findChar(map, '@');

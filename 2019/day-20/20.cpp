@@ -1,3 +1,4 @@
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -31,42 +32,37 @@ pointMap readFile(const char path[]) {
         pLine = cLine;
     }
 
-    return points;
-}
-
-void writeFile(const char path[], int a, int b) {
-    std::fstream file(path, std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
     file.close();
-}
-
-pointMap simplify(pointMap points) {
-    int erased = 1;
-    while (erased > 0) {
-        erased = 0;
-        for (pointMap::iterator it = points.begin(); it != points.end(); it++) {
-            if (it->second == 1) {
-                int neighbors = 0;
-                if (points.find(point(it->first.first-1,it->first.second)) != points.end())
-                    neighbors++;
-                if (points.find(point(it->first.first+1,it->first.second)) != points.end())
-                    neighbors++;
-                if (points.find(point(it->first.first,it->first.second-1)) != points.end())
-                    neighbors++;
-                if (points.find(point(it->first.first,it->first.second+1)) != points.end())
-                    neighbors++;
-                if (neighbors < 2) {
-                    points.erase(it->first);
-                    it--;
-                    erased++;
-                }
-            }
-        }
-    }
 
     return points;
 }
+
+// pointMap simplify(pointMap points) {
+//     int erased = 1;
+//     while (erased > 0) {
+//         erased = 0;
+//         for (pointMap::iterator it = points.begin(); it != points.end(); it++) {
+//             if (it->second == 1) {
+//                 int neighbors = 0;
+//                 if (points.find(point(it->first.first-1,it->first.second)) != points.end())
+//                     neighbors++;
+//                 if (points.find(point(it->first.first+1,it->first.second)) != points.end())
+//                     neighbors++;
+//                 if (points.find(point(it->first.first,it->first.second-1)) != points.end())
+//                     neighbors++;
+//                 if (points.find(point(it->first.first,it->first.second+1)) != points.end())
+//                     neighbors++;
+//                 if (neighbors < 2) {
+//                     points.erase(it->first);
+//                     it--;
+//                     erased++;
+//                 }
+//             }
+//         }
+//     }
+
+//     return points;
+// }
 
 std::map<point,point> findPaths(pointMap points) {
     int largestX = 0;
@@ -192,7 +188,8 @@ pointMap findPathB(std::map<point,point> paths, pointMap portals, int portal, in
 }
 
 int main() {
-    pointMap points = simplify(readFile("20-input"));
+    // pointMap points = simplify(readFile("../../inputs/2019/20.txt"));
+    pointMap points = readFile("../../inputs/2019/20.txt");
 
     std::map<point,point> paths = findPaths(points);
     std::map<int,int> distancesA = findPathA(paths, std::map<int,int>(), (int)'A'*100+(int)'A');
@@ -201,7 +198,8 @@ int main() {
     int solA = distancesA[(int)'Z'*100+(int)'Z'] - 1;
     int solB = distancesB[std::pair<int,int>((int)'Z'*100+(int)'Z',0)] - 1;
 
-    writeFile("20-output", solA, solB);
+    std::cout << "Part 1: " << solA << "\n";
+    std::cout << "Part 2: " << solB << "\n";
 
     return 0;
 }

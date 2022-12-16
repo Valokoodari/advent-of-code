@@ -1,5 +1,4 @@
-inputFile = "1-input"
-outputFile = "1-output"
+inputFile = "../../inputs/2019/01.txt"
 
 def readFile():
     file = open(inputFile, "r")
@@ -7,12 +6,6 @@ def readFile():
     lines = file.readlines()
     file.close()
     return lines
-
-def writeFile(a, b):
-    file = open(outputFile, "w+")
-    file.write("Part 1: " + str(a) + "\n")
-    file.write("Part 2: " + str(b))
-    file.close()
 
 def massToFuel(mass):
     return mass // 3 - 2
@@ -36,6 +29,7 @@ def main():
         fuelA += massToFuel(int(line))
         fuelB += smartMassToFuel(int(line))
 
-    writeFile(fuelA, fuelB)
+    print("Part 1: " + str(fuelA))
+    print("Part 2: " + str(fuelB))
 
 if __name__ == '__main__': main()

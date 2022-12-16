@@ -97,8 +97,7 @@ int leastSteps(pointVec intersects, pointVec pointsA, pointVec pointsB) {
 }
 
 int main() {
-    freopen("3-input", "r", stdin);
-    freopen("3-output", "w", stdout);
+    freopen("../../inputs/2019/03.txt", "r", stdin);
 
     std::string line1, line2;
     std::cin >> line1 >> line2;
@@ -112,7 +111,7 @@ int main() {
     int solB = leastSteps(intersects, points1, points2);
 
     std::cout << "Part 1: " << solA << "\n";
-    std::cout << "Part 2: " << solB;
+    std::cout << "Part 2: " << solB << "\n";
 
     return 0;
 }

@@ -1,4 +1,5 @@
 #include "../ICC/intCodeComputer.h"
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -9,7 +10,7 @@ typedef std::vector<long long int> intCode;
 typedef std::vector<std::vector<int> > intVec2D;
 
 intCode readFile() {
-    std::fstream file("17-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/17.txt", std::fstream::in);
     std::string line;
     std::getline(file, line);
     file.close();
@@ -29,10 +30,8 @@ intCode readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::fstream file("17-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 intVec2D createMap(std::string display) {

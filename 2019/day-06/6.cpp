@@ -16,7 +16,7 @@ typedef std::string string;
 mapAndKeys readFile() {
     stringVec keys;
     stringMap orbits;
-    freopen("6-input", "r", stdin);
+    freopen("../../inputs/2019/06.txt", "r", stdin);
 
     string link;
     while(std::cin >> link) {
@@ -28,9 +28,8 @@ mapAndKeys readFile() {
 }
 
 void writeFile(int a, int b) {
-    freopen("6-output", "w", stdout);
     std::cout << "Part 1: " << a << "\n";
-    std::cout << "Part 2: " << b;
+    std::cout << "Part 2: " << b << "\n";
 }
 
 int countAllOrbits(mapAndKeys mapKeys) {
@@ -79,8 +78,6 @@ int distanceBetween(mapAndKeys mapKeys, string key1, string key2) {
 }
 
 int main() {
-    freopen("6-input", "r", stdin);
-
     mapAndKeys mapKeys = readFile();
 
     auto solA = std::async(countAllOrbits, mapKeys);

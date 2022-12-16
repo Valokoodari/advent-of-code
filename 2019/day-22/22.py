@@ -1,5 +1,4 @@
-inputFile = "22-input"
-outputFile = "22-output"
+inputFile = "../../inputs/2019/22.txt"
 
 def readFile():
     file = open(inputFile, "r")
@@ -7,12 +6,6 @@ def readFile():
     lines = file.readlines()
     file.close()
     return lines
-
-def writeFile(a, b):
-    file = open(outputFile, "w+")
-    file.write("Part 1: " + str(a) + "\n")
-    file.write("Part 2: " + str(b))
-    file.close()
 
 def getDeck(lines, cards, times = 0):
     offset, increment = 0, 1
@@ -50,6 +43,7 @@ def main():
 
     solB = (offsetB + 2020 * incrementB) % cards
 
-    writeFile(solA, solB)
+    print("Part 1: " + str(solA))
+    print("Part 2: " + str(solB))
 
 if __name__ == '__main__': main()

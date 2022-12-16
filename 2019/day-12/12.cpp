@@ -1,3 +1,4 @@
+#include <iostream>
 #include <fstream>
 #include <numeric>
 #include <string>
@@ -12,7 +13,7 @@ typedef long long int ll;
 std::vector<moon> readFile() {
     std::vector<moon> moons;
 
-    std::fstream file("12-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/12.txt", std::fstream::in);
 
     std::string line;
     while (std::getline(file, line)) {
@@ -38,10 +39,8 @@ std::vector<moon> readFile() {
 }
 
 void writeFile(int a, ll b) {
-    std::fstream file("12-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 std::array<int,4> getState(std::vector<moon> moons, int axis) {

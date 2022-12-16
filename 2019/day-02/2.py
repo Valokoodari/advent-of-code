@@ -1,17 +1,10 @@
-inputFile = "2-input"
-outputFile = "2-output"
+inputFile = "../../inputs/2019/02.txt"
 
 def readFile():
     file = open(inputFile, "r")
     code = list(map(int, file.readline().split(",")))
     file.close
     return code
-
-def writeFile(a, b):
-    file = open(outputFile, "w+")
-    file.write("Part 1: " + a + "\n")
-    file.write("Part 2: " + b)
-    file.close()
 
 def func(code, noun, verb):
     code[1] = noun
@@ -40,6 +33,7 @@ def main():
             solB = 100 * i + verb
             break
 
-    writeFile(str(solA), str(solB))
+    print("Part 1: " + str(solA))
+    print("Part 2: " + str(solB))
 
 if __name__ == '__main__': main()

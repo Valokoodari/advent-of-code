@@ -1,4 +1,5 @@
 #include "../ICC/intCodeComputer.h"
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -10,7 +11,7 @@ typedef std::vector<std::pair<int,int> > pointVec;
 typedef std::map<std::pair<int,int>, int> pointMap;
 
 intCode readFile() {
-    std::ifstream file("11-input");;
+    std::ifstream file("../../inputs/2019/11.txt");;
 
     intCode code;
     std::string line;
@@ -31,19 +32,14 @@ intCode readFile() {
 }
 
 void writeFile(int a, intVec2D b) {
-    std::fstream file("11-output", std::fstream::out);
-
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: ";
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2:\n";
     for (int i = 0; i < b.size(); i++) {
         for (int j = 0; j < b[i].size(); j++) {
-            file << ((b[i][j] == 1)? "##" : "  ");
+            std::cout << ((b[i][j] == 1)? "##" : "  ");
         }
-        if (i < b.size() -1)
-            file << "\n        ";
+        std::cout << "\n";
     }
-
-    file.close();
 }
 
 pointMap runRobot(intCode code, int startTile) {

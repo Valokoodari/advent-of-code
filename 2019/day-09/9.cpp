@@ -10,7 +10,7 @@
 typedef long long int ll;
 
 std::vector<ll> readFile() {
-    std::ifstream file("9-input");;
+    std::ifstream file("../../inputs/2019/09.txt");;
 
     std::vector<ll> code;
     std::string line;
@@ -31,10 +31,8 @@ std::vector<ll> readFile() {
 }
 
 void writeFile(ll a, ll b) {
-    std::fstream file("9-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b << "\n";
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 ll solve(std::vector<ll> code, ll input) {

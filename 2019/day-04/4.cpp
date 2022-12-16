@@ -22,7 +22,7 @@ vecPair readFile() {
 
 void writeFile(int a, int b) {
     std::cout << "Part 1: " << a << "\n";
-    std::cout << "Part 2: " << b;
+    std::cout << "Part 2: " << b << "\n";
 }
 
 std::vector<int> increase(std::vector<int> a) {
@@ -73,8 +73,7 @@ intPair solve(vecPair range) {
 }
 
 int main() {
-    freopen("4-input", "r", stdin);
-    freopen("4-output", "w", stdout);
+    freopen("../../inputs/2019/04.txt", "r", stdin);
 
     vecPair range = readFile();
 

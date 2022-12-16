@@ -1,4 +1,5 @@
 #include "../ICC/intCodeComputer.h"
+#include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
@@ -7,7 +8,7 @@ typedef std::string string;
 typedef long long int ll;
 
 std::vector<ll> readFile() {
-    std::ifstream file("7-input");
+    std::ifstream file("../../inputs/2019/07.txt");
 
     std::vector<ll> code;
     std::string line;
@@ -28,10 +29,8 @@ std::vector<ll> readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::ofstream file("7-output");
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 int solve(std::vector<ll> ampCode, int settings[]) {

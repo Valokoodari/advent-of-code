@@ -1,6 +1,7 @@
 #define _USE_MATH_DEFINES
 
 #include <algorithm>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -9,7 +10,7 @@
 typedef std::vector<std::vector<int> > intVec2D;
 
 intVec2D readFile() {
-    std::fstream file("10-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/10.txt", std::fstream::in);
 
     intVec2D map;
     std::string line;
@@ -25,10 +26,8 @@ intVec2D readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::fstream file("10-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 int countDetects(int x, int y, intVec2D map) {

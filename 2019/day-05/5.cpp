@@ -25,12 +25,11 @@ std::vector<ll> readFile() {
 
 void writeFile(int a, int b) {
     std::cout << "Part 1: " << a << "\n";
-    std::cout << "Part 2: " << b;
+    std::cout << "Part 2: " << b << "\n";
 }
 
 int main() {
-    freopen("5-input", "r", stdin);
-    freopen("5-output", "w", stdout);
+    freopen("../../inputs/2019/05.txt", "r", stdin);
 
     std::vector<ll> code = readFile();
 

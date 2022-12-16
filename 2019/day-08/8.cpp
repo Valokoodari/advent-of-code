@@ -11,7 +11,7 @@ strVec readFile() {
     strVec layerData;
 
     std::string data;
-    std::fstream file("8-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/08.txt", std::fstream::in);
     getline(file, data);
     file.close();
 
@@ -23,16 +23,13 @@ strVec readFile() {
 }
 
 void writeFile(int a, intVec2D b) {
-    std::fstream file("8-output", std::fstream::out);
+    std::cout << "Part 1: " << a << "\n";
     
-    file << "Part 1: " << a << "\n";
-    
-    file << "Part 2:\n";
+    std::cout << "Part 2:\n";
     for (int y = 0; y < b.size(); y++) {
         for (int x = 0; x < b[y].size(); x++)
-            file << ((b[y][x] == 0)? " " : "#");
-        if (y + 1 < b.size())
-            file << "\n";
+            std::cout << ((b[y][x] == 0)? " " : "#");
+        std::cout << "\n";
     }
 }
 

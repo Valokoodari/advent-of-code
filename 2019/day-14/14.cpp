@@ -1,3 +1,4 @@
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -12,7 +13,7 @@ std::map<std::string, int> g_storage;
 recipeList g_recipes;
 
 void readFile() {
-    std::fstream file("14-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/14.txt", std::fstream::in);
 
     std::string line;
     while(std::getline(file, line)) {
@@ -41,10 +42,8 @@ void readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::fstream file("14-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 ll calcOre(std::string product, ll amount) {

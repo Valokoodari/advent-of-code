@@ -24,8 +24,7 @@ int smartMassToFuel(int mass) {
 }
 
 int main() {
-    freopen("1-input", "r", stdin);
-    freopen("1-output", "w", stdout);
+    freopen("../../inputs/2019/01.txt", "r", stdin);
 
     while (std::cin >> g_mass) {
         g_fuel1 += massToFuel(std::stoi(g_mass));
@@ -33,7 +32,7 @@ int main() {
     }
 
     std::cout << "Part 1: " << g_fuel1 << "\n";
-    std::cout << "Part 2: " << g_fuel2;
+    std::cout << "Part 2: " << g_fuel2 << "\n";
 
     return 0;
 }

@@ -1,4 +1,5 @@
 #include "../ICC/intCodeComputer.h"
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -8,7 +9,7 @@ typedef long long int ll;
 typedef std::vector<long long int> intCode;
 
 intCode readFile() {
-    std::fstream file("23-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/23.txt", std::fstream::in);
     std::string line;
     std::getline(file, line);
     file.close();
@@ -28,10 +29,8 @@ intCode readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::fstream file("23-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 int main() {

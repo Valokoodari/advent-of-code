@@ -8,7 +8,7 @@ typedef long long int ll;
 typedef std::vector<long long int> intCode;
 
 intCode readFile() {
-    std::fstream file("25-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/25.txt", std::fstream::in);
     std::string line;
     std::getline(file, line);
     file.close();

@@ -134,7 +134,7 @@ int solveB(intMap2D eris) {
 }
 
 int main() {
-    std::fstream file("24-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/24.txt", std::fstream::in);
 
     intMap2D eris;
     std::string line;
@@ -148,12 +148,8 @@ int main() {
     int solA = solveA(eris);
     int solB = solveB(eris);
 
-    std::cout << solA << " " << solB << "\n";
-
-    file.open("24-output", std::fstream::out);
-    file << "Part 1: " << solA << "\n";
-    file << "Part 2: " << solB << "\n";
-    file.close();
+    std::cout << "Part 1: " << solA << "\n";
+    std::cout << "Part 2: " << solB << "\n";
 
     return 0;
 }

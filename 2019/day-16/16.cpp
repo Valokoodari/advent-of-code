@@ -1,3 +1,4 @@
+#include <iostream>
 #include <numeric>
 #include <fstream>
 #include <string>
@@ -5,7 +6,7 @@
 #include <cmath>
 
 std::vector<int> readFile() {
-    std::fstream file("16-input", std::fstream::in);
+    std::fstream file("../../inputs/2019/16.txt", std::fstream::in);
     std::string line;
     getline(file, line);
 
@@ -18,10 +19,8 @@ std::vector<int> readFile() {
 }
 
 void writeFile(int a, int b) {
-    std::fstream file("16-output", std::fstream::out);
-    file << "Part 1: " << a << "\n";
-    file << "Part 2: " << b;
-    file.close();
+    std::cout << "Part 1: " << a << "\n";
+    std::cout << "Part 2: " << b << "\n";
 }
 
 std::vector<int> phaseA(std::vector<int> signal) {

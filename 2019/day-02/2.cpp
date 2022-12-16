@@ -34,8 +34,7 @@ ll func(std::vector<ll> code, int noun, int verb) {
 }
 
 int main() {
-    freopen("2-input", "r", stdin);
-    freopen("2-output", "w", stdout);
+    freopen("../../inputs/2019/02.txt", "r", stdin);
 
     std::vector<ll> code = readInput();
 
@@ -45,7 +44,7 @@ int main() {
     for (int noun = 0; noun < 100; noun++) {
         int verb = result - func(code, noun, 0);
         if (verb >= 0 && verb < 100) {
-            std::cout << "Part 2: " << 100 * noun + verb;
+            std::cout << "Part 2: " << 100 * noun + verb << "\n";
             break;
         } 
     }
