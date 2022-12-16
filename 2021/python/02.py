@@ -1,4 +1,4 @@
-cs = [l.split(" ") for l in open("../inputs/2021/02.txt").readlines()]
+cs = [l.split(" ") for l in open("../../inputs/2021/02.txt").readlines()]
 
 h,a,d = 0,0,0
 for c,x in cs:
