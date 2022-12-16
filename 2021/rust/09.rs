@@ -21,7 +21,7 @@ fn fbs(x: usize, y: usize, ps: &Vec<Vec<u8>>, ms: &mut Vec<Vec<(usize, usize)>>)
 }
 
 fn main() {
-    let ps: Vec<Vec<u8>> = std::fs::read_to_string("inputs/09.in")
+    let ps: Vec<Vec<u8>> = std::fs::read_to_string("../../inputs/2021/09.txt")
         .unwrap()
         .lines()
         .map(|l| l.as_bytes().into_iter().map(|&b| b - b'0').collect())

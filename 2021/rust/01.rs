@@ -1,5 +1,5 @@
 fn main() {
-    let ns: Vec<u32> = std::fs::read_to_string("../inputs/01.in")
+    let ns: Vec<u32> = std::fs::read_to_string("../../inputs/2021/01.txt")
         .unwrap()
         .split_whitespace()
         .map(|x| x.parse::<u32>().unwrap())

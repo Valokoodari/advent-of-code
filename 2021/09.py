@@ -1,4 +1,4 @@
-ps = [[int(c) for c in l.strip()] for l in open("inputs/09.in").read().strip().splitlines()]
+ps = [[int(c) for c in l.strip()] for l in open("../inputs/2021/09.txt").read().strip().splitlines()]
 bs, ms = {}, [[(-1,-1) for _ in r] for r in ps]
 
 def fbs(x,y):

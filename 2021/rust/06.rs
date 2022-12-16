@@ -1,5 +1,5 @@
 fn main() {
-    let ns: Vec<usize> = std::fs::read_to_string("inputs/06.in")
+    let ns: Vec<usize> = std::fs::read_to_string("../../inputs/2021/06.txt")
         .unwrap()
         .split(",")
         .map(|n| n.parse::<usize>().unwrap())

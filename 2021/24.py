@@ -1,4 +1,4 @@
-bs = [tuple(int(b.splitlines()[i][5:]) for i in (3,4,14)) for b in open("inputs/24.txt").read().strip().split("inp w\n")[1:]]
+bs = [tuple(int(b.splitlines()[i][5:]) for i in (3,4,14)) for b in open("../inputs/2021/24.txt").read().strip().split("inp w\n")[1:]]
 
 ss, a1, a2 = [], [0]*14, [0]*14
 for i in range(len(bs)):

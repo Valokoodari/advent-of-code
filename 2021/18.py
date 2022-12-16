@@ -1,4 +1,4 @@
-ns = [eval(x.strip()) for x in open('inputs/18.txt').read().strip().splitlines()]
+ns = [eval(x.strip()) for x in open("../inputs/2021/18.txt").read().strip().splitlines()]
 
 def fsm(n):
     return n if type(n) == int else 3*fsm(n[0]) + 2*fsm(n[1])

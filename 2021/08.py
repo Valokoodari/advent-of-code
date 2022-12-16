@@ -1,4 +1,4 @@
-ls = [l.strip().split(" | ") for l in open("inputs/08.in").readlines()]
+ls = [l.strip().split(" | ") for l in open("../inputs/2021/08.txt").readlines()]
 ls = [([tuple(sorted([c for c in n])) for n in p.split(" ")], [tuple(sorted([c for c in n])) for n in o.split(" ")]) for p,o in ls]
 
 s, sd = 0, { 2: 1, 4: 4, 3: 7, 7: 8 }

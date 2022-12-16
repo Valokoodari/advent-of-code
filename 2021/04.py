@@ -1,4 +1,4 @@
-ds = open("inputs/04.in").read().split("\n\n")
+ds = open("../inputs/2021/04.txt").read().split("\n\n")
 ws,ns = [],[int(n) for n in ds.pop(0).split(",")]
 bs = [[[(False, int(n)) for n in row.split(" ") if n != ""] for row in b.splitlines()] for b in ds]
 

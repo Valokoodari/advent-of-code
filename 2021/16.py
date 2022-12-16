@@ -1,4 +1,4 @@
-a1, d = 0, "".join("{:04b}".format(int(c,16)) for c in open("inputs/16.txt").read().strip())
+a1, d = 0, "".join("{:04b}".format(int(c,16)) for c in open("../inputs/2021/16.txt").read().strip())
 
 ts = {
     0: sum,

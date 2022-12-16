@@ -1,4 +1,4 @@
-p1,p2,cs = {},{},[[int(n) for n in l.replace(" -> ", ",").split(",")] for l in open("inputs/05.in").readlines()]
+p1,p2,cs = {},{},[[int(n) for n in l.replace(" -> ", ",").split(",")] for l in open("../inputs/2021/05.txt").readlines()]
 
 for ax,ay,bx,by in cs:
     mx,my = (ax-bx) // abs(ax-bx) if (ax-bx) != 0 else 0, (ay-by) // abs(ay-by) if (ay-by) != 0 else 0

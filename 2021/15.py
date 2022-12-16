@@ -1,6 +1,6 @@
 from heapq import heappop,heappush
 
-ls = [l.strip() for l in open("inputs/15.in").read().strip().splitlines()]
+ls = [l.strip() for l in open("../inputs/2021/15.txt").read().strip().splitlines()]
 cs = [[int(c) for c in l] for l in ls]
 
 def fds(cs):

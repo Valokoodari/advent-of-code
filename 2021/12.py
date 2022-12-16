@@ -1,4 +1,4 @@
-rs, ls = {}, [l.strip().split("-") for l in open("inputs/12.in").read().strip().splitlines()]
+rs, ls = {}, [l.strip().split("-") for l in open("../inputs/2021/12.txt").read().strip().splitlines()]
 for a,b in ls:
     rs[a] = rs.get(a, []) + [b]
     rs[b] = rs.get(b, []) + [a]

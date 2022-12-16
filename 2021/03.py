@@ -1,4 +1,4 @@
-ls = [l.strip() for l in open("inputs/03.in").readlines()]
+ls = [l.strip() for l in open("../inputs/2021/03.txt").readlines()]
 
 ms = lambda ns: "".join([max([(i, c.count(i)) for i in set(c)], key=lambda x: x[1] + int(x[0]) * 0.1)[0] for c in list(zip(*ns))])
 

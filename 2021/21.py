@@ -1,4 +1,4 @@
-ls = [int(l.strip().split(" ")[-1])-1 for l in open("inputs/21.txt").read().strip().splitlines()]
+ls = [int(l.strip().split(" ")[-1])-1 for l in open("../inputs/2021/21.txt").read().strip().splitlines()]
 
 d, r = 0, 0
 def frd():

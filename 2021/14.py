@@ -1,4 +1,4 @@
-ls = [l.strip() for l in open("inputs/14.in").read().strip().splitlines()]
+ls = [l.strip() for l in open("../inputs/2021/14.txt").read().strip().splitlines()]
 ps, rs = {}, {(l[:2]): l[6] for l in ls[2:]}
 for i in range(len(ls[0])-1):
     ps[ls[0][i:i+2]] = ps.get(ls[0][i:i+2], 0) + 1

@@ -1,4 +1,4 @@
-ls = [l.strip() for l in open("inputs/25.txt").read().strip().splitlines()]
+ls = [l.strip() for l in open("../inputs/2021/25.txt").read().strip().splitlines()]
 u, a, mx, my = 1, 0, len(ls[0]), len(ls)
 es = { (x, y) for y, l in enumerate(ls) for x, c in enumerate(l) if c == ">" }
 ss =  { (x, y) for y, l in enumerate(ls) for x, c in enumerate(l) if c == "v" }

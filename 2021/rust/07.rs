@@ -1,5 +1,5 @@
 fn main() {
-    let mut ns: Vec<i32> = std::fs::read_to_string("inputs/07.in")
+    let mut ns: Vec<i32> = std::fs::read_to_string("../../inputs/2021/07.txt")
         .unwrap()
         .split(",")
         .map(|n| n.parse::<i32>().unwrap())

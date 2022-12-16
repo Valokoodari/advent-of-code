@@ -1,4 +1,4 @@
-ls = [l.strip() for l in open("inputs/17.txt").read().strip().splitlines()]
+ls = [l.strip() for l in open("../inputs/2021/17.txt").read().strip().splitlines()]
 ta = [tuple(map(int, l.strip()[2:].split(".."))) for l in ls[0][13:].split(",")]
 
 c, vxs = 0, set()

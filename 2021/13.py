@@ -1,4 +1,4 @@
-ls = [p.splitlines() for p in open("inputs/13.in").read().strip().split("\n\n")]
+ls = [p.splitlines() for p in open("../inputs/2021/13.txt").read().strip().split("\n\n")]
 ns = set(tuple(map(int, l.split(","))) for l in ls[0])
 fs = [(l[11],int(l[13:])) for l in ls[1]]
 

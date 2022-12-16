@@ -48,7 +48,7 @@ class S():
         return sum(abs(self.p[i] - other.p[i]) for i in range(3))
 
 
-rs = [[tuple(map(int, x.split(","))) for x in l.strip().splitlines()[1:]] for l in open("inputs/19.txt").read().strip().split("\n\n")]
+rs = [[tuple(map(int, x.split(","))) for x in l.strip().splitlines()[1:]] for l in open("../inputs/2021/19.txt").read().strip().split("\n\n")]
 
 ss, gs = [S(s) for s in rs], set()
 bs = ss[0].gbs()

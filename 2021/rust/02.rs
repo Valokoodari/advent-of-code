@@ -1,7 +1,7 @@
 use std::string::String;
 
 fn main() {
-    let cs: Vec<(String, u32)> = std::fs::read_to_string("../inputs/02.in")
+    let cs: Vec<(String, u32)> = std::fs::read_to_string("../../inputs/2021/02.txt")
         .unwrap()
         .lines()
         .map(|l| {

@@ -1,4 +1,4 @@
-ds = open("inputs/20.txt").read().strip().replace("#","1").replace(".","0").split("\n\n")
+ds = open("../inputs/2021/20.txt").read().strip().replace("#","1").replace(".","0").split("\n\n")
 es, gs, b = [c for c in ds[0]], [[c for c in r] for r in ds[1].splitlines()], "0"
 
 def fep(gs, b):

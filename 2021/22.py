@@ -1,4 +1,4 @@
-ls = [l.strip().split(",") for l in open("inputs/22.txt").read().strip().replace(" ", ",").replace("..", ",").replace("x=", "").replace("y=","").replace("z=","").splitlines()]
+ls = [l.strip().split(",") for l in open("../inputs/2021/22.txt").read().strip().replace(" ", ",").replace("..", ",").replace("x=", "").replace("y=","").replace("z=","").splitlines()]
 ls = list(map(lambda l: tuple([l[0] == "on"] + list(map(int, l[1:]))), ls))
 
 def fgi(c0, c1):

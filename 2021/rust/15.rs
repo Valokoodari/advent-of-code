@@ -26,7 +26,7 @@ fn fds(cs: &Vec<Vec<u8>>) -> u32 {
 }
 
 fn main() {
-    let cs: Vec<Vec<u8>> = std::fs::read_to_string("inputs/15.in")
+    let cs: Vec<Vec<u8>> = std::fs::read_to_string("../../inputs/2021/15.txt")
         .unwrap()
         .lines()
         .map(|l| l.bytes().map(|b| b - b'0').collect())

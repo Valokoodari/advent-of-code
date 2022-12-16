@@ -1,4 +1,4 @@
-f,s,fs,os = 0,0,[],[[int(c) for c in l.strip()] for l in open("inputs/11.in").read().strip().splitlines()]
+f,s,fs,os = 0,0,[],[[int(c) for c in l.strip()] for l in open("../inputs/2021/11.txt").read().strip().splitlines()]
 
 def ff(os, x, y):
     global fs

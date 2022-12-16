@@ -19,7 +19,7 @@ fn ftn(os: &Vec<bool>) -> u32 {
 }
 
 fn main() {
-    let ns: Vec<Vec<bool>> = std::fs::read_to_string("inputs/03.in")
+    let ns: Vec<Vec<bool>> = std::fs::read_to_string("../../inputs/2021/03.txt")
         .unwrap()
         .lines()
         .map(|l| l.chars().map(|c| c == '1').collect())

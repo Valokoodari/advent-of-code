@@ -1,4 +1,4 @@
-ls = [l.strip() for l in open("inputs/10.in").read().strip().splitlines()]
+ls = [l.strip() for l in open("../inputs/2021/10.txt").read().strip().splitlines()]
 bs = { "(": (")", 1), "[": ("]", 2), "{": ("}", 3), "<": (">", 4) }
 es = { ")": 3, "]": 57, "}": 1197, ">": 25137 }
 
