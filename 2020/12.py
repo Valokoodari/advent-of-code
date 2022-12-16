@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-ls = [[l[0], int(l[1:])] for l in open("inputs/12.in", "r").readlines()]
+ls = [[l[0], int(l[1:])] for l in open("../inputs/2020/12.txt", "r").readlines()]
 
 ms = { "N": [1, 0], "S": [-1, 0], "E": [0, 1], "W": [0, -1] }
 ds = { 0: "N", 90: "E", 180: "S", 270: "W" }

@@ -1,5 +1,4 @@
-#!venv/bin/python3
-ds = [[c for c in [int(i) for i in l.split("\n")[1:]]] for l in open("inputs/22.in", "r").read().split("\n\n")]
+ds = [[c for c in [int(i) for i in l.split("\n")[1:]]] for l in open("../inputs/2020/22.txt", "r").read().split("\n\n")]
 
 def p2(d1, d2, g):
     r1,r2,sw = [],[],0

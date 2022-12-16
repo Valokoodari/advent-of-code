@@ -1,5 +1,4 @@
-#!venv/bin/python3
-ls = [[l.strip()[:-1].split(" (contains ")[0].split(" "), l.strip()[:-1].split(" (contains ")[1].split(", ")] for l in open("inputs/21.in", "r").readlines()]
+ls = [[l.strip()[:-1].split(" (contains ")[0].split(" "), l.strip()[:-1].split(" (contains ")[1].split(", ")] for l in open("../inputs/2020/21.txt", "r").readlines()]
 
 al = {}
 for l in ls:

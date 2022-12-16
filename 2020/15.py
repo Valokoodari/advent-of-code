@@ -1,5 +1,4 @@
-#!venv/bin/python3
-ts = {int(n): i for i,n in enumerate(open("inputs/15.in", "r").readline().split(","))}
+ts = {int(n): i for i,n in enumerate(open("../inputs/2020/15.txt", "r").readline().split(","))}
 
 a1,l = 0,ts.popitem()[0]
 for i in range(len(ts), 30000000-1):

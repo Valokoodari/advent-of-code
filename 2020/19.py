@@ -1,7 +1,6 @@
-#!venv/bin/python3
 import re
 
-ps = [p.split("\n") for p in open("inputs/19.in", "r").read().split("\n\n")]
+ps = [p.split("\n") for p in open("../inputs/2020/19.txt", "r").read().split("\n\n")]
 rs = {l[0][0]: [[l[i][0]] if len(l[i]) == 1 else [l[i][0], l[i][1]] for i in range(1, len(l))] for l in [[p.split(" ") for p in re.split(": | \| ", l)] for l in ps[0]]}
 
 h = {}

@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 import itertools as it;
 
-ns = [int(l.strip()) for l in open("inputs/09.in", "r").readlines()]
+ns = [int(l.strip()) for l in open("../inputs/2020/09.txt", "r").readlines()]
 
 def p1():
     for i in range(0, len(ns)-25):

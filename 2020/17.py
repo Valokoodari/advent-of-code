@@ -1,8 +1,7 @@
-#!venv/bin/python3
 import itertools as it
 
 def f(d):
-    cs = {(x,y,0,0):1 for x,l in enumerate(open("inputs/17.in")) for y,c in enumerate(l.strip()) if c == "#"}
+    cs = {(x,y,0,0):1 for x,l in enumerate(open("../inputs/2020/17.txt")) for y,c in enumerate(l.strip()) if c == "#"}
     for _ in range(6):
         cc = cs.copy()
         rs = [j for j in range(min([min(t) for t in cs])-1, max([max(t) for t in cs])+2)]

@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-ns = [int(l.strip()) for l in open("inputs/10.in", "r").readlines()]
+ns = [int(l.strip()) for l in open("../inputs/2020/10.txt", "r").readlines()]
 
 ns.extend([0, max(ns)+3])
 ns.sort()

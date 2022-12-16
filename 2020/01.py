@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 import itertools as it, math
 
-ns = list(map(int, open("inputs/01.in", "r").readlines()))
+ns = list(map(int, open("../inputs/2020/01.txt", "r").readlines()))
 
 def func(n):
     for a in it.combinations(ns, n):

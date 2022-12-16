@@ -1,5 +1,4 @@
-#!venv/bin/python3
-ks = [int(l.strip()) for l in open("inputs/25.in")]
+ks = [int(l.strip()) for l in open("../inputs/2020/25.txt")]
 
 def f(k):
     a,t = 7,1

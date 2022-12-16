@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-ls = [l.strip() for l in open("inputs/05.in", "r").readlines()]
+ls = [l.strip() for l in open("../inputs/2020/05.txt", "r").readlines()]
 
 tb = { "F": "0", "B": "1", "L": "0", "R": "1" }
 

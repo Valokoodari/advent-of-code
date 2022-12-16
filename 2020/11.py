@@ -1,5 +1,4 @@
-#!venv/bin/python3
-ss = {complex(i,j): c for i,j,c in [(i,j,c) for i,l in enumerate(open("inputs/11.in", "r")) for j,c in enumerate(l.strip())]}
+ss = {complex(i,j): c for i,j,c in [(i,j,c) for i,l in enumerate(open("../inputs/2020/11.txt", "r")) for j,c in enumerate(l.strip())]}
 
 ds = ( 1-1j, -1, -1+1j, -1j, 1j, -1-1j, 1, 1+1j )
 

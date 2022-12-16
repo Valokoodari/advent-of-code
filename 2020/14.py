@@ -1,7 +1,6 @@
-#!venv/bin/python3
 import re
 
-ls = [re.split(" = ", l.strip()) for l in open("inputs/14.in", "r").readlines()]
+ls = [re.split(" = ", l.strip()) for l in open("../inputs/2020/14.txt", "r").readlines()]
 
 mem1,mem2,b = {},{},36
 

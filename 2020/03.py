@@ -1,8 +1,7 @@
-#!/usr/bin/python3
 import re
 import math
 
-ls = [re.split("", l)[1:-2] for l in open("inputs/03.in", "r").readlines()]
+ls = [re.split("", l)[1:-2] for l in open("../inputs/2020/03.txt", "r").readlines()]
 
 def func(cp, rp):
     a,c = 0,0

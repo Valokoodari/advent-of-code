@@ -1,7 +1,6 @@
-#!venv/bin/python3
 import math
 
-ls = open("inputs/13.in", "r").readlines()
+ls = open("../inputs/2020/13.txt", "r").readlines()
 ft,bs = int(ls[0]), { int(r): i for i,r in enumerate(ls[1].split(",")) if r != "x" }
 
 a1 = []

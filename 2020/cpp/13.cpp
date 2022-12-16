@@ -7,7 +7,7 @@
 std::map<int, int> readFile() {
     std::string line;
     std::map<int, int> ns;
-    std::fstream file("../inputs/13.in", std::fstream::in);
+    std::fstream file("../../inputs/2020/13.txt", std::fstream::in);
 
     getline(file, line);
     ns.insert(std::pair<int,int>(-1, std::stoi(line)));
@@ -91,8 +91,8 @@ int main() {
         value.push_back(it->second);
     }
 
-    std::cout << part1(bs) << std::endl;
-    std::cout << part2(key, value) << std::endl;
+    std::cout << "Part 1: " << part1(bs) << std::endl;
+    std::cout << "Part 2: " << part2(key, value) << std::endl;
 
     return 0;
 }

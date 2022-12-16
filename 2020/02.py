@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 import re
 
-l = [re.split("[- :\n]", l) for l in open("inputs/02.in", "r").readlines()]
+l = [re.split("[- :\n]", l) for l in open("../inputs/2020/02.txt", "r").readlines()]
 
 a,b = 0,0
 for p in l:

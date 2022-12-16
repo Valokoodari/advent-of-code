@@ -1,7 +1,6 @@
-#!venv/bin/python3
 import re
 
-ls = [l.strip() for l in open("inputs/18.in", "r").readlines()]
+ls = [l.strip() for l in open("../inputs/2020/18.txt", "r").readlines()]
 
 def a(ss):
     ss = ss.split(" ")

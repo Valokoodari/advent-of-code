@@ -1,10 +1,9 @@
-#!/usr/bin/python3
 import re
 
 rs,bs,os = " bags contain | bags?\.| bags?, ",{},{}
 
 a1,a2 = 0,0
-for l in [re.split(rs, l) for l in open("inputs/07.in", "r").readlines()]:
+for l in [re.split(rs, l) for l in open("../inputs/2020/07.txt", "r").readlines()]:
     bs[l[0]] = {}
     for b in [b.split(" ", 1) for b in l[1:-1]]:
         if b[0] == "no": continue

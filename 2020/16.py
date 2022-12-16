@@ -1,7 +1,6 @@
-#!venv/bin/python3
 import re
 
-ps = open("inputs/16.in", "r").read().split("\n\n")
+ps = open("../inputs/2020/16.txt", "r").read().split("\n\n")
 ot = [int(v) for v in ps[1].split("\n")[1].split(",")]
 ts = [[int(v) for v in l.split(",")] for l in ps[2].split("\n")[1:]]
 fs = {f: [int(v) for v in re.split("-| or ", rs)] for f,rs in [l.split(": ") for l in ps[0].split("\n")]}

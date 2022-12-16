@@ -1,8 +1,7 @@
-#!venv/bin/python3
 ds = {"e": (-1,1,0), "se": (0,1,-1), "sw": (1,0,-1), "w": (1,-1,0), "nw": (0,-1,1), "ne": (-1,0,1)}
 ts = set()
 
-for l in [l.strip() for l in open("inputs/24.in", "r").readlines()]:
+for l in [l.strip() for l in open("../inputs/2020/24.txt", "r").readlines()]:
     c,i = (0,0,0),0
     while i < len(l):
         m = ds[l[i]] if l[i] == "e" or l[i] == "w" else ds[l[i]+l[i+1]]

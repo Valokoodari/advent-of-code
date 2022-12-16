@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 import re
 
-ps = open("inputs/04.in", "r").read().split("\n\n")
+ps = open("../inputs/2020/04.txt", "r").read().split("\n\n")
 
 fs = {
     "hgt": "(((1[5-8][0-9]|19[0-3])cm)|((59|6[0-9]|7[0-6])in))",

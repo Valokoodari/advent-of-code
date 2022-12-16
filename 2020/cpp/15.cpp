@@ -7,7 +7,7 @@ int main() {
     std::vector<int> ts = std::vector<int>(30000000, -1);
     
     std::string line;
-    std::fstream file("../inputs/15.in", std::fstream::in);
+    std::fstream file("../../inputs/2020/15.txt", std::fstream::in);
     getline(file, line);
     file.close();
 

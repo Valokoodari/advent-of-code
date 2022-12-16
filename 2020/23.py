@@ -1,5 +1,4 @@
-#!venv/bin/python3
-cs = [int(c) for c in open("inputs/23.in", "r").readline().strip()]
+cs = [int(c) for c in open("../inputs/2020/23.txt", "r").readline().strip()]
 
 def f(cs, ts):
     p,cc = {n: cs[(i+1)%len(cs)] for i,n in enumerate(cs)},cs[-1]

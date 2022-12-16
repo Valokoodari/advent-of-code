@@ -1,4 +1,3 @@
-#!venv/bin/python3
 import math
 
 rt = lambda t: list(zip(*t[::-1]))
@@ -7,7 +6,7 @@ ch = lambda t1,t2: "".join(t1[9]) == "".join(t2[0])
 cv = lambda t1,t2: ch(rt(t1), rt(t2))
 
 ## Parsing
-ts = {int(l[0][5:-1]): [[c for c in l[i]] for i in range(1, len(l))] for l in [l.strip().split("\n") for l in open("inputs/20.in", "r").read().split("\n\n")]}
+ts = {int(l[0][5:-1]): [[c for c in l[i]] for i in range(1, len(l))] for l in [l.strip().split("\n") for l in open("../inputs/2020/20.txt", "r").read().split("\n\n")]}
 
 # Part 1
 ns = {}
