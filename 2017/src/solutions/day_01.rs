@@ -1,9 +1,25 @@
 pub fn part_1(input: &str) -> String {
-    "0".to_string()
+    input.lines().map(|l| {
+        let mut sum = 0;
+        for i in 0..l.len() {
+            if l.chars().nth(i).unwrap() == l.chars().nth((i + 1) % l.len()).unwrap() {
+                sum += l.chars().nth(i).unwrap().to_digit(10).unwrap();
+            }
+        }
+        sum
+    }).sum::<u32>().to_string()
 }
 
 pub fn part_2(input: &str) -> String {
-    "0".to_string()
+    input.lines().map(|l| {
+        let mut sum = 0;
+        for i in 0..l.len() {
+            if l.chars().nth(i).unwrap() == l.chars().nth((i + l.len() / 2) % l.len()).unwrap() {
+                sum += l.chars().nth(i).unwrap().to_digit(10).unwrap();
+            }
+        }
+        sum
+    }).sum::<u32>().to_string()
 }
 
 #[cfg(test)]
