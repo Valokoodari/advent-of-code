@@ -3,7 +3,7 @@ use std::fs;
 
 fn main() {
     let mut cs = fs
-        ::read_to_string("../inputs/01.txt")
+        ::read_to_string("../../inputs/2022/01.txt")
         .unwrap()
         .trim()
         .split("\n\n")
