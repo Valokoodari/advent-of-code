@@ -36,7 +36,7 @@ def test(day):
 
 
 def solve(day, part):
-    data = open(f"inputs/{day:02d}.txt").read().rstrip()
+    data = open(f"../inputs/2022/{day:02d}.txt").read().rstrip()
 
     start_time = process_time()
     answer = eval(f"day_{day:02d}.part_{part}")(data)
