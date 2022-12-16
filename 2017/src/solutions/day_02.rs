@@ -1,9 +1,22 @@
 pub fn part_1(input: &str) -> String {
-    "0".to_string()
+    input.lines().map(|l| {
+        let ns = l.split_whitespace().map(|n| n.parse::<u32>().unwrap()).collect::<Vec<u32>>();
+        ns.iter().max().unwrap() - ns.iter().min().unwrap()
+    }).sum::<u32>().to_string()
 }
 
 pub fn part_2(input: &str) -> String {
-    "0".to_string()
+    input.lines().map(|l| {
+        let ns = l.split_whitespace().map(|n| n.parse::<u32>().unwrap()).collect::<Vec<u32>>();
+        for i in 0..ns.len() {
+            for j in 0..ns.len() {
+                if i != j && ns[i] % ns[j] == 0 {
+                    return ns[i] / ns[j];
+                }
+            }
+        }
+        0
+    }).sum::<u32>().to_string()
 }
 
 #[cfg(test)]
