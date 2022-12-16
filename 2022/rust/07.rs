@@ -5,7 +5,7 @@ fn main() {
     let mut path = Vec::new();
     let mut dirs = std::collections::HashMap::new();
 
-    fs::read_to_string("../inputs/07.txt")
+    fs::read_to_string("../../inputs/2022/07.txt")
         .unwrap()
         .trim()
         .split("\n")
