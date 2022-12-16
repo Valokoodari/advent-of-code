@@ -7,6 +7,7 @@ from solutions import day_01, day_02, day_03, day_04, day_05, day_06, day_07, \
 
 
 total_time = 0
+YEAR = 2022
 NAMES = (
     "Calorie Counting",
     "Rock Paper Scissors",
@@ -36,7 +37,7 @@ def test(day):
 
 
 def solve(day, part):
-    data = open(f"../inputs/2022/{day:02d}.txt").read().rstrip()
+    data = open(f"../inputs/{YEAR}/{day:02d}.txt").read().rstrip()
 
     start_time = process_time()
     answer = eval(f"day_{day:02d}.part_{part}")(data)
@@ -49,18 +50,20 @@ def solve(day, part):
 
 
 def run(day):
+    time1, time2 = 0, 0
     print(f"Day {day}: {NAMES[day-1]} ({test(day)})")
 
     answer, time1 = solve(day, 1)
     print(f"  Part 1: {colored(answer, 'cyan')}")
 
-    answer, time2 = solve(day, 2)
-    print(f"  Part 2: {colored(answer, 'cyan')}")
+    if day != 25:
+        answer, time2 = solve(day, 2)
+        print(f"  Part 2: {colored(answer, 'cyan')}")
 
     time_str_1 = colored(f"{time1*1000:.3f}", "magenta")
     time_str_2 = colored(f"{time2*1000:.3f}", "magenta")
     time_str = colored(f"{(time1+time2)*1000:.3f} ms", "magenta")
-    print(f"  ({time_str}) [{time_str_1} / {time_str_2}]\n")
+    print(f"  ({time_str})" + (f" [{time_str_1} / {time_str_2}]" if day != 25 else "") + "\n")
 
 
 def main():
