@@ -5,7 +5,7 @@ ps = [[int(p) for p in l.split(": ")[1]
        .replace(" texture ", "")
        .replace(" calories ", "")
        .split(",")]
-      for l in open("inputs/15.in").read().strip().splitlines()]
+      for l in open("../inputs/2015/15.txt").read().strip().splitlines()]
 
 def fl(ps, ts, p2):
     if len(ts)+1 == len(ps):

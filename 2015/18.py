@@ -1,7 +1,4 @@
-from types import new_class
-
-
-ls = [[0 if c == '.' else 1 for c in l] for l in open("inputs/18.in").read().strip().splitlines()]
+ls = [[0 if c == '.' else 1 for c in l] for l in open("../inputs/2015/18.txt").read().strip().splitlines()]
 ls2 = [l[:] for l in ls]
 
 def fco(ls):

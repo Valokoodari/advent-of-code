@@ -1,6 +1,6 @@
 p1,p2,ps,ds = int(1e12),0,[],{}
 
-for l in open("inputs/09.in").readlines():
+for l in open("../inputs/2015/09.txt").readlines():
     a,_,b,_,d = l.split()
     if a not in ps:
         ps.append(a)

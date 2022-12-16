@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import re
 
 lights = [[False]*1000 for i in range(1000)]
@@ -27,7 +26,7 @@ def turn_off(s):
             if (lights1[i][j] < 0):
                 lights1[i][j] = 0
 
-for line in open("inputs/06.in", "r").readlines():
+for line in open("../inputs/2015/06.txt", "r").readlines():
     if "toggle" in line:
         toggle(line)
     if "turn on" in line:

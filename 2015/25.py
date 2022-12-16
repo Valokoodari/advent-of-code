@@ -1,4 +1,4 @@
-r,c = open("inputs/25.in").read().strip().split(" row ")[1].split(", column ")
+r,c = open("../inputs/2015/25.txt").read().strip().split(" row ")[1].split(", column ")
 r,c = int(r), int(c[:-1])
 n = sum(range(1,c+1)) + sum(range(c, r+c-1))
 

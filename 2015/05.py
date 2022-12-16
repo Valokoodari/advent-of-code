@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-lines = open("inputs/05.in", "r").readlines()
+lines = open("../inputs/2015/05.txt", "r").readlines()
 
 def vowels(s):
     v = ["a", "e", "i", "o", "u"]

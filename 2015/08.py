@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-l = [l.split("\n")[0] for l in open("inputs/08.in", "r").readlines()]
+l = [l.split("\n")[0] for l in open("../inputs/2015/08.txt", "r").readlines()]
 
 a,b = 0,0
 for s in l:

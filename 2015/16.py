@@ -1,4 +1,4 @@
-ls = [l.strip().split(" ")[1:] for l in open("inputs/16.in").read().strip().splitlines()]
+ls = [l.strip().split(" ")[1:] for l in open("../inputs/2015/16.txt").read().strip().splitlines()]
 
 eq = lambda a, b: a == b
 gt = lambda a, b: a > b

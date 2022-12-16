@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 x,y,xs,ys,xr,yr,ha,hb = 0,0,0,0,0,0,{(0,0)},{(0,0)}
 d = {'^': (0,1), 'v': (0,-1), '>': (1,0), '<': (-1,0)}
-for i,c in enumerate(open("inputs/03.in").readline()):
+for i,c in enumerate(open("../inputs/2015/03.txt").readline()):
     x,y = x+d[c][0],y+d[c][1]
     ha.add((x,y))
     if (i&1):

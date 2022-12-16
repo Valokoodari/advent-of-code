@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-lines = open("inputs/07.in", "r").readlines()
+lines = open("../inputs/2015/07.txt", "r").readlines()
 for i,line in enumerate(lines):
     lines[i] = line.split("\n")[0]
 

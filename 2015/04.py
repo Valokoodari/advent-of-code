@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 import hashlib
 
-line = open("inputs/04.in", "r").readline()
+line = open("../inputs/2015/04.txt", "r").readline()
 
 def find(a):
     for i in range(0, 10000000):

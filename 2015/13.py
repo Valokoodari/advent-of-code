@@ -1,6 +1,6 @@
 from itertools import permutations
 
-ls = [l.split(",") for l in open("inputs/13.in").read().strip()
+ls = [l.split(",") for l in open("../inputs/2015/13.txt").read().strip()
     .replace(" would gain ", ",")
     .replace(" would lose ", ",-")
     .replace(" happiness units by sitting next to ", ",")

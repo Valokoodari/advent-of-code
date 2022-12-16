@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 p,r = 0,0
 for l in open("../inputs/2015/02.txt").readlines():
     a,b,c,*_ = sorted(map(int, l.split('x')))

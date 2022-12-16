@@ -1,4 +1,4 @@
-ls = [l.split(",") for l in open("inputs/14.in").read().strip()
+ls = [l.split(",") for l in open("../inputs/2015/14.txt").read().strip()
     .replace(" can fly ", ",")
     .replace(" km/s for ", ",")
     .replace(" seconds, but then must rest for ", ",")
