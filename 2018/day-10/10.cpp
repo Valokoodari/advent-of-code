@@ -12,8 +12,7 @@ std::vector<std::vector<int>> points;
 std::vector<std::vector<int>> result;
 
 int main() {
-    freopen("10_input", "r", stdin);
-    freopen("10_output", "w", stdout);
+    freopen("../../inputs/2018/10.txt", "r", stdin);
 
     while (std::getline(std::cin, input)) {
         points.push_back({

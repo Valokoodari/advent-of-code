@@ -8,8 +8,7 @@ int a,s;
 bool d = false;
 
 int main() {
-    freopen("2_input", "r", stdin);
-    freopen("2b_output", "w", stdout);
+    freopen("../../inputs/2018/02.txt", "r", stdin);
 
     while (std::cin >> x && !d) {
         for (int i = 0; i < ids.size(); i++) {

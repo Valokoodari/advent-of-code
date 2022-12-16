@@ -26,8 +26,7 @@ bool contains(std::vector<int> t, int n) {
 }
 
 int main() {
-    freopen("7_input", "r", stdin);
-    freopen("7a_output", "w", stdout);
+    freopen("../../inputs/2018/07.txt", "r", stdin);
 
     while (std::getline(std::cin, in)) {
         o[(int)in.substr(36,1)[0] - 65].push_back((int)in.substr(5, 1)[0] - 65);

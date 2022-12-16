@@ -9,8 +9,7 @@ std::vector<int> t(60);
 int g,f,sg,st;
 
 int main() {
-    freopen("4_input", "r", stdin);
-    freopen("4a_output", "w", stdout);
+    freopen("../../inputs/2018/04.txt", "r", stdin);
 
     while(std::getline(std::cin, r)) {
         rs.push_back(r);

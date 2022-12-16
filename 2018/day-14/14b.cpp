@@ -7,8 +7,7 @@ std::vector<int> elves = {0, 1};
 std::vector<int> scores = {3, 7};
 
 int main() {
-    freopen("14_input", "r", stdin);
-    freopen("14b_output", "w", stdout);
+    freopen("../../inputs/2018/14.txt", "r", stdin);
 
     std::cin >> input;
 

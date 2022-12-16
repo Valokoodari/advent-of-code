@@ -20,8 +20,7 @@ unsigned int highest(std::vector<unsigned int> scores) {
 }
 
 int main() {
-    freopen("9_input", "r", stdin);
-    freopen("9b_output", "w", stdout);
+    freopen("../../inputs/2018/09.txt", "r", stdin);
 
     std::getline(std::cin, input);
     players.resize(stoi(input.substr(0, input.find(" "))));

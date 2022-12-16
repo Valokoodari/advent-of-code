@@ -12,8 +12,7 @@ std::vector<std::vector<int>> map;
 std::vector<std::vector<int>> moves = {{-1,0}, {0,-1}, {1,0}, {0,1}};
 
 int main() {
-    freopen("13_input", "r", stdin);
-    freopen("13a_output", "w", stdout);
+    freopen("../../inputs/2018/13.txt", "r", stdin);
 
     while (std::getline(std::cin, input)) {
         map.push_back({});

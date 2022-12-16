@@ -9,9 +9,7 @@ std::vector<int> input;
 std::vector<int> h = {0};
 
 int main() {
-    // Input and output files
-    freopen("1b_output", "w", stdout);
-    freopen("1_input", "r", stdin);
+    freopen("../../inputs/2018/01.txt", "r", stdin);
 
     while (std::cin >> c) {
         input.push_back(std::stoi(c));

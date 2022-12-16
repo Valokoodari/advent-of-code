@@ -20,8 +20,7 @@ std::vector<int> decode(std::string row) {
 }
 
 int main() {
-    freopen("12_input", "r", stdin);
-    freopen("12a_output", "w", stdout);
+    freopen("../../inputs/2018/12.txt", "r", stdin);
 
     std::getline(std::cin, input);
     combinations.push_back(decode(input.substr(input.find(": ") + 2)));

@@ -8,8 +8,7 @@ std::vector<std::vector<int>> gs(5000);
 int g,f,t,sg,st;
 
 int main() {
-    freopen("4_input", "r", stdin);
-    freopen("4b_output", "w", stdout);
+    freopen("../../inputs/2018/04.txt", "r", stdin);
 
     for (int i = 0; i < gs.size(); i++) {
         gs[i].resize(60);

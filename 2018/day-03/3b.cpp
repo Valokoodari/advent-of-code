@@ -8,8 +8,7 @@ std::vector<std::vector<int>> cs;
 int a,b,d,x,y,w,h;
 
 int main() {
-    freopen("3_input", "r", stdin);
-    freopen("3b_output", "w", stdout);
+    freopen("../../inputs/2018/03.txt", "r", stdin);
 
     for (int i = 0; i < f.size(); i++) {
         f[i].reserve(1100);

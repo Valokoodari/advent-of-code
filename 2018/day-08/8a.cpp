@@ -17,8 +17,7 @@ int read_node(int n_child, int n_meta) {
 }
 
 int main() {
-    freopen("8_input", "r", stdin);
-    freopen("8a_output", "w", stdout);
+    freopen("../../inputs/2018/08.txt", "r", stdin);
 
     std::cin >> c >> m;
     std::cout << read_node(c, m);

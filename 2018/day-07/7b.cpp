@@ -40,8 +40,7 @@ int next(std::vector<std::vector<int>> o, std::vector<int> c, std::vector<int> d
 }
 
 int main() {
-    freopen("7_input", "r", stdin);
-    freopen("7b_output", "w", stdout);
+    freopen("../../inputs/2018/07.txt", "r", stdin);
 
     while (std::getline(std::cin, in)) {
         o[(int)in.substr(36,1)[0] - 65].push_back((int)in.substr(5, 1)[0] - 65);

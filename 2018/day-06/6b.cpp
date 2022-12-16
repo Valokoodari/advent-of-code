@@ -9,8 +9,7 @@ std::vector<std::vector<int>> cs;
 std::vector<std::vector<int>> map(size);
 
 int main() {
-    freopen("6_input", "r", stdin);
-    freopen("6b_output", "w", stdout);
+    freopen("../../inputs/2018/06.txt", "r", stdin);
 
     for (int i = 0; i < map.size(); i++) {
         map[i].resize(size);

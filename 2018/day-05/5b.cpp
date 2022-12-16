@@ -16,8 +16,7 @@ std::string react(std::string p) {
 }
 
 int main() {
-    freopen("5_input", "r", stdin);
-    freopen("5b_output", "w", stdout);
+    freopen("../../inputs/2018/05.txt", "r", stdin);
 
     std::cin >> p;
 

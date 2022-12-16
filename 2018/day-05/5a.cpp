@@ -4,8 +4,7 @@
 std::string p;
 
 int main() {
-    freopen("5_input", "r", stdin);
-    freopen("5a_output", "w", stdout);
+    freopen("../../inputs/2018/05.txt", "r", stdin);
 
     std::cin >> p;
 

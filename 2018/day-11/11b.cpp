@@ -30,8 +30,7 @@ std::vector<int> power_square(std::vector<std::vector<int>> fuel_grid, int lengt
 }
 
 int main() {
-    freopen("11_input", "r", stdin);
-    freopen("11b_output", "w", stdout);
+    freopen("../../inputs/2018/11.txt", "r", stdin);
 
     std::cin >> serial;
 

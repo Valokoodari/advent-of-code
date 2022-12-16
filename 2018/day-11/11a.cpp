@@ -8,8 +8,7 @@ std::vector<int> power = {0, 0, 0, 0};
 std::vector<std::vector<int>> cells(size);
 
 int main() {
-    freopen("11_input", "r", stdin);
-    freopen("11a_output", "w", stdout);
+    freopen("../../inputs/2018/11.txt", "r", stdin);
 
     std::cin >> serial;
 
