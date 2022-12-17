@@ -7,6 +7,7 @@ And just as a warning: I'm line golfing a lot once again so the code style is re
 ```
       -------Part 1--------   -------Part 2--------   -----Delta-----
 Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
+ 17   00:55:24  1185      0   01:20:13   643      0   00:24:49   -542
  16   01:35:37  1359      0   02:56:47  1033      0   01:21:10   -326
  15   00:26:46  1177      0   00:38:33   298      0   00:11:47   -879
  14   00:20:25   662      0   00:24:32   651      0   00:04:07    -11
@@ -24,8 +25,8 @@ Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
   2   00:12:43  4547      0   00:16:20  3054      0   00:03:37  -1493
   1   00:03:12  1256      0   00:05:20  1474      0   00:02:08    218
 ---------------------------------------------------------------------
-Sum   05:29:43     -      0   07:56:36     -      0   02:26:53      -
-Avg   00:20:36  1603      0   00:29:47  1063      0   00:09:11   -541
+Sum   06:25:07     -      0   09:16:49     -      0   02:51:42      -
+Avg   00:22:39  1579      0   00:32:45  1038      0   00:10:06   -541
 
 Total points: 0
 ```
@@ -48,10 +49,13 @@ Day  Python
  13       2
  14      50
  15   30911
- 16       - (needs to be optimized)
+ 16  ++++++ (needs to be optimized)
+ 17    2821
 -----------
-Sum   31196
-Avg    2080
+Sum   34017
+Avg    2126
+
+(not including day 16)
 ```
 
 Execution times measured on an M1 Max Mac Studio.
