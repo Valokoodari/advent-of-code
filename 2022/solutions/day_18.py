@@ -12,8 +12,9 @@ def part_1(data):
 def part_2(data):
     bs = set(tuple(map(int, l.split(","))) for l in data.splitlines())
 
-    ls = (min(a for a, _, _ in bs)-1, min(b for _, b, _ in bs)-1, min(c for _, _, c in bs)-1)
-    hs = (max(a for a, _, _ in bs)+1, max(b for _, b, _ in bs)+1, max(c for _, _, c in bs)+1)
+    xs, ys, zs = zip(*bs)
+    ls = (min(xs)-1, min(ys)-1, min(zs)-1)
+    hs = (max(xs)+1, max(ys)+1, max(zs)+1)
 
     ans, q, vs = 0, [ls], set()
     while q:
