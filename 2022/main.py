@@ -73,7 +73,10 @@ def main():
         for day in range(len(NAMES)):
             run(day+1)
     else:
-        run(int(sys.argv[1]))
+        if (day := int(sys.argv[1])) <= len(NAMES):
+            run(day)
+        else:
+            print(colored(f"Day {day} does not exist.\n", "red"))
 
     time_str = colored(f"{total_time:.3f}", "magenta")
     avg_time_str = colored(f"{total_time/len(NAMES):.3f}", "magenta")
