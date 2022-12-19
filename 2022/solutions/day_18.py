@@ -1,4 +1,4 @@
-from heapq import heappush, heappop
+from collections import deque
 
 DS = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)]
 
@@ -16,9 +16,9 @@ def part_2(data):
     ls = (min(xs)-1, min(ys)-1, min(zs)-1)
     hs = (max(xs)+1, max(ys)+1, max(zs)+1)
 
-    ans, q, vs = 0, [ls], set()
+    ans, q, vs = 0, deque([ls]), set()
     while q:
-        a, b, c = heappop(q)
+        a, b, c = q.popleft()
 
         if (a, b, c) in vs:
             continue
@@ -29,7 +29,7 @@ def part_2(data):
                 ans += 1
                 continue
             if (ls[0] <= x <= hs[0] and ls[1] <= y <= hs[1] and ls[2] <= z <= hs[2]):
-                heappush(q, (x, y, z))
+                q.append((x, y, z))
 
     return ans
 

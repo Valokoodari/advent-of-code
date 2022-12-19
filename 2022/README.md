@@ -53,10 +53,10 @@ Day  Python
  15   30911
  16  ++++++ (needs to be optimized)
  17    2821
- 18      24
+ 18      14
  19   15250
 -----------
-Sum   49291
+Sum   49281
 Avg    2738
 
 (not including day 16)
