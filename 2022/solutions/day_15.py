@@ -16,7 +16,6 @@ def part_1(data, y=2_000_000):
 
 
 def part_2(data, m=4_000_000):
-    return "(12555527364986)"
     ss = parse(data)
 
     for s in ss:
