@@ -79,6 +79,11 @@ def main():
             run(day)
         else:
             print(colored(f"Day {day} does not exist{' yet' if day <= 25 else ''}.\n", "red"))
+    elif sys.argv[1] in ("-s", "--skip"):
+        days = [int(day) for day in sys.argv[2:] if day.isdigit()]
+        for day in range(len(NAMES)):
+            if day+1 not in days:
+                run(day+1)
     else:
         print(colored("Invalid arguments.\n", "red"))
 
