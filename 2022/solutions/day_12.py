@@ -1,5 +1,4 @@
-from heapq import heappush, heappop
-
+from collections import deque
 
 def parse(data):
     ms, s, e = {}, (-1, -1), (-1, -1)
@@ -17,9 +16,9 @@ def parse(data):
 
 def solve(data, p2=False):
     ms, s, e = parse(data)
-    q, ss = [(0, e if p2 else s)], set()
+    q, ss = deque([(0, e if p2 else s)]), set()
 
-    while cp := heappop(q):
+    while cp := q.popleft():
         if cp[1] in ss:
             continue
         ss.add(cp[1])
@@ -29,7 +28,7 @@ def solve(data, p2=False):
 
         for n in [(cp[1][0]+d[0], cp[1][1]+d[1]) for d in ((0, 1), (0, -1), (1, 0), (-1, 0))]:
             if n in ms and ms[cp[1] if p2 else n] - ms[n if p2 else cp[1]] <= 1:
-                heappush(q, (cp[0] + 1, n))
+                q.append((cp[0] + 1, n))
 
 
 def part_1(data):
