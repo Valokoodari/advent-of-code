@@ -45,9 +45,9 @@ def solve(cs, m):
     return b
 
 
-def part_1(data): return "(2301)" # return sum(i * solve(cs, 24) for i, *cs in ns(data))
+def part_1(data): return sum(i * solve(cs, 24) for i, *cs in ns(data))
 
-def part_2(data): return "(10366)" # return prod(solve(cs, 32) for _, *cs in ns(data)[:3])
+def part_2(data): return prod(solve(cs, 32) for _, *cs in ns(data)[:3])
 
 
 EX_0 = """\
