@@ -1,6 +1,4 @@
-from functools import cmp_to_key as ctk
 from json import loads as parse
-from math import prod
 
 
 def cmp(a, b):
