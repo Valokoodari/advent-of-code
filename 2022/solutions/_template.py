@@ -11,7 +11,7 @@ EX_0 = """\
 
 def test():
     assert EX_0 != ""
-    # assert part_1(EX_0) == 0
+    assert part_1(EX_0) == 0
     # assert part_2(EX_0) == 0
 
 
