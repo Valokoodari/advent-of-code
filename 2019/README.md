@@ -33,6 +33,9 @@ Day       Time  Rank  Score       Time  Rank  Score
   3   00:23:04   648      0   00:33:09   627      0
   2   02:31:54  6162      0   02:39:47  5197      0
   1   01:05:30  2652      0   01:29:12  2590      0
+
+Total points: 57
+Global rank: 551
 ```
 
 ## Timings
