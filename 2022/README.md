@@ -7,6 +7,7 @@ And just as a warning: I'm line golfing a lot once again so the code style is re
 ```
       -------Part 1--------   -------Part 2--------   -----Delta-----
 Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
+ 24   00:36:33   419      0   00:40:05   334      0   00:13:32    -85
  23   00:22:51   110      0   00:25:41   126      0   00:02:50     16
  22   00:26:28   260      0   01:12:57    87     14   00:46:29   -173
  21   00:10:30   831      0   00:21:57   235      0   00:11:27   -596
@@ -63,9 +64,10 @@ Day  Python
  21      13
  22      54 (example doesn't work on part 2)
  23    2900
+ 24    3000
 -----------
-Sum   52907
-Avg    2405
+Sum   55907
+Avg    2431
 
 (not including day 16)
 ```
