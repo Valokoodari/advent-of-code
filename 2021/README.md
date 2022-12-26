@@ -36,6 +36,7 @@ Sum   07:54:32     -     72   11:09:14     -    106   03:14:42      -
 Avg   00:18:59   924      3   00:26:46   485      4   00:07:47   -439
 
 Total points: 178
+Global rank: 286
 ```
 
 ## Execution time (milliseconds)
