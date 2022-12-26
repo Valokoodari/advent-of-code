@@ -66,11 +66,11 @@ Day  Python
  21      13
  22      54 (example doesn't work on part 2)
  23    2900
- 24    3000
+ 24    2900
  25       0
 -----------
-Sum   55907
-Avg    2329
+Sum   55807
+Avg    2325
 
 (not including day 16)
 ```

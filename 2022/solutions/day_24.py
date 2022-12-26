@@ -30,7 +30,7 @@ def solve(data, p=1):
 
         if cp == ep:
             if p == 2 and cc < 2:
-                cc, sp, ep, q = cc + 1, ep, sp, [(d+1, ep)]
+                cc, sp, ep, vs, q = cc + 1, ep, sp, set(), [(d+1, ep)]
                 continue
             return d
 
