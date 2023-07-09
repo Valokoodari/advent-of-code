@@ -2,10 +2,11 @@ use std::fs;
 
 mod solutions;
 
-const NAMES: [&str; 3] = [
+const NAMES: [&str; 4] = [
     "Inverse Captcha",
     "Corruption Checksum",
     "Spiral Memory",
+    "High-Entropy Passphrases",
 ];
 
 fn main() {
@@ -16,6 +17,7 @@ fn main() {
             1 => (solutions::day_01::part_1(&input), solutions::day_01::part_2(&input)),
             2 => (solutions::day_02::part_1(&input), solutions::day_02::part_2(&input)),
             3 => (solutions::day_03::part_1(&input), solutions::day_03::part_2(&input)),
+            4 => (solutions::day_04::part_1(&input), solutions::day_04::part_2(&input)),
             _ => panic!("Invalid day"),
         };
 
