@@ -2,7 +2,7 @@ from termcolor import colored
 from time import process_time
 import sys
 
-from solutions import day_01, day_02
+from solutions import day_01, day_02, day_03
 
 
 total_time = 0
@@ -10,6 +10,7 @@ YEAR = 2023
 NAMES = (
     "Trebuchet?!",
     "Cube Conundrum",
+    "Gear Ratios",
 )
 
 
