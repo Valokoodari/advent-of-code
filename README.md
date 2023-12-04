@@ -16,9 +16,9 @@ primarily to Python to make writing the code faster as I hadn't had enough pract
 | [2020](/2020) |     50 |     10 | _Python_      |
 | [2021](/2021) |     50 |    178 | _Python_      |
 | [2022](/2022) |     50 |     33 | _Python_      |
-| [2023](/2023) |      6 |      - | _Python_      |
+| [2023](/2023) |      8 |      - | _Python_      |
 |               |        |        |               |
-| **Total**     |    299 |    278 |               |
+| **Total**     |    301 |    278 |               |
 
 
 ## Python template
