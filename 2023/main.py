@@ -2,7 +2,7 @@ from termcolor import colored
 from time import process_time
 import sys
 
-from solutions import day_01, day_02, day_03, day_04
+from solutions import day_01, day_02, day_03, day_04, day_05
 
 
 total_time = 0
@@ -12,6 +12,7 @@ NAMES = (
     "Cube Conundrum",
     "Gear Ratios",
     "Scratchcards",
+    "If You Give A Seed A Fertilizer",
 )
 
 
