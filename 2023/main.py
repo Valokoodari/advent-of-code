@@ -5,6 +5,7 @@ import sys
 from solutions import day_01, day_02, day_03, day_04, day_05, day_06
 
 
+hide = False
 total_time = 0
 YEAR = 2023
 NAMES = (
@@ -43,10 +44,12 @@ def run(day):
     print(f"Day {day}: {NAMES[day-1]} ({test(day)})")
 
     answer, time1 = solve(day, 1)
+    answer = "[hidden]" if hide else answer
     print(f"  Part 1: {colored(answer, 'cyan')}")
 
     if day != 25:
         answer, time2 = solve(day, 2)
+        answer = "[hidden]" if hide else answer
         print(f"  Part 2: {colored(answer, 'cyan')}")
 
     time_str_1 = colored(f"{time1*1000:.3f}", "magenta")
@@ -56,6 +59,10 @@ def run(day):
 
 
 def main():
+    if "-h" in sys.argv:
+        global hide
+        hide = True
+        sys.argv.remove("-h")
     if len(sys.argv) == 1:
         for day in range(len(NAMES)):
             run(day+1)
