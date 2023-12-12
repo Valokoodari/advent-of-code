@@ -7,6 +7,7 @@ And just as a warning: I'm line golfing a lot once again so the code style is re
 ```
       -------Part 1--------   -------Part 2--------   -----Delta-----
 Day       Time  Rank  Score       Time  Rank  Score       Time   Rank
+ 12   00:21:38   945      0   00:26:37   174      0   00:04:59   -771
  11   00:12:49   848      0   00:25:03  1546      0   00:12:14    698
  10   00:19:49   548      0   00:37:29   110      0   00:17:40   -438
   9   00:08:41   922      0   00:12:29  1010      0   00:03:48     88
@@ -40,9 +41,10 @@ Day  Python
   9       8
  10      21
  11      18
+ 12     630
 -----------
-Sum      86
-Avg       8
+Sum     716
+Avg      60
 ```
 
 Execution times measured on an M1 Max Mac Studio.
