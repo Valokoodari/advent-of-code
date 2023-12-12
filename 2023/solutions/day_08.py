@@ -6,7 +6,6 @@ def parse(d):
     return ds, { k: v.split(", ") for k, v in [i.split(" = ") for i in ins.splitlines()] }
 
 
-
 def f(ds, ins, p, t = 1):
     i = 0
     while True:
