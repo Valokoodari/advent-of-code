@@ -1,8 +1,6 @@
 def solve(d, s = 1):
-    ls = [[[int(n) for n in l.split()][::s]] for l in d.splitlines()]
-
     ans = 0
-    for rs in ls:
+    for rs in [[[int(n) for n in l.split()][::s]] for l in d.splitlines()]:
         while set(rs[-1]) != set([0]):
             rs.append([rs[-1][i+1] - rs[-1][i] for i in range(len(rs[-1])-1)])
         for i in range(len(rs), 1, -1):
