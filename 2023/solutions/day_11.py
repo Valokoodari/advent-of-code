@@ -10,8 +10,7 @@ def solve(d, e = 2):
                 continue
             dr = e * sum(1 for n in ers if n < r) + r
             dc = e * sum(1 for n in ecs if n < c) + c
-            for sr, sc in ss:
-                ans += abs(sr-dr) + abs(sc-dc)
+            ans += sum(abs(sr-dr) + abs(sc-dc) for sr, sc in ss)
             ss.add((dr, dc))
 
     return ans
