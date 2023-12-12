@@ -47,10 +47,8 @@ def part_2(data):
     for r, cs in enumerate(ls):
         i = False
         for c, ch in enumerate(cs):
-            if (r, c) in vs and ch in "|LJ":
-                i = not i
-            if (r, c) not in vs:
-                ans += 1 if i else 0
+            i = not i if (r, c) in vs and ch in "|LJ" else i
+            ans += 1 if i and (r, c) not in vs else 0
 
     return ans
 
