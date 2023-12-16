@@ -11,14 +11,12 @@ RS = {
 def fm(ms, r, c, d):
     q, vs = [(r, c, d)], set()
     while q:
-        r, c, d = q.pop()
-        if (r, c, d) in vs:
+        if (s := q.pop()) in vs:
             continue
-        vs.add((r, c, d))
-        for nd in RS[ms[r][c]][d]:
-            nr, nc = r + DS[nd][0], c + DS[nd][1]
-            if 0 <= nr < len(ms) and 0 <= nc < len(ms[0]):
-                q.append((nr, nc, nd))
+        vs.add(s)
+        for nd in RS[ms[s[0]][s[1]]][s[2]]:
+            if 0 <= s[0] + DS[nd][0] < len(ms) and 0 <= s[1] + DS[nd][1] < len(ms[0]):
+                q.append((s[0] + DS[nd][0], s[1] + DS[nd][1], nd))
     return len({(r, c) for r, c, _ in vs})
 
 
@@ -28,14 +26,12 @@ def part_1(data):
 
 def part_2(data):
     ms, cs = data.splitlines(), []
-
     for r in range(len(ms)):
         cs.append((r, 0, 1))
         cs.append((r, len(ms[0])-1, 3))
     for c in range(len(ms[0])):
         cs.append((0, c, 2))
         cs.append((len(ms)-1, c, 0))
-
     return max(fm(ms, *c) for c in cs)
 
 
