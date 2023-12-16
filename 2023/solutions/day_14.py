@@ -1,51 +1,39 @@
-DS = [(-1, 0), (0, -1), (1, 0), (0, 1)]
-CYCLES = 1000000000
+def tilt(ms):
+    ms = [list(r) for r in ms]
+    for r in range(len(ms)):
+        for c in range(len(ms[0])):
+            if ms[r][c] == "O":
+                dr = 1
+                while r-dr >= 0 and ms[r-dr][c] == ".":
+                    dr += 1
+                ms[r][c], ms[r-dr+1][c] = ".", "O"
+    return ms
 
 
-def parse(d):
-    rs, ws = set(), set()
-    for r, row in enumerate(d.splitlines()):
-        for c, char in enumerate(row):
-            if char == "#":
-                ws.add((r, c))
-            elif char == "O":
-                rs.add((r, c))
-    return rs, ws, len(d.splitlines()), len(d.splitlines()[0])
-
-
-def tilt(rs, ws, h, w, d): # TODO: optimize
-    m, (dr, dc) = True, DS[d]
-    while m:
-        m = False
-        for r, c in rs:
-            if (r+dr, c+dc) not in ws and (r+dr, c+dc) not in rs and 0 <= r+dr < h and 0 <= c+dc < w:
-                rs.remove((r, c))
-                rs.add((r+dr, c+dc))
-                m = True
-    return rs
+def cycle(ms):
+    return list(list(r[::-1]) for r in zip(*tilt(list(zip(*tilt(list(zip(*tilt(list(zip(*tilt(ms))))))[::-1])))[::-1])))[::-1]
 
 
 def part_1(data):
-    return sum(len(data.splitlines()) - r[0] for r in tilt(*parse(data), 0))
+    ms = tilt(data.splitlines())
+    return sum(len(ms)-r for r in range(len(ms)) for c in range(len(ms[0])) if ms[r][c] == "O")
 
 
 def part_2(data):
-    rs, ws, h, w = parse(data)
+    hs, ms, cs = {}, data.splitlines(), 1000000000
 
-    cr, mr, hs = 0, 0, {}
-    for i in range(1, CYCLES+1):
-        for d in range(len(DS)):
-            rs = tilt(rs, ws, h, w, d)
-        if tuple(rs) in hs:
-            cr, mr = i, hs[tuple(rs)]
+    for i in range(cs):
+        ms = cycle(ms)
+        m = tuple(tuple(r) for r in ms)
+        if m in hs:
+            cr, mr = i+1, hs[m]+1
             break
-        hs[tuple(rs)] = i
+        hs[m] = i
 
-    for _ in range((CYCLES - cr) % (cr - mr)):
-        for d in range(len(DS)):
-            rs = tilt(rs, ws, h, w, d)
+    for _ in range((cs-cr) % (cr-mr)):
+        ms = cycle(ms)
 
-    return sum(h - r[0] for r in rs)
+    return sum(len(ms)-r for r in range(len(ms)) for c in range(len(ms[0])) if ms[r][c] == "O")
 
 
 EX_0 = """\
