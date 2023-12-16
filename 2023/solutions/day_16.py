@@ -1,6 +1,3 @@
-from collections import deque
-
-
 DS = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 RS = {
     ".": [[0], [1], [2], [3]],
@@ -12,9 +9,9 @@ RS = {
 
 
 def fm(ms, r, c, d):
-    q, vs = deque([(r, c, d)]), set()
+    q, vs = [(r, c, d)], set()
     while q:
-        r, c, d = q.popleft()
+        r, c, d = q.pop()
         if (r, c, d) in vs:
             continue
         vs.add((r, c, d))
