@@ -37,24 +37,24 @@ Global rank: –
 Day  Python
   1       2
   2       1
-  3       6
-  4       3
+  3       4
+  4       2
   5       1
   6       0
-  7       6
-  8      20
+  7       5
+  8      18
   9       8
  10      21
- 11      18
- 12     375
+ 11      19
+ 12     376
  13       7
- 14     339
+ 14     340
  15       4
- 16    1331
- 17    1306
+ 16    1442
+ 17    1271
 -----------
-Sum    3448
-Avg     203
+Sum    3521
+Avg     207
 ```
 
 Execution times measured on an M1 Max Mac Studio.
