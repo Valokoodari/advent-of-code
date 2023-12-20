@@ -56,6 +56,20 @@ def test(get_tests = None):
         assert a2 == None or str(part_2(data)) == a2
 
 
+def draw_graph():
+    from sys import argv
+    data = open(argv[1] if argv[1:] else "../inputs/2023/20.txt").read()
+    data = data.rstrip().split("\n\n\n")[0]
+    with open("out_20.md", "w") as output_file:
+        output_file.write("```mermaid\ngraph TD\n")
+        for line in data.splitlines():
+            module, outputs = line.split(" -> ")
+            for output in outputs.split(", "):
+                output_file.write(f"  {module[1:]} --> {output}\n")
+        output_file.write("```\n")
+
+
 if __name__ == "__main__":
+    draw_graph()
     from test import get_tests
     test(get_tests)
