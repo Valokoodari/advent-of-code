@@ -1,4 +1,4 @@
-let input = await Bun.file("../../inputs/2023/04.txt").text();
+let input = await Bun.file("../../inputs/2023/04/input.txt").text();
 input = input.trimEnd().replaceAll(/\ +/g, " ");
 let [a, ss] = [0, new Object()];
 

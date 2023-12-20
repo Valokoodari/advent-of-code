@@ -1,4 +1,4 @@
-let d = await Bun.file("../../inputs/2023/05.txt").text();
+let d = await Bun.file("../../inputs/2023/05/input.txt").text();
 let ps = d.trimEnd().split("\n\n");
 let ss = ps[0]
   .split(": ")[1]

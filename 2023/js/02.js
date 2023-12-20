@@ -4,7 +4,7 @@ const LS = new Map([
   ["blue", 14],
 ]);
 
-let input = await Bun.file("../../inputs/2023/02.txt").text();
+let input = await Bun.file("../../inputs/2023/02/input.txt").text();
 input = input.trimEnd().replaceAll(";", ",");
 let [a, b] = [0, 0];
 

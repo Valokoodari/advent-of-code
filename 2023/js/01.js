@@ -1,4 +1,4 @@
-let input = await Bun.file("../../inputs/2023/01.txt").text();
+let input = await Bun.file("../../inputs/2023/01/input.txt").text();
 input = input.trimEnd();
 
 const solve = (data) => {

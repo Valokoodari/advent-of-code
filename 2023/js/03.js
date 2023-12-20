@@ -1,4 +1,4 @@
-let d = await Bun.file("../../inputs/2023/03.txt").text();
+let d = await Bun.file("../../inputs/2023/03/input.txt").text();
 let gs = d.trimEnd().split("\n");
 
 const isDigit = (c) => c >= "0" && c <= "9";
