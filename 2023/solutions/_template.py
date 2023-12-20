@@ -8,14 +8,16 @@ def part_2(data):
     return ans
 
 
-EX_0 = """\
-"""
+def test(get_tests = None):
+    if not get_tests:
+        from solutions.test import get_tests
 
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == -1
-    # assert part_2(EX_0) == -1
+    for data, a1, a2 in get_tests(0):
+        assert data != None and a1 or a2
+        assert a1 == None or str(part_1(data)) == a1
+        assert a2 == None or str(part_2(data)) == a2
 
 
 if __name__ == "__main__":
-    test()
+    from test import get_tests
+    test(get_tests)
