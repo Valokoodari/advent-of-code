@@ -8,16 +8,12 @@ def part_2(data):
     return ans
 
 
-def test(get_tests = None):
-    if not get_tests:
-        from solutions.test import get_tests
-
-    for data, a1, a2 in get_tests(0):
-        assert data != None and a1 or a2
-        assert a1 == None or str(part_1(data)) == a1
-        assert a2 == None or str(part_2(data)) == a2
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(0, part_1, part_2)
 
 
 if __name__ == "__main__":
-    from test import get_tests
-    test(get_tests)
+    from test import run_tests
+    test(run_tests)
