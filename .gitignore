@@ -7,4 +7,6 @@ venv/
 *.pdb
 *.ps1
 
-sandbox.*
+in*
+out*
+sandbox*
