@@ -8,28 +8,12 @@ def part_2(data):
     return part_1(data)
 
 
-EX_0 = """\
-1abc2
-pqr3stu8vwx
-a1b2c3d4e5f
-treb7uchet
-"""
-
-EX_1 = """\
-two1nine
-eightwothree
-abcone2threexyz
-xtwone3four
-4nineeightseven2
-zoneight234
-7pqrstsixteen
-"""
-
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 142
-    assert part_2(EX_1) == 281
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(1, part_1, part_2)
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests
+    test(run_tests)

@@ -37,12 +37,18 @@ EX_0 = """\
 #...#.....
 """
 
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 374
+def test(run_tests = None, get_examples = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    if not get_examples:
+        from solutions.test import get_examples
+    run_tests(11, part_1, part_2)
+
+    EX_0 = get_examples(11)[0]
     assert solve(EX_0, 10) == 1030
     assert solve(EX_0, 100) == 8410
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests, get_examples
+    test(run_tests, get_examples)

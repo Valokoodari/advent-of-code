@@ -25,20 +25,12 @@ def part_2(data):
     return sum(fs({}, l[0] + ("?" + l[0]) * 4, tuple(int(n) for n in l[1].split(",")) * 5) for l in ls)
 
 
-EX_0 = """\
-???.### 1,1,3
-.??..??...?##. 1,1,3
-?#?#?#?#?#?#?#? 1,3,1,6
-????.#...#... 4,1,1
-????.######..#####. 1,6,5
-?###???????? 3,2,1
-"""
-
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 21
-    assert part_2(EX_0) == 525152
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(12, part_1, part_2)
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests
+    test(run_tests)

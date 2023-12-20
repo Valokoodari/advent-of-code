@@ -36,36 +36,12 @@ def part_2(data):
     return solve(data, 4, 10)
 
 
-EX_0 = """\
-2413432311323
-3215453535623
-3255245654254
-3446585845452
-4546657867536
-1438598798454
-4457876987766
-3637877979653
-4654967986887
-4564679986453
-1224686865563
-2546548887735
-4322674655533
-"""
-
-EX_1 = """\
-111111111111
-999999999991
-999999999991
-999999999991
-999999999991
-"""
-
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 102
-    assert part_2(EX_0) == 94
-    assert part_2(EX_1) == 71
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(17, part_1, part_2)
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests
+    test(run_tests)

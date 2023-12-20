@@ -14,16 +14,12 @@ def part_2(data):
     return sr(*[int(l.split(":")[1]) for l in data.replace(" ", "").splitlines()])
 
 
-EX_0 = """\
-Time:      7  15   30
-Distance:  9  40  200
-"""
-
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 288
-    assert part_2(EX_0) == 71503
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(6, part_1, part_2)
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests
+    test(run_tests)

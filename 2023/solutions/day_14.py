@@ -36,24 +36,12 @@ def part_2(data):
     return sum(len(ms)-r for r in range(len(ms)) for c in range(len(ms[0])) if ms[r][c] == "O")
 
 
-EX_0 = """\
-O....#....
-O.OO#....#
-.....##...
-OO.#O....O
-.O.....O#.
-O.#..O.#.#
-..O..#O..O
-.......O..
-#....###..
-#OO..#....
-"""
-
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 136
-    assert part_2(EX_0) == 64
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(14, part_1, part_2)
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests
+    test(run_tests)

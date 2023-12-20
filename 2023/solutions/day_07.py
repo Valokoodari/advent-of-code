@@ -29,19 +29,12 @@ def part_2(data):
     return sum(int(c[1]) * (i + 1) for i, c in enumerate(sorted(hs, key=lambda h: sh(h, ["J", *CS]))))
 
 
-EX_0 = """\
-32T3K 765
-T55J5 684
-KK677 28
-KTJJT 220
-QQQJA 483
-"""
-
-def test():
-    assert EX_0 != ""
-    assert part_1(EX_0) == 6440
-    assert part_2(EX_0) == 5905
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(7, part_1, part_2)
 
 
 if __name__ == "__main__":
-    test()
+    from test import run_tests
+    test(run_tests)

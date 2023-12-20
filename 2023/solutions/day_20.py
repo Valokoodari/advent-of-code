@@ -46,14 +46,10 @@ def part_2(data):
     return solve(data, 2)
 
 
-def test(get_tests = None):
-    if not get_tests:
-        from solutions.test import get_tests
-
-    for data, a1, a2 in get_tests(20):
-        assert data != None and a1 or a2
-        assert a1 == None or str(part_1(data)) == a1
-        assert a2 == None or str(part_2(data)) == a2
+def test(run_tests = None):
+    if not run_tests:
+        from solutions.test import run_tests
+    run_tests(20, part_1, part_2)
 
 
 def draw_graph():
@@ -71,5 +67,5 @@ def draw_graph():
 
 if __name__ == "__main__":
     draw_graph()
-    from test import get_tests
-    test(get_tests)
+    from test import run_tests
+    test(run_tests)
