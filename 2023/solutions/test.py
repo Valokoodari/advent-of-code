@@ -2,11 +2,13 @@ from os import listdir, path
 
 
 def get_tests(day):
-    file_path = f"examples/{day:02d}"
+    file_path = f"../inputs/2023/{day:02d}"
     assert path.exists(file_path)
 
     tests = []
     for file in listdir(file_path):
+        if file == "input.txt":
+            continue
         data, answers = open(f"{file_path}/{file}").read().rstrip().split("\n\n\n")
         answers = [answer.strip() for answer in answers.split("\n\n")]
         a1, a2 = [None if answer == "-" else answer for answer in answers]
