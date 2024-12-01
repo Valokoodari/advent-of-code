@@ -1,10 +1,10 @@
 def part_1(data):
-    ll, lr = zip(*[(int(l), int(r)) for l, *_, r in [line.split(" ") for line in data.splitlines()]])
+    ll, lr = zip(*[(int(l), int(r)) for l, r in [line.split() for line in data.splitlines()]])
     return sum(abs(l - r) for l, r in zip(*[sorted(ll), sorted(lr)]))
 
 
 def part_2(data):
-    ll, lr = zip(*[(int(l), int(r)) for l, *_, r in [line.split(" ") for line in data.splitlines()]])
+    ll, lr = zip(*[(int(l), int(r)) for l, r in [line.split() for line in data.splitlines()]])
     return sum(n * lr.count(n) for n in ll)
 
 
