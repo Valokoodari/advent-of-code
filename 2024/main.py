@@ -2,7 +2,7 @@ from termcolor import colored
 from time import process_time
 import sys
 
-from solutions import day_01, day_02, day_03
+from solutions import day_01, day_02, day_03, day_04
 
 
 hide = False
@@ -12,7 +12,8 @@ YEAR = 2024
 NAMES = (
     "Historian Hysteria",
     "Red-Nosed Reports",
-    "Mull It Over"
+    "Mull It Over",
+    "Ceres Search"
 )
 
 
