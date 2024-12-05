@@ -1,17 +1,14 @@
-import numpy as np
-
-
 def part_1(data):
-    s = max(len(data.splitlines()[0]), len(data.splitlines()))
-    rd = "\n".join(["".join(l) for l in zip(*data.splitlines())])
-    ds = "\n".join(["".join(np.diag([[c for c in l] for l in data.splitlines()], i)) for i in range(-s+1, s)])
-    rds = "\n".join(["".join(np.diag([[c for c in l[::-1]] for l in data.splitlines()], i)) for i in range(-s+1, s)])
-
-    return sum(data.count(w)+rd.count(w)+ds.count(w)+rds.count(w) for w in ("XMAS","SAMX"))
+    ans, d = 0, data.splitlines()
+    for _ in range(4):
+        ans += sum(1 for r in range(len(d)) for c in range(len(d[r])-3) if "".join(d[r][c:c+4]) == "XMAS")
+        ans += sum(1 for r in range(len(d)-3) for c in range(len(d[r])-3) if "".join((d[r][c],d[r+1][c+1],d[r+2][c+2],d[r+3][c+3])) == "XMAS")
+        d = list(zip(*d))[::-1]
+    return ans
 
 
 def part_2(data):
-    return sum(1 if d[r][c] == "A" and (d[r-1][c-1],d[r-1][c+1],d[r+1][c-1],d[r+1][c+1]) in [("M","M","S","S"),("S","S","M","M"),("M","S","M","S"),("S","M","S","M")] else 0 for d in [data.splitlines()] for r in range(1,len(d)-1) for c in range(1,len(d[r])-1))
+    return sum(1 if d[r][c] == "A" and "".join([d[r-1][c-1],d[r-1][c+1],d[r+1][c-1],d[r+1][c+1]]) in ["MMSS","SSMM","MSMS","SMSM"] else 0 for d in [data.splitlines()] for r in range(1,len(d)-1) for c in range(1,len(d[r])-1))
 
 
 def test(run_tests = None):
