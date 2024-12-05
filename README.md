@@ -8,7 +8,7 @@ primarily to Python to make writing the code faster as I hadn't had enough pract
 
 | Year          | :star: | Points | Rank | Main language |
 | :------------ | -----: | -----: | ---: | :------------ |
-| [2015](/2015) |     37 |      - |    - | _Python_      |
+| [2015](/2015) |     39 |      - |    - | _Python_      |
 | [2016](/2016) |     20 |      - |    - | _Python_      |
 | [2017](/2017) |      8 |      - |    - | _Rust_        |
 | [2018](/2018) |     28 |      - |    - | _C++_         |
@@ -19,7 +19,7 @@ primarily to Python to make writing the code faster as I hadn't had enough pract
 | [2023](/2023) |     50 |     12 | 1015 | _Python_      |
 | [2024](/2024) |     10 |        |      | _Python_      |
 |               |        |        |      |               |
-| **Total**     |    353 |    290 |      |               |
+| **Total**     |    355 |    290 |      |               |
 
 
 ## Python template
