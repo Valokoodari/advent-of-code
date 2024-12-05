@@ -10,7 +10,7 @@ def parse(data):
 
 def part_1(data):
     rs, us = parse(data)
-    return sum(ns[len(ns)//2] if sum([1 if ns[j] in rs and n in rs[ns[j]] else 0 for i,n in enumerate(ns) for j in range(i+1, len(ns))]) == 0 else 0 for ns in us)
+    return sum(ns[len(ns)//2] if sum(1 if ns[j] in rs and n in rs[ns[j]] else 0 for i,n in enumerate(ns) for j in range(i+1, len(ns))) == 0 else 0 for ns in us)
 
 
 def part_2(data):
@@ -21,7 +21,7 @@ def part_2(data):
             p = False
             for i, n in enumerate(ns):
                 for j in range(i+1, len(ns)):
-                    if ns[j] in rs and n in rs[ns[j]]:
+                    if n in rs[ns[j]]:
                         ns[i], ns[j], p, f = ns[j], ns[i], True, True
             if not p and f:
                 ans += ns[len(ns)//2]
