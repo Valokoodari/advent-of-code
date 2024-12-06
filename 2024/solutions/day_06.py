@@ -1,4 +1,4 @@
-DS = ((-1, 0), (0, 1), (1, 0), (0, -1))
+DS = ((-1,0),(0,1),(1,0),(0,-1))
 
 
 def parse(data):
@@ -22,9 +22,8 @@ def walk(ws, p, s):
         if p[0] < 0 or p[1] < 0 or p[0] >= s[0] or p[1] >= s[1]:
             return set(p[:2] for p in vs), -1
         if (p[0], p[1], d) in vs:
-            break
+            return set(p[:2] for p in vs), 0
         vs.add((p[0], p[1], d))
-    return set(p[:2] for p in vs), 0
 
 
 def part_1(data):
@@ -32,11 +31,7 @@ def part_1(data):
 
 
 def part_2(data):
-    ans, ws, p, s = 0, *parse(data)
-    for o in walk(ws, p, s)[0]:
-        if walk(ws.union({o}), p, s)[1] == 0:
-            ans += 1
-    return ans
+    return sum(1 for ws,p,s in [parse(data)] for o in walk(ws,p,s)[0] if walk(ws.union({o}),p,s)[1] == 0)
 
 
 def test(run_tests = None):
