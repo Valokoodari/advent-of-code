@@ -86,7 +86,8 @@ def main():
                 run(day+1)
     elif sys.argv[1] in ("-b", "--benchmark"):
         day = [int(day) for day in sys.argv[2:] if day.isdigit()][0]
-        for _ in range(100):
+        for n in range(100):
+            print(colored(f"{n+1:03d}", "red"), end=" ")
             run(day)
         print(f"Average time: {colored(f'{total_time*10:.3f}', 'magenta')} ms")
         exit()
