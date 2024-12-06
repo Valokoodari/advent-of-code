@@ -2,7 +2,7 @@ from termcolor import colored
 from time import process_time
 import sys
 
-from solutions import day_01, day_02, day_03, day_04, day_05
+from solutions import day_01, day_02, day_03, day_04, day_05, day_06
 
 
 hide = False
@@ -14,7 +14,8 @@ NAMES = (
     "Red-Nosed Reports",
     "Mull It Over",
     "Ceres Search",
-    "Print Queue"
+    "Print Queue",
+    "Guard Gallivant"
 )
 
 
