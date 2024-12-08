@@ -1,6 +1,6 @@
 def solve(data, p = 1):
-    fs, h, w = {}, len(data.splitlines()), len(data.splitlines()[0])
-    for r, l in enumerate(data.splitlines()):
+    fs, h, w = {}, len(ls := data.splitlines()), len(ls[0])
+    for r, l in enumerate(ls):
         for c, x in enumerate(l):
             if x != ".":
                 fs.setdefault(x, []).append((r, c))
@@ -12,7 +12,7 @@ def solve(data, p = 1):
                 r1, c1, r2, c2  = *f[i], *f[j]
                 dr, dc = r2-r1, c2-c1
 
-                for m in [1] if p == 1 else range(0, max(w, h) // max(abs(dr), abs(dc))):
+                for m in [1] if p == 1 else range(max(w, h) // max(abs(dr), abs(dc))):
                     ar, ac, br, bc = r1-m*dr, c1-m*dc, r2+m*dr, c2+m*dc
                     if 0 <= ar < w and 0 <= ac < h:
                         ns.add((ar, ac))
