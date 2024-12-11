@@ -3,7 +3,7 @@ from time import process_time
 import sys
 
 from solutions import day_01, day_02, day_03, day_04, day_05, day_06, day_07, \
-    day_08, day_09, day_10
+    day_08, day_09, day_10, day_11
 
 
 hide = False
@@ -20,7 +20,8 @@ NAMES = (
     "Bridge Repair",
     "Resonant Collinearity",
     "Disk Fragmenter",
-    "Hoof It"
+    "Hoof It",
+    "Plutonian Pebbles"
 )
 
 
