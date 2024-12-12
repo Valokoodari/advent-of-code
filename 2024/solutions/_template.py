@@ -11,7 +11,7 @@ def part_2(data):
 def test(run_tests = None):
     if not run_tests:
         from solutions.test import run_tests
-    run_tests(0, part_1, part_2)
+    run_tests(0, part_1, part_2, True)
 
 
 if __name__ == "__main__":
