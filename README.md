@@ -28,3 +28,37 @@ run the example cases as tests, measure the execution time, and most importantly
 pretty :sparkles:.
 
 ![a screenshot of what my python template prints to the terminal](output-example.png)
+
+
+## Inputs (private submodule)
+### File tree
+```
+inputs/
+|-- 2015/
+|   |-- 01.txt
+|   |-- ...
+|   `-- 25.txt
+|-- .../
+`-- 2023/
+    |-- 01/
+    |   |-- 0.txt
+    |   |-- ...
+    |   `-- input.txt
+    |-- .../
+    `-- 25/
+        `-- ...
+```
+
+### Test data (n.txt)
+```
+input line 1
+input line 2
+input line 3
+...
+input line n
+
+
+part 1 answer or - to skip
+
+part 2 answer or - to skip
+```
