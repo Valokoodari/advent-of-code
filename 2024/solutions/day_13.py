@@ -22,7 +22,7 @@ def part_2(data):
 def test(run_tests = None):
     if not run_tests:
         from solutions.test import run_tests
-    run_tests(13, part_1, part_2, True)
+    run_tests(13, part_1, part_2, False)
 
 
 if __name__ == "__main__":
