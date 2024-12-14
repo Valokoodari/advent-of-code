@@ -26,6 +26,9 @@ Sum   01:19:32      -      0   02:24:28      -     26   01:04:56      -
 Avg   00:07:57    860      0   00:14:27    583      3   00:06:30   -277
 
 * Excluded from the sum and average
+
+Total points: 26
+Global rank: 685
 ```
 
 ## Personal Stats (Solve time)
