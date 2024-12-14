@@ -20,9 +20,10 @@ Day       Time   Rank  Score       Time   Rank  Score       Time   Rank
  11   00:06:15    931      0   00:08:59    254      0   00:02:44   -677
  12   00:03:19    170      0   00:21:18    195      0   00:17:59     25
 *13   02:33:29  10309      0   02:38:46   6782      0   00:05:17  -3527
+ 14   00:08:37    451      0   00:14:35     75     26   00:05:58   -376
 -----------------------------------------------------------------------
-Sum   01:10:55      -      0   02:09:53      -      0   00:58:58      -
-Avg   00:07:53    905      0   00:14:26    639      0   00:06:33   -266
+Sum   01:19:32      -      0   02:24:28      -     26   01:04:56      -
+Avg   00:07:57    860      0   00:14:27    583      3   00:06:30   -277
 
 * Excluded from the sum and average
 ```
@@ -43,9 +44,10 @@ Day   -Part 1-   -Part 2-   --Delta-
  11   00:06:15   00:08:59   00:02:44
  12   00:03:19   00:21:18   00:17:59
 *13   00:12:29   00:17:46   00:05:17
+ 14   00:08:37   00:14:35   00:05:58
 ------------------------------------
-Sum   01:47:07   03:09:03   01:21:56
-Avg   00:08:14   00:14:33   00:06:18
+Sum   01:55:44   03:23:38   01:27:54
+Avg   00:08:16   00:14:33   00:06:17
 
 * Adjusted by start time
 ```
@@ -65,10 +67,20 @@ Day  Python
  10      13
  11      72
  12      40
- 13
+ 13       1
+ 14     477
 -----------
-Sum   14226
-Avg    1186
+Sum   14704
+Avg    1050
 ```
 
 Execution times measured on an M1 Max Mac Studio.
+
+
+## How I solved it?
+
+### Day 14, Part 2
+Just printed the whole map and seconds elapsed in console and noticed that the robots bunch up on `t ≡ 2 mod 101` and
+then changed the code to only show those until I saw the tree at `6668 = (2 + 66 * 101)` (your values may differ).
+The solution included in the code just finds the first `t` where all of the robots are at an unique location as it
+seems to always give the correct answer.
