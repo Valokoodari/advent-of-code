@@ -27,7 +27,7 @@ def test(run_tests = None):
         from solutions.test import run_tests
     global W, H
     w, h, W, H = W, H, 11, 7
-    run_tests(14, part_1, part_2, True)
+    run_tests(14, part_1, part_2, False)
     W, H = w, h
 
 
