@@ -14,12 +14,14 @@ def part_2(data):
     rs = [[int(p) for p in r.split(",")] for r in data.replace("p=","").replace(" v=",",").splitlines()]
     ps = lambda t: [((r[0] + r[2] * t) % W, (r[1] + r[3] * t) % H) for r in rs]
 
-    t = 0
-    while True:
-        p = ps(t)
-        if len(set(p)) == len(p):
-            return t
-        t += 1
+    lc, lr = (0, W*H**2), (0, W*H**2)
+    for t in range(1, max(H, W)):
+        vc, vr = 0, 0
+        for c, r in ps(t):
+            vc, vr = vc + abs(c - W//2), vr + abs(r - H//2)
+        lc, lr = (t, vc) if vc < lc[1] else lc, (t, vr) if vr < lr[1] else lr
+
+    return lc[0] + ((pow(W, -1, H) * (lr[0] - lc[0])) % H) * W
 
 
 def test(run_tests = None):
