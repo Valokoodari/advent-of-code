@@ -22,14 +22,15 @@ Day       Time   Rank  Score       Time   Rank  Score       Time   Rank
 *13   02:33:29  10309      0   02:38:46   6782      0   00:05:17  -3527
  14   00:08:37    451      0   00:14:35     75     26   00:05:58   -376
  15   00:24:39   1487      0   00:35:58    197      0   00:10:59  -1290
+ 16   00:02:44    102      0   00:19:00    242      0   00:16:16    140
 -----------------------------------------------------------------------
-Sum   01:44:11      -      0   03:00:06      -     26   01:15:55      -
-Avg   00:09:28    917      0   00:16:22    548      2   00:06:54   -369
+Sum   01:46:55      -      0   03:19:06      -     26   01:31:11      -
+Avg   00:08:55    849      0   00:16:36    522      2   00:07:41   -326
 
 * Excluded from the sum and average
 
 Total points: 26
-Global rank: 685 (updated on 14th)
+Global rank: 759 (updated on 16th)
 ```
 
 ## Personal Stats (Solve time)
@@ -50,9 +51,10 @@ Day   -Part 1-   -Part 2-   --Delta-
 *13   00:12:29   00:17:46   00:05:17
  14   00:08:37   00:14:35   00:05:58
  15   00:24:39   00:35:38   00:10:59
+ 16   00:02:44   00:19:00   00:16:16
 ------------------------------------
-Sum   02:20:23   03:59:16   01:38:53
-Avg   00:09:22   00:15:57   00:06:36
+Sum   02:23:07   04:18:16   01:55:09
+Avg   00:08:57   00:16:09   00:07:12
 
 * Adjusted by start time
 ```
@@ -74,10 +76,11 @@ Day  Python
  12      40
  13       1
  14     477
- 15
+ 15    1042
+ 16    8075
 -----------
-Sum   14704
-Avg    1050
+Sum   23821
+Avg    1489
 ```
 
 Execution times measured on an M1 Max Mac Studio.
@@ -90,3 +93,8 @@ Just printed the whole map and seconds elapsed in console and noticed that the r
 then changed the code to only show those until I saw the tree at `6668 = (2 + 66 * 101)` (your values may differ).
 The solution included in the code just finds the first `t` where all of the robots are at an unique location as it
 seems to always give the correct answer.
+
+### Day 16
+**Part 1:** Had dijkstra ready to go as just 9 hours earlier I had realized that I haven't seen it yet this year. Even
+messaged a friend that maybe day 16 is going to finally require finding the shortest path. **Part 2:** Overthinking
+killed it :'c (Although that overthinked version was a lot faster than the smaller one here)
