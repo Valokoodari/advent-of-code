@@ -11,22 +11,22 @@ def run(rs, ps):
     while i < len(ps) - 1:
         match ps[i]:
             case 0:
-                rs[0], i = rs[0] // (2 ** c(ps[i+1])), i + 2
+                rs[0], i = rs[0] >> c(ps[i+1]), i + 2
             case 1:
                 rs[1], i = rs[1] ^ ps[i+1], i + 2
             case 2:
-                rs[1], i, = c(ps[i+1]) % 8, i + 2
+                rs[1], i, = c(ps[i+1]) & 0b111, i + 2
             case 3:
-                i = ps[i+1] if rs[0] != 0 else i + 2
+                i = ps[i+1] if rs[0] else i + 2
             case 4:
                 rs[1], i = rs[1] ^ rs[2], i + 2
             case 5:
-                o.append(c(ps[i+1]) % 8)
+                o.append(c(ps[i+1]) & 0b111)
                 i += 2
             case 6:
-                rs[1], i = rs[0] // (2 ** c(ps[i+1])), i + 2
+                rs[1], i = rs[0] >> c(ps[i+1]), i + 2
             case 7:
-                rs[2], i = rs[0] // (2 ** c(ps[i+1])), i + 2
+                rs[2], i = rs[0] >> c(ps[i+1]), i + 2
     return o
 
 
