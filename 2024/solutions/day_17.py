@@ -15,7 +15,7 @@ def run(rs, ps):
             case 1:
                 rs[1], i = rs[1] ^ ps[i+1], i + 2
             case 2:
-                rs[1], i, = c(ps[i+1]) & 0b111, i + 2
+                rs[1], i = c(ps[i+1]) & 0b111, i + 2
             case 3:
                 i = ps[i+1] if rs[0] else i + 2
             case 4:
