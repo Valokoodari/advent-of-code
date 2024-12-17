@@ -101,3 +101,22 @@ seems to always give the correct answer.
 **Part 1:** Had dijkstra ready to go as just 9 hours earlier I had realized that I haven't seen it yet this year. Even
 messaged a friend that maybe day 16 is going to finally require finding the shortest path. **Part 2:** Overthinking
 killed it :'c (Although that overthinked version was a lot faster than the smaller one here)
+
+### Day 17
+The first attempt was to start the brute force option but it didn't take long to realize that the answer was somewhere
+in the trillions and bruting would take years even with the correct range. It took quite a while before I realized that
+the solution can be searched in octal digit by digit (nice? visualization underneath).
+```python
+# Minimum value for A to get right length:  35_184_372_088_832
+# Maximum value for A to get right lenght: 281_474_976_710_655
+
+# [2,4]   v
+# [0,1,2] |       v
+# [0,4,5] |       0   v
+# [0,1]   |       |   0     v
+# [2,6]   |       |   5 v   |
+# [5,7]   |       |   | 6 v |
+# [2,7]   |       |   | | 5 |   v
+# [2,7]   |       |   | | | |   2   v
+ns = [7,0,2,6,4,2,0,3,5,6,5,1,4,2,7,2]
+```
