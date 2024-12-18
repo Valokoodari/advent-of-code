@@ -24,14 +24,15 @@ Day       Time   Rank  Score       Time   Rank  Score       Time   Rank
  15   00:24:39   1487      0   00:35:58    197      0   00:10:59  -1290
  16   00:02:44    102      0   00:19:00    242      0   00:16:16    140
  17   00:05:29    168      0   01:26:53    677      0   01:21:24    509
+ 18   00:06:26    303      0   00:09:48    277      0   00:03:22    -26
 -----------------------------------------------------------------------
-Sum   01:52:24      -      0   04:45:59      -     26   02:53:35      -
-Avg   00:08:39    796      0   00:22:00    534      2   00:13:21   -262
+Sum   01:58:50      -      0   04:55:47      -     26   02:56:57      -
+Avg   00:08:29    761      0   00:21:08    516      2   00:12:38   -245
 
 * Excluded from the sum and average
 
 Total points: 26
-Global rank: 798 (updated on 17th)
+Global rank: 812 (updated on 18th)
 ```
 
 ## Personal Stats (Solve time)
@@ -54,9 +55,10 @@ Day   -Part 1-   -Part 2-   --Delta-
  15   00:24:39   00:35:38   00:10:59
  16   00:02:44   00:19:00   00:16:16
  17   00:05:29   01:26:53   01:21:24
+ 18   00:06:26   00:09:48   00:03:22
 ------------------------------------
-Sum   02:28:36   05:45:09   03:16:33
-Avg   00:08:44   00:20:18   00:11:34
+Sum   02:35:02   05:54:57   03:19:55
+Avg   00:08:37   00:19:43   00:11:06
 
 * Adjusted by start time
 ```
@@ -81,9 +83,10 @@ Day  Python
  15    1042
  16    8075
  17       2
+ 18      17
 -----------
-Sum   23357
-Avg    1374
+Sum   23374
+Avg    1299
 ```
 
 Execution times measured on an M1 Max Mac Studio.
@@ -120,3 +123,6 @@ the solution can be searched in octal digit by digit (nice? visualization undern
 # [2,7]   |       |   | | | |   2   v
 ns = [7,0,2,6,4,2,0,3,5,6,5,1,4,2,7,2]
 ```
+
+### Day 18
+**Part 1:** Dijkstra. **Part 2:** Binary search because I didn't create the grid at first and `if (x,y) in ms` is slow.
